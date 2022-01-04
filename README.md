@@ -1,6 +1,8 @@
+<!--
 % Introduction to R
 % Feb 2021
 % Thu Nov 25 14:35:25 2021
+-->
 
 <!-- vim: tw=70 nosmartindent fmr=<<<,>>> cms=<!--%s-->
 
