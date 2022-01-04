@@ -22,9 +22,7 @@
 * Point your web browser to the url shown at the top
   which is the same as
 
-https://github.com/streptomyces/advancedR
-
-**http://streptomyces.s3-website-eu-west-1.amazonaws.com/001readme.html**
+https://streptomyces.github.io/advancedR/
 
 * Start RStudio.
 
@@ -83,17 +81,14 @@ with me. Resist the temptation to charge ahead.
 
     list.files()
     
-    download.file("http://streptomyces.s3-eu-west-1.amazonaws.com/itr.zip",
-    "itr.zip")
-
-    download.file("http://streptomyces.s3-eu-west-1.amazonaws.com/itr.pdf",
-    "itr.pdf")
+    download.file("https://github.com/streptomyces/advancedR/raw/master/adr.zip",
+    "adr.zip")
 
     list.files()
 
-    unzip("itr.zip")
+    unzip("adr.zip")
     
-    setwd("itr")
+    setwd("adr")
 
     list.files()
 ~~~
@@ -230,7 +225,7 @@ and don't use silly variable names.
 
 * Matching parentheses and quotes are automatically
 inserted. You can disable this in options. I do.
-(Tools -> Global Options -> Code -> Editing)
+(`Tools -> Global Options -> Code -> Editing`)
 
 * If you get inside a complicated command which you
 cannot finish, try Escape (Control-C in Linux) to
@@ -1343,7 +1338,7 @@ class(unlist(k))
 x <- seq(1,10);
 x
 class(x);
-class(x) <- c(class(x), "itr");
+class(x) <- c(class(x), "adr");
 class(x);
 
 attr(x, "purpose")

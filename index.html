@@ -6,6 +6,7 @@
 body {
 background: #dddddd;
 font-family: sans-serif;
+width: 760px;
 }
 .tta {background: #ffff00}
 .timestamp {font-size: x-small}
@@ -19,71 +20,77 @@ padding: 3px;
 a:link, a:visited, a:active {color: blue; text-decoration: none}
 a:hover {color: magenta; text-decoration: none}
 </style>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
-</script>
-<script>
-/*
-jQuery(function() {
-$("li").css("width", function(i, cv) {return("700px"); } );
-});
-*/
-</script>
-
-<title>Advanced R</title>
 </head>
-<body>
 
-<h2>Advanced R </h2>
-
-<h3>Advanced R 2 and 3 Feb 2022</h3>
-
-<h4>As soon as you arrive</h4>
-
+<h1 id="advanced-r-2-and-3-feb-2022">Advanced R 2 and 3 Feb 2022</h1>
+<h2 id="as-soon-as-you-arrive">As soon as you arrive</h2>
 <ul>
-  <li> Log in on one of the PCs using your institute
-  identity. This will ensure that you will have
-  access to all of what you do during this course,
-  after the course.</li>
-  <li> Anyone unable to login as themselves should let me
-    know.</li>
-  <li> Point your web browser to the url shown at the top
-    which is the same as</li>
+<li>Log in on one of the PCs using your institute identity. This will ensure that you will have access to all of what you do during this course, after the course.</li>
+<li>Anyone unable to login as themselves should let me know.</li>
+<li>Point your web browser to the url shown at the top which is the same as</li>
 </ul>
-
-
-https://streptomyces.github.io/advancedR/
-
-
-
-<h4>Some requests</h4>
-<ul>
-<li> Put your phones away during the course.
-<li>There is a break every 90 minutes.
-You can use your phones then.</li>
-<li>Discussing with your neighbours is fine
-(even encouraged) when you are doing the
-exercises but see next point.</li>
-<li>Please stop all conversation when the instructor
-begins to speak.</li>
-<li>Ask if something is not clear.</li>
-</ul>
-
-<h4>Timings for both today and tomorrow.</h4>
-
-<table>
-<tr><td>Course                   </td><td>      0930  to   1100</td></tr>
-<tr><td>Coffee break             </td><td>      1100  to   1130</td></tr>
-<tr><td>Course                   </td><td>      1130  to   1300</td></tr>
-<tr><td>Lunch (not provided)     </td><td>      1300  to   1400</td></tr>
-<tr><td>Course                   </td><td>      1400  to   1530</td></tr>
-<tr><td>Coffee break             </td><td>      1530  to   1600</td></tr>
-<tr><td>Course                   </td><td>      1600  to   1730</td></tr>
-</table>
-
+<p>https://streptomyces.github.io/advancedR/</p>
 <ul>
 <li>Start RStudio.</li>
 </ul>
+<h2 id="some-requests">Some requests</h2>
+<ul>
+<li>Put your phones away during the course.</li>
+<li>There is a break every 90 minutes. You can use your phones then.</li>
+<li>Discussing with your neighbours is fine (even encouraged) when you are doing the exercises but see next point.</li>
+<li>Please stop all conversation when the instructor begins to speak.</li>
+<li>Ask if something is not clear.</li>
+</ul>
+<h2 id="timings-for-both-today-and-tomorrow.">Timings for both today and tomorrow.</h2>
+<p>Course 0930 to 1100 Coffee break 1100 to 1130 Course 1130 to 1300 Lunch (not provided) 1300 to 1400 Course 1400 to 1530 Coffee break 1530 to 1600 Course 1600 to 1730</p>
+<h2 id="before-we-start">Before we start</h2>
+<ul>
+<li>Who are we.</li>
+<li>The focus of this course is on R syntax and techniques rather than statistics.</li>
+<li>Although real data is used a lot, we also use toy data generated as we go along.</li>
+</ul>
+<h2 id="getting-the-scripts-and-data-we-will-be-using">Getting the scripts and data we will be using</h2>
+<p>In Rstudio, use the drop down menu to do</p>
+<pre><code>File -&gt; New File -&gt; R Script</code></pre>
+<p>In the blank R script we will write and run the indented lines shown below. Please do this with me. Resist the temptation to charge ahead.</p>
+<pre><code>setwd(&quot;u:/&quot;)
+unlink(&quot;Rtrain&quot;, recursive = TRUE)
+dir.create(&quot;Rtrain&quot;)
 
+setwd(&quot;Rtrain&quot;)
+
+getwd()
+
+unlink(&quot;*&quot;)
+
+list.files()
+
+download.file(&quot;https://github.com/streptomyces/advancedR/raw/master/adr.zip&quot;,
+&quot;adr.zip&quot;)
+
+list.files()
+
+unzip(&quot;adr.zip&quot;)
+
+setwd(&quot;adr&quot;)
+
+list.files()</code></pre>
+<h2 id="how-will-this-course-work">How will this course work?</h2>
+<ul>
+<li>I will introduce methods by talking about them.</li>
+<li>You will run some commands along with me to see the methods in action.</li>
+<li>I will explain the commands and the syntax you have just seen in action.</li>
+</ul>
+<h3 id="sometimes-there-will-be-things-for-you-to-do-on-your-own.">Sometimes there will be things for you to do on your own.</h3>
+<ul>
+<li>These tasks will be described in plain english.</li>
+<li>You will have to think how to achieve them in R using as many steps and variables as you need.</li>
+<li>Finally, I will show you how I would have done the tasks but keep in mind that, if you got the right results, your way of doing them may also be correct.</li>
+</ul>
+<h2 id="rstudio-pane-layout">RStudio pane layout</h2>
+<p>Use the drop down menus to do the following.</p>
+<pre><code>Tools -&gt; Global Options -&gt; Pane layout</code></pre>
+<p>Arrange to have <em>Source</em> on the top left and <em>Console</em> on the top right. With this arrangement we can minimise two bottom panes most of the time and have more of screen space.</p>
 <hr />
 </body>
 </html>
