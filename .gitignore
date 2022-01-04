@@ -25,4 +25,5 @@
 code/**
 !README.md
 !.gitignore
+!index.html
 

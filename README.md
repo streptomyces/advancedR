@@ -9,7 +9,7 @@
 <!-- <<< readme.md -->
 # readme.md
 
-# Advanced R 3 and 4 Feb 2021
+# Advanced R 2 and 3 Feb 2022
 
 ## As soon as you arrive
 
