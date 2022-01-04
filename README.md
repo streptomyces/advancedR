@@ -40,15 +40,15 @@ https://streptomyces.github.io/advancedR/
 
 ## Timings for both today and tomorrow.
 
-~~~ {.r}
-    Course                       0930  to   1100
-    Coffee break                 1100  to   1130
-    Course                       1130  to   1300
-    Lunch (not provided)         1300  to   1400
-    Course                       1400  to   1530
-    Coffee break                 1530  to   1600
-    Course                       1600  to   1730
-~~~
+---------------------        ---------------
+Course                       0930  to   1100
+Coffee break                 1100  to   1130
+Course                       1130  to   1300
+Lunch (not provided)         1300  to   1400
+Course                       1400  to   1530
+Coffee break                 1530  to   1600
+Course                       1600  to   1730
+---------------------        ---------------
 
 ## Before we start
 
