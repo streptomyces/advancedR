@@ -222,7 +222,9 @@ and don't use silly variable names.
 
 * Semicolons are only needed if you put two commands on one line.
 
+~~~ 
     x <- 3; y <- x * 3; x; y
+~~~
 
 * Matching parentheses and quotes are automatically
 inserted. You can disable this in options. I do.
@@ -243,13 +245,15 @@ parentheses or quotes.
 - Please use variable names as needed. e.g. if a task
   says make a vector of the numbers 1 to 10 do
 
-
-    x <- seq(1,10);
+~~~ 
+x <- seq(1,10);
+~~~
 
 instead of
 
-    seq(1,10);
-
+~~~ 
+seq(1,10);
+~~~
 
 Then you will have an object you can use in the
 following steps of the task.
