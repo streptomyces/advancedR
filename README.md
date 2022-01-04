@@ -22,7 +22,7 @@
 * Point your web browser to the url shown at the top
   which is the same as
 
-https://github.com/streptomyces/ThereYouR
+https://github.com/streptomyces/advancedR
 
 **http://streptomyces.s3-website-eu-west-1.amazonaws.com/001readme.html**
 
