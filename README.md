@@ -215,8 +215,10 @@ to be variable names.
 * Almost no restrictions on variable names. Be sensible
 and don't use silly variable names.
 
+~~~ 
     mean <- c(2,3,4,5); # example of bad name.
     mean(mean);
+~~~
 
 * Commands can continue over multiple lines.
 
