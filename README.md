@@ -11,6 +11,8 @@
 
 # Advanced R 2 and 3 Feb 2022
 
+# https://bit.ly/3pPBwwC
+
 ## As soon as you arrive
 
 * Log in on one of the PCs using your institute
