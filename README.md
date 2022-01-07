@@ -140,9 +140,6 @@ screen space.
 
 ### Getting started
 
-* Comments begin with #. Everything after a # is ignored
-  by R.
-
 * Type commands in the _source_ editor.
 
 * To run a command from the _source_ editor place the
@@ -156,9 +153,7 @@ screen space.
 
 * The action happens in the _Console_ pane. i.e. any
   output from R is shown in the console frame. You can
-  also type commands directly in the console but this
-  is not recommended because changing and re-running
-  commands directly in the console is inconvenient.
+  also type commands directly in the console.
 
 * R keeps a history of your commands which you can see in
   the history tab of RStudio.
@@ -170,6 +165,9 @@ screen space.
 * However you run a command, it is like typing it into
   the console and pressing Enter.
 
+* Matching parentheses and quotes are automatically
+  inserted. You can disable this in options. I do.
+  (`Tools -> Global Options -> Code -> Editing`)
 
 <!-- >>> -->
 
@@ -178,36 +176,42 @@ screen space.
 
 # R
 
+* Comments begin with #. Everything after a # until the end
+  of the line is ignored by R.
+
 ### Some syntax identifying features
 
 ~~~ 
+<- and =      Assignment                  x <- 42            
+                                          x = 42
+
+->            Rightward assignment        42 -> x
+
 Function      Unquoted word followed      mean()
-              by parentheses
+call          by parentheses
 
 Variable      Unquoted word               gene.lens
 
 String        Quoted alphanumeric         "whiA"
 literals      characters
 
-Numeric       Unquoted digits and         2345, 1e6
-literals      scientific notation         1e-6
+Numeric       Unquoted digits and         2345, 42L, 3.14
+literals      scientific notation         1e6, 1e-6
 ~~~
 
 
 * Parentheses, (), are required in function calls even if
 you are not passing any arguments to the function being
-called. `ls()` works but `ls` does not, at least not in
-the way you want it to.
+called. `ls()` works but `ls` shows you the definition of
+the function `ls`.
 
 * The parentheses makes it easy to identify individual
 function calls in long and complex R statements where
 function calls are embedded within other function
 calls.
 
-
 * Unquoted words which are not reserved words are assumed
 to be variable names.
-
 
 * Almost no restrictions on variable names. Be sensible
 and don't use silly variable names.
@@ -225,15 +229,10 @@ and don't use silly variable names.
     x <- 3; y <- x * 3; x; y
 ~~~
 
-* Matching parentheses and quotes are automatically
-inserted. You can disable this in options. I do.
-(`Tools -> Global Options -> Code -> Editing`)
-
 * If you get inside a complicated command which you
 cannot finish, try Escape (Control-C in Linux) to
 bail out. This usually happens because of unmatched
 parentheses or quotes.
-
 
 ## Variables names are free!
 
@@ -262,16 +261,16 @@ following steps of the task.
 Generate 20 normally distributed numbers, take their log2
 and, find the median.
 
-No variable used.
+In one step, no variables used.
 
     median(log2(rnorm(20, mean = 30, sd = 1.2)))
 
-With one variable.
+In two steps using one variable.
 
     x <- rnorm(20, mean = 30, sd = 1.2)
     median(log2(x))
 
-With two variables.
+In three steps using two variables.
 
     x <- rnorm(20, mean = 30, sd = 1.2)
     xl2 <- log2(x);
