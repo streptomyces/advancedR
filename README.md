@@ -289,7 +289,6 @@ with.*
 6. Make plots
 7. Write out to files for further work or communication.
 
-
 <!-- >>> -->
 
 <!-- <<< datatypes.r -->
@@ -330,7 +329,7 @@ typeof(y);
 
 <!-- >>> -->
 
-<!-- <<< datastructures.r -->
+<!-- <<< objects.r -->
 # Data structures
 
 ~~~ {.r}
@@ -396,31 +395,26 @@ typeof(y);
 
 ~~~ {.r}
 
-###############################################
-### Variables, names, symbols and, bindings ###
-###############################################
+####################################
+### Names, symbols and, bindings ###
+####################################
 
-# Variables are objects.
-
-# Symbols (or names) are handles or labels for variables
-# through which we can access the variables.
+# Symbols (or names) are handles or labels for objects
+# through which we can access the objects.
 
 # After an assignment like: x <- 42
 
 #     the name "x" has the value 42.
 
 #     the value 42 has a label attached to it with "x"
-#     written on it
+#     written on the label.
 
 #     The symbol "x" is bound to the value 42.
 
-#     Explain unbound (non-existent) variables.
+#     Explain unbound (non-existent) names.
 
-# Don't imagine x to be a container containing the value 42.
-
-# Objects live in memory and have memory addresses. Symbols
-# let us refer to variables much more easily than would be
-# possible through memory addresses.
+# It is not accurate to imagine x to be a container
+# containing the value 42.
 
 # Nothing prevents two symbols from refering to the same
 # memory address. In fact this is what happens after
@@ -430,12 +424,6 @@ y <- x;
 # What happens when rm is invoked?
 
 rm(x);
-
-
-# On a given machine, memory addresses are unique, but
-# variable names are not. Within one session of R you can
-# have more than one variables named "x" and the right one
-# should be used everytime we refer to "x".
 
 ~~~
 
@@ -856,8 +844,8 @@ time2ground(10);
 
 <!-- >>> -->
 
-<!-- <<< objects.r -->
-# Objects
+<!-- <<< queryingobjects.r -->
+# Querying Objects
 
 ~~~ {.r}
 
@@ -1481,7 +1469,7 @@ colnames(nht) <- c("hw", "strain", "microscope");
 ###############
 
 
-# Think of them as categorical variables.
+# Think of them as categories.
 
 
 numbers <- c(1.200261, 1.479827, 1.482392, 1.716793, 1.518791, 1.000030,
@@ -1550,13 +1538,9 @@ summarise(grmean = mean(hw));
 group_by(hwt, microscope) %>%
 summarise(grmean = mean(hw));
 
-# Via an intermediate variable.
+# Via an intermediate object.
 bygr <- group_by(hwt, strain);
 summarise(bygr, grmean = mean(hw));
-
-
-
-
 
 
 ~~~
@@ -1645,7 +1629,7 @@ legend(cto, 0.8, "P(X <= x)", bty = "n", xjust = 1)
 # 5. The function for square root is sqrt. Standard
 # error of the mean (SEM) is calculated as the SD
 # divided by the square root of the sample size. Without
-# using any variable other than x, find the SEM. Should
+# using any object other than x, find the SEM. Should
 # be approximately 0.06.
 
 
