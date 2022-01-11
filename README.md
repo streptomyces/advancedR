@@ -4,7 +4,7 @@
 % Thu Nov 25 14:35:25 2021
 -->
 
-<!-- vim: tw=70 nosmartindent fmr=<<<,>>> cms=<!--%s-->
+<!-- vim: tw=66 nosmartindent fmr=<<<,>>> cms=<!--%s-->
 
 <!-- <<< readme.md -->
 # readme.md
@@ -108,7 +108,7 @@ with me. Resist the temptation to charge ahead.
 
 + These tasks will be described in plain english.
 + You will have to think how to achieve them in R using
-   as many steps and variables as you need.
+   as many steps as you need.
 + Finally, I will show you how I would have done the
   tasks but keep in mind that, if you got the right results,
   your way of doing them may also be correct.
@@ -211,10 +211,9 @@ function calls are embedded within other function
 calls.
 
 * Unquoted words which are not reserved words are assumed
-to be variable names.
+to be object names.
 
-* Almost no restrictions on variable names. Be sensible
-and don't use silly variable names.
+* Almost no restrictions on names. Use meaningful names.
 
 ~~~ 
     mean <- c(2,3,4,5); # example of bad name.
@@ -230,18 +229,16 @@ and don't use silly variable names.
 ~~~
 
 * If you get inside a complicated command which you
-cannot finish, try Escape (Control-C in Linux) to
-bail out. This usually happens because of unmatched
-parentheses or quotes.
+  cannot finish, try Escape (Control-C in Linux) to bail out. This
+  usually happens because of unmatched parentheses or quotes.
 
-## Variables names are free!
+## Names are free!
 
-- While doing the tasks during this course you will
-  not always be explicitly asked to put objects in
-  named variables or given a particular variable name
-  to use.
-- Please use variable names as needed. e.g. if a task
-  says make a vector of the numbers 1 to 10 do
+- While doing the tasks during this course you will not always be
+  explicitly asked name your objects.
+
+- Name your objects  as needed. e.g. if a task says make a vector
+  of the numbers 1 to 10 do
 
 ~~~ 
 x <- seq(1,10);
@@ -253,28 +250,22 @@ instead of
 seq(1,10);
 ~~~
 
-Then you will have an object you can use in the
-following steps of the task.
+- Then you will have a named you can use in the
+  following steps of the task.
 
-## Intermediate variables names are also free!
+- Use as many intermediate objects as you need to complete the
+  task.
 
-Generate 20 normally distributed numbers, take their log2
-and, find the median.
-
-In one step, no variables used.
-
-    median(log2(rnorm(20, mean = 30, sd = 1.2)))
-
-In two steps using one variable.
-
-    x <- rnorm(20, mean = 30, sd = 1.2)
-    median(log2(x))
-
-In three steps using two variables.
+- For example, if asked to generate 20 normally distributed
+  numbers, take their log2 and, find the median.
 
     x <- rnorm(20, mean = 30, sd = 1.2)
     xl2 <- log2(x);
     median(xl2);
+
+The same in one step.
+
+    median(log2(rnorm(20, mean = 30, sd = 1.2)))
 
 *Work at a level of complexity that you are comfortable
 with.*
@@ -292,8 +283,8 @@ with.*
 
 1. File from instrument
 2. Cleaning up and formatting
-3. Reading into data structures
-4. Apply functions to manipulate data structures
+3. Reading into objects
+4. Apply functions to manipulate the objects
 5. Repeat above as required.
 6. Make plots
 7. Write out to files for further work or communication.
@@ -320,9 +311,10 @@ with.*
 
 # We will not bother with the Complex and Raw types.
 
-# Mostly we don't have to worry whether our numeric
-# variables are integers or doubles. There are functions to
-# coerce one into another if needed.
+# Mostly we don't have to worry whether our numbers
+# are integers or doubles but there are some situations
+# where we should. There are functions to coerce one
+# into another if needed.
 
 # Explain x <- 42L
 
@@ -347,16 +339,11 @@ typeof(y);
 ### Data structures ###
 #######################
 
-# Collections of the basic data types.
+# Types which are combinations of the basic data types.
 
-# Several data structures are provided in R as classes.
+# Can be arbitrarily complex.
 
-# It is possible to make your own but we will not be doing
-# so. The ones provided are sufficient for what we do.
-
-# They range in complexity and flexibility.
-
-# Use the simplest data structure that will do the job.
+# Several provided by R as classes.
 
 ###############
 ### Classes ###
@@ -365,6 +352,8 @@ typeof(y);
 # Data structures with associated functions (methods).
 
 # e.g. the class data.frame has the following methods.
+
+    methods(class = "data.frame");
 
 # [             [[            [[<-          [<-           $<-          
 # aggregate     anyDuplicated as.data.frame as.list       as.matrix    
@@ -378,8 +367,8 @@ typeof(y);
 # t             tail          transform     type.convert  unique       
 # unstack       within 
 
-# A class is a recipe for making objects and a "constructor"
-# method is usually available.
+# A class is a recipe for making objects and "constructor"
+# methods are usually provided.
 
 ###############
 ### Objects ###
@@ -1894,6 +1883,8 @@ hwt[58, "strain"]
 # NA, NaN, Inf, NULL
 
 ~~~ {.r}
+
+# Include na.omit, na.fail etc.
 
 ##########################
 ### NA, NaN, Inf, NULL ###
