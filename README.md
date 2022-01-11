@@ -182,28 +182,28 @@ screen space.
 ### Some syntax identifying features
 
 ~~~ 
-<- and =      Assignment                  x <- 42            
-                                          x = 42
+<- and =        Assignment                  x <- 42            
+                                            x = 42
 
-->            Rightward assignment        42 -> x
+->              Rightward assignment        42 -> x
 
-Function      Unquoted word followed      mean()
-call          by parentheses
+Function        Unquoted word followed      mean()
+call            by parentheses
 
-Variable      Unquoted word               gene.lens
+Object name     Unquoted word               gene.lens
 
-String        Quoted alphanumeric         "whiA"
-literals      characters
+String          Quoted alphanumeric         "whiA"
+literals        characters
 
-Numeric       Unquoted digits and         2345, 42L, 3.14
-literals      scientific notation         1e6, 1e-6
+Numeric         Unquoted digits and         2345, 42L, 3.14
+literals        scientific notation         1e6, 1e-6
 ~~~
 
 
 * Parentheses, (), are required in function calls even if
 you are not passing any arguments to the function being
 called. `ls()` works but `ls` shows you the definition of
-the function `ls`.
+the function `ls`. Functions are objects too.
 
 * The parentheses makes it easy to identify individual
 function calls in long and complex R statements where
@@ -425,8 +425,7 @@ typeof(y);
 
 #     The symbol "x" is bound to the value 42.
 
-#     Assuming a clean session of R, the symbol "y" is
-#     unbound.
+#     Explain unbound (non-existent) variables.
 
 # Don't imagine x to be a container containing the value 42.
 
@@ -863,7 +862,6 @@ attach(earth);
 search();
 
 time2ground(10);
-
 
 ~~~
 
