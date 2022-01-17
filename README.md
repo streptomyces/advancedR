@@ -399,7 +399,7 @@ typeof(y);
 ### Names, symbols and, bindings ###
 ####################################
 
-# Symbols (or names) are handles or labels for objects
+# Names (or symbols) are handles or labels for objects
 # through which we can access the objects.
 
 # After an assignment like: x <- 42
@@ -409,15 +409,15 @@ typeof(y);
 #     the value 42 has a label attached to it with "x"
 #     written on the label.
 
-#     The symbol "x" is bound to the value 42.
+#     The name "x" is bound to the value 42.
 
 #     Explain unbound (non-existent) names.
 
 # It is not accurate to imagine x to be a container
 # containing the value 42.
 
-# Nothing prevents two symbols from refering to the same
-# object. In fact this is what happens after
+# Nothing prevents two different names from refering to
+# the same object. In fact this is what happens after
 
 y <- x;
 
@@ -505,12 +505,18 @@ x[v];
 ### Do the following yourself ###
 #################################
 
-# 1. Objects x, y and z should still be in existence at this
-# stage. Do a listing of objects to confirm this.
+# 1. Make the vectors x and z as discussed above.
 
-# 2. Examine the output of unname(x).
+x <- c(2.9, 4.1, 3.9, 4.5, 3.7, 45.3, 21.6);
+z <- c("ftsZ", "sigE", "bldN", "whiA", "whiB", "rdlA", "chpA");
 
-# 3. Make a copy of x in vecx. We will use it in the next
+# 2. Name the elements of x as the strings in z.
+
+# 3. Examine the output of
+
+unname(x)
+
+# 4. Make a copy of x in vecx. We will use it in the next
 # script.
 
 
