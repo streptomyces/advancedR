@@ -330,7 +330,7 @@ typeof(y);
 <!-- >>> -->
 
 <!-- <<< objects.r -->
-# Data structures
+# Objects
 
 ~~~ {.r}
 
@@ -417,7 +417,7 @@ typeof(y);
 # containing the value 42.
 
 # Nothing prevents two symbols from refering to the same
-# memory address. In fact this is what happens after
+# object. In fact this is what happens after
 
 y <- x;
 
