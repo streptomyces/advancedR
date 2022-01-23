@@ -213,7 +213,8 @@ calls.
 * Unquoted words which are not reserved words are assumed
 to be object names.
 
-* Almost no restrictions on names. Use meaningful names.
+* Almost no restrictions on names but see `help("Quotes")` and
+  `help("make.names")`. Use meaningful names.
 
 ~~~ 
     mean <- c(2,3,4,5); # example of bad name.
@@ -783,6 +784,15 @@ x + y
 ### Scope and Environments ###
 ##############################
 
+# Scope of a variable is where, in a running program, it is
+# accessible.
+
+x <- 42;
+
+# Functions and environments define the scope of variables
+# in them. In an R session the default environment is the global
+# environment named .GlobalEnv
+
 # Lexical scope: Functions are evaluated in the environment
 # in which they are defined.
 #
@@ -855,9 +865,9 @@ attach(environment(standard));
 
 search();
 
-ls(); Notice that there is no vatfun in the listing.
+ls(); # Notice that there is no vatfun in the listing.
 
-vatfun(100);
+vatfun(100); # But you can still call vatfun.
 
 ~~~
 
@@ -936,7 +946,7 @@ str(hx)
 # CRAN has a repository of R packages.
 
 # Bioconductor is a repository of packages for
-# bioinfomatics. Bioconductor has its own installer.
+# bioinformatics. Bioconductor has its own installer.
 
 ### Installing edgeR ###
 # We don't need to do this because edgeR is already installed
@@ -1059,7 +1069,13 @@ methods(class = "DGEGLM");
 help("DGEGLM-class")
 help("DGEGLM")
 
+### Operator Precedence
 
+help("Syntax");
+
+### Reserved words
+
+help("Reserved");
 
 ~~~
 
