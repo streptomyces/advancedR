@@ -786,48 +786,61 @@ x + y
 # Lexical scope: Functions are evaluated in the environment
 # in which they are defined.
 #
+# Closures
+#
 # The environment provides values for any unbound symbols in
-# a function when the function is evaluated.
+# in the body of a function when the function is evaluated.
 
-funcgen <- function(g = 9.8) {
-  time2ground <- function(height = 1, initial = 0) {
-    fvsq <- (initial ** 2) + (2 * g * height);
-    final = sqrt(fvsq);
-    t2g = (final - initial) / g;
-    return(t2g);
-  }
-  return(time2ground);
+rm(list = ls());
+
+rate <- 0.2;
+withvat <- function(exvat) {
+  return(exvat + (exvat * rate))
 }
 
-ttg.earth <- funcgen(9.8);  # function
-ttg.mars <- funcgen(3.72);  # function
 
-ttg.earth(10);
-ttg.mars(10);
+vatfuncgen <- function(vatrate) {
+  vatfun <- function(exvat) {
+    return(exvat + (exvat * vatrate))
+  }
+  return(vatfun)
+}
 
-curve(ttg.mars, 0, 10, col = "red", lwd = 3,
-xlab = "Height", ylab = "Time to ground")
-curve(ttg.earth, 0, 10, add = TRUE, col = "blue", lwd = 3)
+standard <- vatfuncgen(0.2);
+reduced <- vatfuncgen(0.1);
 
-mars <- environment(ttg.mars);
-earth <- environment(ttg.earth);
-parent.env(mars);
-parent.env(earth);
-environment(funcgen);
+standard(100)
+reduced(100)
 
-g <- 20;
-get("g");
-get("g", envir = .GlobalEnv);
+environment(withvat);
+environment(standard);
+environment(reduced);
 
-get("g", envir = earth);
-get("g", envir = mars);
+ls(envir = environment(standard));
+ls(envir = environment(reduced));
+ls(envir = .GlobalEnv);
 
-ls(envir = earth);
-rm("g", envir = earth);
-ls(envir = earth);
-curve(ttg.earth, 0, 10, add = TRUE, col = "darkolivegreen3", lwd = 3)
-assign("g", 9.8, envir = earth);
-ls(envir = earth);
+parent.env(environment(standard));
+
+superlow <- standard;
+sl.env <- new.env();
+sl.env$vatrate <- 0.05;
+environment(superlow) <- sl.env;
+
+superlow(100);
+parent.env(environment(superlow));
+parent.env(parent.env(environment(superlow)));
+parent.env(parent.env(parent.env(environment(superlow))));
+
+### assign() and get() ###
+
+# Standard VAT goes up to 0.25.
+
+assign("vatrate", 0.25, envir = environment(standard));
+
+standard(100);
+
+get("vatrate", envir = environment(superlow));
 
 # The effective environment is almost always a nesting of
 # environments.
@@ -836,15 +849,15 @@ ls(envir = earth);
 ### The search path. search() ###
 #################################
 
-time2ground(10);
+search();
+
+attach(environment(standard));
 
 search();
 
-attach(earth);
+ls(); Notice that there is no vatfun in the listing.
 
-search();
-
-time2ground(10);
+vatfun(100);
 
 ~~~
 
