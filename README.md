@@ -13,6 +13,13 @@
 
 # https://bit.ly/3pPBwwC
 
+## Requirements
+
+* A reasonably capable computer.
+* Installation of R version 4. (4.1.2 is the most recent).
+* Installation of a recent version of RStudio (2021.09.2-382 is
+  the most recent.
+
 ## As soon as you arrive
 
 * Log in on one of the PCs using your institute
