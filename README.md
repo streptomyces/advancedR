@@ -71,6 +71,8 @@ Course                       1600  to   1730
 * As you progress, your view will not be identical to
   mine. Do try to keep it consistent though.
 
+[rstudio.html](rstudio.html)
+
 <!-- >>> -->
 
 <!-- <<< rstudio.md -->
