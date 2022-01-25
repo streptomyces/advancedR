@@ -43,16 +43,6 @@ Course                       1600  to   1730
 
 * Start RStudio.
 
-## Before we start
-
-* Who are we.
-* The focus of this course is on R syntax and
-  techniques rather than statistics.
-* Although real data is used a lot, we also
-  use toy data generated as we go along.
-* The aim is to clarify the workings of R so that you can build
-  your own data solutions and workflows.
-
 ## Getting the scripts and data we will be using
 
 In Rstudio, use the drop down menu to do
@@ -96,7 +86,6 @@ with me. Resist the temptation to charge ahead.
 - I will explain the commands and the syntax you have
   just seen in action.
 
-
 ### Sometimes there will be things for you to do on your own.
 
 + These tasks will be described in plain english.
@@ -106,6 +95,17 @@ with me. Resist the temptation to charge ahead.
   tasks but keep in mind that, if you got the right results,
   your way of doing them may also be correct.
 
+## Limitations
+
+* I use R on a daily basis but not RStudio.
+* The focus of this course is on R syntax and
+  techniques rather than statistics.
+* The aim is to clarify the workings of R so that you
+  can build your own data solutions and workflows.
+* This is my understanding and my view of R. It is
+  not complete but I do believe that it is not wrong.
+* As you progress, your view will not be identical to
+  mine. Do try to keep it consistent though.
 
 <!-- >>> -->
 
@@ -323,6 +323,13 @@ y <- 42L;
 typeof(x);
 
 typeof(y);
+
+### More data types ###
+
+# Lists
+# Functions (closures)
+# Environments
+# Builtin
 
 ~~~
 
@@ -1236,10 +1243,10 @@ mtn <- seq(1,12)
 
 # Lists are generic vectors.
 
-# Generally when we say "vector" we mean "atomic
+# Generally, when we say "vector" we mean "atomic
 # vectors".
 
-# Individual elements of a list can contain any type of
+# Individual elements of a list can refer to any type of
 # R object of any complexity, including other lists.
 
 # This allows for the creation of objects of arbitrary
