@@ -68,34 +68,7 @@ a:hover {color: magenta; text-decoration: none}
 <ul>
 <li><p>Point your web browser to the url shown at the top which is the same as</p></li>
 <li><p><a href="https://bit.ly/3pPBwwC">https://bit.ly/3pPBwwC</a> which is the same as <a href="https://streptomyces.github.io/advancedR/">https://streptomyces.github.io/advancedR/</a>.</p></li>
-<li><p>Start RStudio.</p></li>
 </ul>
-<h2 id="getting-the-scripts-and-data-we-will-be-using">Getting the scripts and data we will be using</h2>
-<p>In Rstudio, use the drop down menu to do</p>
-<pre><code>File -&gt; New File -&gt; R Script</code></pre>
-<p>In the blank R script we will write and run the indented lines shown below. Please do this with me. Resist the temptation to charge ahead.</p>
-<pre><code>setwd(&quot;u:/&quot;)
-unlink(&quot;Rtrain&quot;, recursive = TRUE)
-dir.create(&quot;Rtrain&quot;)
-
-setwd(&quot;Rtrain&quot;)
-
-getwd()
-
-unlink(&quot;*&quot;)
-
-list.files()
-
-download.file(&quot;https://github.com/streptomyces/advancedR/raw/master/adr.zip&quot;,
-&quot;adr.zip&quot;)
-
-list.files()
-
-unzip(&quot;adr.zip&quot;)
-
-setwd(&quot;adr&quot;)
-
-list.files()</code></pre>
 <h2 id="how-will-this-course-work">How will this course work?</h2>
 <ul>
 <li>I will talk about commands and syntax.</li>

@@ -41,42 +41,6 @@ Course                       1600  to   1730
   [https://streptomyces.github.io/advancedR/](https://streptomyces.github.io/advancedR/).
 
 
-* Start RStudio.
-
-## Getting the scripts and data we will be using
-
-In Rstudio, use the drop down menu to do
-
-    File -> New File -> R Script
-
-In the blank R script we will write and run
-the indented lines shown below. Please do this
-with me. Resist the temptation to charge ahead.
-
-~~~ {.r}
-    setwd("u:/")
-    unlink("Rtrain", recursive = TRUE)
-    dir.create("Rtrain")
-
-    setwd("Rtrain")
-
-    getwd()
-
-    unlink("*")
-
-    list.files()
-    
-    download.file("https://github.com/streptomyces/advancedR/raw/master/adr.zip",
-    "adr.zip")
-
-    list.files()
-
-    unzip("adr.zip")
-    
-    setwd("adr")
-
-    list.files()
-~~~
 
 ## How will this course work?
 
@@ -113,6 +77,43 @@ with me. Resist the temptation to charge ahead.
 # rstudio.md
 
 # RStudio
+
+* Start RStudio.
+
+## Getting the scripts and data we will be using
+
+In Rstudio, use the drop down menu to do
+
+    File -> New File -> R Script
+
+In the blank R script we will write and run
+the indented lines shown below. Please do this
+with me. Resist the temptation to charge ahead.
+
+~~~ {.r}
+    setwd("u:/")
+    unlink("Rtrain", recursive = TRUE)
+    dir.create("Rtrain")
+
+    setwd("Rtrain")
+
+    getwd()
+
+    unlink("*")
+
+    list.files()
+    
+    download.file("https://github.com/streptomyces/advancedR/raw/master/adr.zip",
+    "adr.zip")
+
+    list.files()
+
+    unzip("adr.zip")
+    
+    setwd("adr")
+
+    list.files()
+~~~
 
 ### Four panes
 
