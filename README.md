@@ -962,7 +962,7 @@ str(hx)
 
 #   if (!requireNamespace("BiocManager", quietly = TRUE))
 #       install.packages("BiocManager")
-#   BiocManager::install("edgeR", version = "3.8")
+#   BiocManager::install("edgeR")
 
 #################################
 ### Using packages. library() ###
@@ -3103,7 +3103,7 @@ log2lin
 
 # 1. You cannot take the log of a negative number.
 
-# 2. Log of numbers less than 1 is negative.
+# 2. Log of (positive) numbers less than 1 is negative.
 
 # 3. Log of 1 is zero.
 
