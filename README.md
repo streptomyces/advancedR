@@ -11,7 +11,7 @@
 
 # Advanced R 2 and 3 Feb 2022
 
-# https://bit.ly/3pPBwwC
+# [https://bit.ly/3pPBwwC](https://bit.ly/3pPBwwC)
 
 ## Requirements
 
@@ -37,8 +37,9 @@ Course                       1600  to   1730
 * Point your web browser to the url shown at the top
   which is the same as
 
-- https://bit.ly/3pPBwwC which is the same as 
-  https://streptomyces.github.io/advancedR/
+- [https://bit.ly/3pPBwwC](https://bit.ly/3pPBwwC) which is the same as 
+  [https://streptomyces.github.io/advancedR/](https://streptomyces.github.io/advancedR/).
+
 
 * Start RStudio.
 
