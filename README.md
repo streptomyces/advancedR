@@ -20,34 +20,7 @@
 * Installation of a recent version of RStudio (2021.09.2-382 is
   the most recent.
 
-## As soon as you arrive
-
-* Log in on one of the PCs using your institute
-  identity. This will ensure that you will have
-  access to all of what you do during this course,
-  after the course.
-* Anyone unable to login as themselves should let me
-  know.
-* Point your web browser to the url shown at the top
-  which is the same as
-
-https://streptomyces.github.io/advancedR/
-
-* Start RStudio.
-
-## Some requests
-
-* Put your phones away during the course.
-* There is a break every 90 minutes.
-  You can use your phones then.
-* Discussing with your neighbours is fine
-  (even encouraged) when you are doing the
-  exercises but see next point.
-* Please stop all conversation when the instructor
-  begins to speak.
-* Ask if something is not clear.
-
-## Timings for both today and tomorrow.
+## Timings for both Wed 2 Feb and Thu 3 Feb
 
 ---------------------        ---------------
 Course                       0930  to   1100
@@ -58,6 +31,16 @@ Course                       1400  to   1530
 Coffee break                 1530  to   1600
 Course                       1600  to   1730
 ---------------------        ---------------
+
+## As soon as you join the MS Teams meeting
+
+* Point your web browser to the url shown at the top
+  which is the same as
+
+- https://bit.ly/3pPBwwC which is the same as 
+  https://streptomyces.github.io/advancedR/
+
+* Start RStudio.
 
 ## Before we start
 
