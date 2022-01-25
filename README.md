@@ -105,7 +105,7 @@ with me. Resist the temptation to charge ahead.
 
     list.files()
     
-    download.file("https://github.com/streptomyces/advancedR/raw/master/adr.zip",
+    download.file("https://github.com/streptomyces/advancedR/raw/feb2022/adr.zip",
     "adr.zip")
 
     list.files()
