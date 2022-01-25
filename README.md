@@ -254,13 +254,17 @@ seq(1,10);
 - For example, if asked to generate 20 normally distributed
   numbers, take their log2 and, find the median.
 
-    x <- rnorm(20, mean = 30, sd = 1.2)
-    xl2 <- log2(x);
-    median(xl2);
+~~~ 
+x <- rnorm(20, mean = 30, sd = 1.2)
+xl2 <- log2(x);
+median(xl2);
+~~~
 
 The same in one step.
 
-    median(log2(rnorm(20, mean = 30, sd = 1.2)))
+~~~ 
+median(log2(rnorm(20, mean = 30, sd = 1.2)))
+~~~
 
 *Work at a level of complexity that you are comfortable
 with.*
@@ -276,13 +280,13 @@ with.*
 
 #### Data analysis
 
-1. File from instrument
+1. Data file(s) from experiment
 2. Cleaning up and formatting
 3. Reading into objects
 4. Apply functions to manipulate the objects
-5. Repeat above as required.
+5. Repeat above as required
 6. Make plots
-7. Write out to files for further work or communication.
+7. Write out to files for further work or communication
 
 <!-- >>> -->
 
