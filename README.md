@@ -1588,7 +1588,7 @@ summarise(bygr, grmean = mean(hw));
 
 <!-- >>> -->
 
-<!-- <<< models -->
+<!-- <<< models.r -->
 # Statistical Models
 
 ~~~ {.r}
