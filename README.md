@@ -50,6 +50,8 @@ Course                       1600  to   1730
   techniques rather than statistics.
 * Although real data is used a lot, we also
   use toy data generated as we go along.
+* The aim is to clarify the workings of R so that you can build
+  your own data solutions and workflows.
 
 ## Getting the scripts and data we will be using
 
@@ -88,9 +90,9 @@ with me. Resist the temptation to charge ahead.
 
 ## How will this course work?
 
-- I will introduce methods by talking about them.
-- You will run some commands along with me to see the
-  methods in action.
+- I will talk about commands and syntax.
+- You will run some commands along with me to see them
+  in action.
 - I will explain the commands and the syntax you have
   just seen in action.
 
@@ -104,16 +106,6 @@ with me. Resist the temptation to charge ahead.
   tasks but keep in mind that, if you got the right results,
   your way of doing them may also be correct.
 
-## RStudio pane layout
-
-Use the drop down menus to do the following.
-
-    Tools -> Global Options -> Pane layout
-
-Arrange to have *Source* on the top left and *Console*
-on the top right. With this arrangement we can minimise
-two bottom panes most of the time and have more of
-screen space.
 
 <!-- >>> -->
 
@@ -139,8 +131,8 @@ screen space.
 * You can also select multiple lines and then press
   `Control-Enter` to run all the selected lines.
 
-* Finally, you can use `Control-Shift-Enter` to source the
-  entire script.
+* Finally, you can use `Control-Shift-Enter` to _source_
+  (i.e. run) the entire script.
 
 * The action happens in the _Console_ pane. i.e. any
   output from R is shown in the console frame. You can
@@ -159,6 +151,17 @@ screen space.
 * Matching parentheses and quotes are automatically
   inserted. You can disable this in options. I do.
   (`Tools -> Global Options -> Code -> Editing`)
+
+#### My preferred arrangement of RStudio panes
+
+Use the drop down menus to do the following.
+
+    Tools -> Global Options -> Pane layout
+
+Arrange to have *Source* on the top left and *Console*
+on the top right. With this arrangement we can minimise
+two bottom panes most of the time and have more of
+screen space.
 
 <!-- >>> -->
 
