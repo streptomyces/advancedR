@@ -19,6 +19,9 @@
 * Installation of R version 4. (4.1.2 is the most recent).
 * Installation of a recent version of RStudio (2021.09.2-382 is
   the most recent.
+* Administrative rights on your computer will be needed (at least
+  on the first day) to be able to install the BioConductor package
+  edgeR
 
 ## Timings for both Wed 2 Feb and Thu 3 Feb
 
@@ -75,8 +78,27 @@ Course                       1600  to   1730
 
 <!-- >>> -->
 
-<!-- <<< rstudio.md -->
-# rstudio.md
+<!-- <<< preparations.md -->
+# preparations.md
+
+* Start R (not RStudio) as the administrator.
+
+~~~ {.r}
+getOption("repos");
+
+setRepositories();
+# In the graphical menu that pops up select
+# "CRAN" as well as "BioC software".
+
+# Confirm that the repository has been added.
+getOption("repos");
+
+install.packages("edgeR");
+
+install.packages("BiocManager")
+BiocManager::install("edgeR")
+~~~
+
 
 # RStudio
 
@@ -333,6 +355,7 @@ typeof(y);
 # Functions (closures)
 # Environments
 # Builtin
+
 
 ~~~
 
@@ -957,12 +980,10 @@ str(hx)
 # bioinformatics. Bioconductor has its own installer.
 
 ### Installing edgeR ###
-# We don't need to do this because edgeR is already installed
-# on these machines by computing.
 
-#   if (!requireNamespace("BiocManager", quietly = TRUE))
-#       install.packages("BiocManager")
-#   BiocManager::install("edgeR")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("edgeR")
 
 #################################
 ### Using packages. library() ###
@@ -971,11 +992,15 @@ str(hx)
 library("edgeR");
 
 # Load the namespace of the package with name
-# ‘package’ and attach it on the search list.
+# package and attach it on the search list.
 
 # The reverse is
 
 detach("package:edgeR", unload = TRUE)
+
+# Packaged loaded as dependencies are nor automatically removed.
+
+detach("package:limma", unload = TRUE)
 
 # Sometimes you will see a function being called as
 
@@ -992,8 +1017,6 @@ detach("package:edgeR", unload = TRUE)
 # e.g. stats::filter() to use the filter function in the
 # stats package while it is masked by the one in dplyr
 # package.
-
-
 
 
 ~~~
