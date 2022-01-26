@@ -24,12 +24,19 @@ a:hover {color: magenta; text-decoration: none}
 </head>
 
 <p>Start R (not RStudio) as the administrator.</p>
-<p>getOption(“repos”);</p>
-<p>setRepositories(); # In the graphical menu that pops up select # “CRAN” as well as “BioC software”.</p>
-<h1 id="confirm-that-the-repository-has-been-added.">Confirm that the repository has been added.</h1>
-<p>getOption(“repos”);</p>
-<p>install.packages(“edgeR”);</p>
-<p>install.packages(“BiocManager”) BiocManager::install(“edgeR”)</p>
+<pre><code>getOption(&quot;repos&quot;);
+
+setRepositories();
+# In the graphical menu that pops up select
+# &quot;CRAN&quot; as well as &quot;BioC software&quot;.
+
+# Confirm that the repository has been added.
+getOption(&quot;repos&quot;);
+
+install.packages(&quot;edgeR&quot;);
+
+install.packages(&quot;BiocManager&quot;)
+BiocManager::install(&quot;edgeR&quot;)</code></pre>
 <h1 id="rstudio">RStudio</h1>
 <ul>
 <li>Start RStudio.</li>

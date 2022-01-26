@@ -83,20 +83,20 @@ Course                       1600  to   1730
 
 Start R (not RStudio) as the administrator.
 
-~~~ 
-getOption("repos");
-
-setRepositories();
-# In the graphical menu that pops up select
-# "CRAN" as well as "BioC software".
-
-# Confirm that the repository has been added.
-getOption("repos");
-
-install.packages("edgeR");
-
-install.packages("BiocManager")
-BiocManager::install("edgeR")
+~~~ {.r}
+    getOption("repos");
+    
+    setRepositories();
+    # In the graphical menu that pops up select
+    # "CRAN" as well as "BioC software".
+    
+    # Confirm that the repository has been added.
+    getOption("repos");
+    
+    install.packages("edgeR");
+    
+    install.packages("BiocManager")
+    BiocManager::install("edgeR")
 ~~~
 
 
