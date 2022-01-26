@@ -38,12 +38,9 @@ Course                       1600  to   1730
 ## As soon as you join the MS Teams meeting
 
 * Point your web browser to the url shown at the top
-  which is the same as
-
-- [https://bit.ly/3pPBwwC](https://bit.ly/3pPBwwC) which is the same as 
+  which is [https://bit.ly/3pPBwwC](https://bit.ly/3pPBwwC)
+  which is the same as 
   [https://streptomyces.github.io/advancedR/](https://streptomyces.github.io/advancedR/).
-
-
 
 ## How will this course work?
 
@@ -68,11 +65,7 @@ Course                       1600  to   1730
 * The focus of this course is on R syntax and
   techniques rather than statistics.
 * The aim is to clarify the workings of R so that you
-  can build your own data solutions and workflows.
-* This is my understanding and my view of R. It is
-  not complete but I do believe that it is not wrong.
-* As you progress, your view will not be identical to
-  mine. Do try to keep it consistent though.
+  can build your own data analysis solutions and workflows.
 
 [preparations.html](preparations.html)
 
