@@ -81,7 +81,7 @@ Course                       1600  to   1730
 <!-- <<< preparations.md -->
 # preparations.md
 
-* Start R (not RStudio) as the administrator.
+Start R (not RStudio) as the administrator.
 
 ~~~ 
 getOption("repos");
