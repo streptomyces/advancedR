@@ -18,10 +18,10 @@
 * A reasonably capable computer.
 * Installation of R version 4. (4.1.2 is the most recent).
 * Installation of a recent version of RStudio (2021.09.2-382 is
-  the most recent.
+  the most recent).
 * Administrative rights on your computer will be needed (at least
   on the first day) to be able to install the BioConductor package
-  edgeR
+  edgeR.
 
 ## Timings for both Wed 2 Feb and Thu 3 Feb
 
