@@ -83,7 +83,7 @@ Course                       1600  to   1730
 
 * Start R (not RStudio) as the administrator.
 
-~~~ {.r}
+~~~ 
 getOption("repos");
 
 setRepositories();
