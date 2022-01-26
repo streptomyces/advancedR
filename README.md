@@ -87,6 +87,8 @@ Start R (not RStudio) as the administrator.
     getOption("repos");
     
     setRepositories();
+    # In the graphical menu that pops up select
+    # "CRAN" as well as "BioC software".
     
     getOption("repos");
     
