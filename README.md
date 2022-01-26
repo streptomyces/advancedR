@@ -84,6 +84,8 @@ Course                       1600  to   1730
 * Make sure RStudio is NOT running.
 * Start R (not RStudio) as the administrator.
 
+Then
+
 ~~~ {.r}
     getOption("repos");
     
