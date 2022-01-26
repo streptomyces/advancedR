@@ -81,6 +81,8 @@ Course                       1600  to   1730
 <!-- <<< preparations.md -->
 # preparations.md
 
+# Installing the edgeR package
+
 * Make sure RStudio is NOT running.
 * Start R (not RStudio) as the administrator.
 
