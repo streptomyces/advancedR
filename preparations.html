@@ -29,19 +29,12 @@ a:hover {color: magenta; text-decoration: none}
 <li>Start R (not RStudio) as the administrator.</li>
 </ul>
 <p>Then</p>
-<pre><code>getOption(&quot;repos&quot;);
-
-setRepositories();
-# In the graphical menu that pops up select
-# &quot;CRAN&quot; as well as &quot;BioC software&quot;.
-
-getOption(&quot;repos&quot;);
-
-install.packages(&quot;BiocManager&quot;)
-BiocManager::install(&quot;edgeR&quot;)
-
-# When asked to update some older packages select &quot;all&quot;.
-# When asked to install from source select &quot;No&quot;.</code></pre>
+<p>getOption(“repos”);</p>
+<p>setRepositories(); # In the graphical menu that pops up select # “CRAN” as well as “BioC software”.</p>
+<p>getOption(“repos”);</p>
+<p>install.packages(“BiocManager”) BiocManager::install(“edgeR”)</p>
+<h1 id="when-asked-to-update-some-older-packages-select-all.">When asked to update some older packages select “all”.</h1>
+<h1 id="when-asked-to-install-from-source-select-no.">When asked to install from source select “No”.</h1>
 <p>The above has to be done as the administrator because packages are written to directories which are not normally writable by normal users.</p>
 <h1 id="rstudio">RStudio</h1>
 <ul>
@@ -51,28 +44,16 @@ BiocManager::install(&quot;edgeR&quot;)
 <p>In Rstudio, use the drop down menu to do</p>
 <pre><code>File -&gt; New File -&gt; R Script</code></pre>
 <p>In the blank R script we will write and run the indented lines shown below. Please do this with me. Resist the temptation to charge ahead.</p>
-<pre><code>setwd(&quot;u:/&quot;)
-unlink(&quot;Rtrain&quot;, recursive = TRUE)
-dir.create(&quot;Rtrain&quot;)
-
-setwd(&quot;Rtrain&quot;)
-
-getwd()
-
-unlink(&quot;*&quot;)
-
-list.files()
-
-download.file(&quot;https://github.com/streptomyces/advancedR/raw/feb2022/adr.zip&quot;,
-&quot;adr.zip&quot;)
-
-list.files()
-
-unzip(&quot;adr.zip&quot;)
-
-setwd(&quot;adr&quot;)
-
-list.files()</code></pre>
+<p>setwd(“u:/”) unlink(“Rtrain”, recursive = TRUE) dir.create(“Rtrain”)</p>
+<p>setwd(“Rtrain”)</p>
+<p>getwd()</p>
+<p>unlink("*")</p>
+<p>list.files()</p>
+<p>download.file(“https://github.com/streptomyces/advancedR/raw/feb2022/adr.zip”, “adr.zip”)</p>
+<p>list.files()</p>
+<p>unzip(“adr.zip”)</p>
+<p>setwd(“adr”)</p>
+<p>list.files()</p>
 <h3 id="four-panes">Four panes</h3>
 <ul>
 <li>Source editor</li>

@@ -89,20 +89,19 @@ Course                       1600  to   1730
 Then
 
 ~~~ {.r}
-    getOption("repos");
-    
-    setRepositories();
-    # In the graphical menu that pops up select
-    # "CRAN" as well as "BioC software".
-    
-    getOption("repos");
-    
-    install.packages("BiocManager")
-    BiocManager::install("edgeR")
+getOption("repos");
 
-    # When asked to update some older packages select "all".
-    # When asked to install from source select "No".
+setRepositories();
+# In the graphical menu that pops up select
+# "CRAN" as well as "BioC software".
 
+getOption("repos");
+
+install.packages("BiocManager")
+BiocManager::install("edgeR")
+
+# When asked to update some older packages select "all".
+# When asked to install from source select "No".
 ~~~
 
 The above has to be done as the administrator because packages are
@@ -125,28 +124,28 @@ the indented lines shown below. Please do this
 with me. Resist the temptation to charge ahead.
 
 ~~~ {.r}
-    setwd("u:/")
-    unlink("Rtrain", recursive = TRUE)
-    dir.create("Rtrain")
+setwd("u:/")
+unlink("Rtrain", recursive = TRUE)
+dir.create("Rtrain")
 
-    setwd("Rtrain")
+setwd("Rtrain")
 
-    getwd()
+getwd()
 
-    unlink("*")
+unlink("*")
 
-    list.files()
-    
-    download.file("https://github.com/streptomyces/advancedR/raw/feb2022/adr.zip",
-    "adr.zip")
+list.files()
 
-    list.files()
+download.file("https://github.com/streptomyces/advancedR/raw/feb2022/adr.zip",
+"adr.zip")
 
-    unzip("adr.zip")
-    
-    setwd("adr")
+list.files()
 
-    list.files()
+unzip("adr.zip")
+
+setwd("adr")
+
+list.files()
 ~~~
 
 ### Four panes
