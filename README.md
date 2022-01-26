@@ -74,7 +74,7 @@ Course                       1600  to   1730
 <!-- <<< preparations.md -->
 # preparations.md
 
-# Installing the edgeR package
+# Installing `tidyverse` and `edgeR` packages
 
 * Make sure RStudio is NOT running.
 * Start R (not RStudio) as the administrator.
@@ -91,6 +91,8 @@ Then
     
     install.packages("BiocManager")
     BiocManager::install("edgeR")
+
+    install.packages("tidyverse")
     
     # When asked to update some older packages select "all".
     # When asked to install from source select "No".
