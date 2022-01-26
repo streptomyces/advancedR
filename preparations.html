@@ -23,19 +23,16 @@ a:hover {color: magenta; text-decoration: none}
 </style>
 </head>
 
-<p>Start R (not RStudio) as the administrator.</p>
-<pre><code>getOption(&quot;repos&quot;);
-
-setRepositories();
-# In the graphical menu that pops up select
-# &quot;CRAN&quot; as well as &quot;BioC software&quot;.
-
-getOption(&quot;repos&quot;);
-
-install.packages(&quot;edgeR&quot;);
-
-install.packages(&quot;BiocManager&quot;)
-BiocManager::install(&quot;edgeR&quot;)</code></pre>
+<ul>
+<li>Make sure RStudio is NOT running.</li>
+<li><p>Start R (not RStudio) as the administrator.</p>
+<p>getOption(“repos”);</p>
+<p>setRepositories(); # In the graphical menu that pops up select # “CRAN” as well as “BioC software”.</p>
+<p>getOption(“repos”);</p>
+<p>install.packages(“BiocManager”) BiocManager::install(“edgeR”)</p>
+<p># When asked to update some older packages select “all”. # When asked to install from source select “No”.</p></li>
+</ul>
+<p>The above has to be done as the administrator because packages are written to directories which are not normally writable by normal users.</p>
 <h1 id="rstudio">RStudio</h1>
 <ul>
 <li>Start RStudio.</li>

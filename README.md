@@ -81,7 +81,8 @@ Course                       1600  to   1730
 <!-- <<< preparations.md -->
 # preparations.md
 
-Start R (not RStudio) as the administrator.
+* Make sure RStudio is NOT running.
+* Start R (not RStudio) as the administrator.
 
 ~~~ {.r}
     getOption("repos");
@@ -92,11 +93,17 @@ Start R (not RStudio) as the administrator.
     
     getOption("repos");
     
-    install.packages("edgeR");
-    
     install.packages("BiocManager")
     BiocManager::install("edgeR")
+
+    # When asked to update some older packages select "all".
+    # When asked to install from source select "No".
+
 ~~~
+
+The above has to be done as the administrator because packages are
+written to directories which are not normally writable by normal
+users.
 
 
 # RStudio
