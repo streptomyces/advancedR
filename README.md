@@ -76,6 +76,9 @@ Course                       1600  to   1730
 
 # Installing `tidyverse` and `edgeR` packages
 
+We will do this on the first day at the very beginning of the
+course.
+
 * Make sure RStudio is NOT running.
 * Start R (not RStudio) as the administrator.
 
@@ -86,6 +89,9 @@ Then
     setRepositories();
     # In the graphical menu that pops up select
     # "CRAN" as well as "BioC software".
+
+    chooseCRANmirror()
+    # Select the one in London.
     
     getOption("repos");
     
