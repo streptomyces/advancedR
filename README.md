@@ -388,21 +388,6 @@ typeof(y);
 
 # Data structures with associated functions (methods).
 
-# e.g. the class data.frame has the following methods.
-
-    methods(class = "data.frame");
-
-# [             [[            [[<-          [<-           $<-          
-# aggregate     anyDuplicated as.data.frame as.list       as.matrix    
-# by            cbind         coerce        dim           dimnames     
-# dimnames<-    droplevels    duplicated    edit          format       
-# formula       head          initialize    is.na         Math         
-# merge         na.exclude    na.omit       Ops           plot         
-# print         prompt        rbind         row.names     row.names<-  
-# rowsum        show          slotsFromS3   split         split<-      
-# stack         str           subset        summary       Summary      
-# t             tail          transform     type.convert  unique       
-# unstack       within 
 
 # A class is a recipe for making objects and "constructor"
 # methods are usually provided.
@@ -939,9 +924,11 @@ typeof(y);
 
 # Class
 
-# The class of an object is the kind of data structure it is. For
-# vectors it is the same as the mode. list, data.frame, matrix,
-# function. Class of an object determines how functions treat it.
+# The class of an object is the class that the object is an
+# instance of. For vectors it is the same as the mode. list,
+# data.frame, matrix, function. Class of an object determines what
+# methods are available to apply on it and also how those methods
+# behave.
 
 class(x);
 class(y);
@@ -951,6 +938,11 @@ class(y);
 
 hx <- hist(rnorm(300), plot = F);
 str(hx)
+
+methods(class = class(hx));
+
+methods(class = "data.frame");
+
 
 
 ~~~
