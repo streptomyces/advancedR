@@ -428,7 +428,9 @@ typeof(y);
 # Names (or symbols) are handles or labels for objects
 # through which we can access the objects.
 
-# After an assignment like: x <- 42
+# After an assignment like below.
+
+x <- 42;
 
 #     the name "x" has the value 42.
 
