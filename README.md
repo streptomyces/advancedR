@@ -1433,6 +1433,9 @@ attributes(x);
 
 # install.packages("readxl");
 
+library("readxl");
+library("tidyverse");
+
 # Determine for format of the excel file. .xlsx or .xls
 excel_format("data/file.xlsx")
 
