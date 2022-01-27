@@ -103,6 +103,9 @@ Then
     # When asked to update some older packages select "all".
     # When asked to install from source select "No".
 
+    # Check whether `readxl` is installed or not.
+    sort(rownames(installed.packages()));
+
 The above has to be done as the administrator because packages are
 written to directories which are not normally writable by normal
 users.
@@ -943,8 +946,6 @@ methods(class = class(hx));
 
 methods(class = "data.frame");
 
-
-
 ~~~
 
 <!-- >>> -->
@@ -977,11 +978,17 @@ methods(class = "data.frame");
 # Bioconductor is a repository of packages for
 # bioinformatics. Bioconductor has its own installer.
 
-### Installing edgeR ###
+# What packages are installed?
 
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("edgeR")
+# installed.packages() where row names are names of packages.
+# To just see the row names of this matrix (e.g. to check whether
+# a package is installed.
+
+sort(rownames(installed.packages()));
+
+# Character vector of directories where packages are installed.
+
+.libPaths() 
 
 #################################
 ### Using packages. library() ###
@@ -1048,7 +1055,7 @@ help.search("sequence")
 
 ### Sometimes there is runnable example code. ###
 
-example("hist")
+# example("hist") # Often crashes RStudio!
 
 
 ### There are lots of bundled example data sets ###
