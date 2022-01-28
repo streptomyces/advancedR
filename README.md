@@ -97,11 +97,10 @@ Then
     
     install.packages("BiocManager")
     BiocManager::install("edgeR")
-
-    install.packages("tidyverse")
-    
     # When asked to update some older packages select "all".
     # When asked to install from source select "No".
+
+    install.packages("tidyverse")
 
     # Check whether `readxl` is installed or not.
     sort(rownames(installed.packages()));
