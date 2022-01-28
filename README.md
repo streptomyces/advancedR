@@ -67,7 +67,7 @@ Course                       1600  to   1730
 * The aim is to clarify the workings of R so that you
   can build your own data analysis solutions and workflows.
 
-[preparations.html](preparations.html)
+[Preparations](preparations.html)
 
 <!-- >>> -->
 
@@ -105,6 +105,7 @@ Then
 
     # Check whether `readxl` is installed or not.
     sort(rownames(installed.packages()));
+    # install.packages("readxl");
 
 The above has to be done as the administrator because packages are
 written to directories which are not normally writable by normal
@@ -324,6 +325,12 @@ with.*
 6. Make plots
 7. Write out to files for further work or communication
 
+#### Keep your environment clean
+
+I will start the code in almost every topic with
+`rm(list = ls())`. This is to make sure that there are no
+old variables lying around to mess with the current task.
+
 <!-- >>> -->
 
 <!-- <<< datatypes.r -->
@@ -393,7 +400,6 @@ typeof(y);
 
 # Data structures with associated functions (methods).
 
-
 # A class is a recipe for making objects and "constructor"
 # methods are usually provided.
 
@@ -409,10 +415,15 @@ typeof(y);
 # Objects can be of more than one class. Then they have
 # methods of all the classes available to them.
 
-# There are no simple variables in R.
+# There are no simple variables in R. Everything is an object i.e.
+# belongs to one class or another.
 
 # Even if you need to store just one value you use a data
 # structure that is capable of storing multiple values.
+
+# Function ls() will list all objects in existence.
+
+ls()
 
 ~~~
 
@@ -468,6 +479,8 @@ rm(x);
 ### Vectors ###
 ###############
 
+# Strictly speaking, "atomic vectors".
+
 # Ordered collection of values.
 
 # Contiguous cells containing data.
@@ -478,6 +491,8 @@ rm(x);
 
 # One way of making a vector is by using the c() function.
 # (concatenate).
+
+rm(list = ls());
 
 x <- c(10, 20, 30)
 
@@ -546,10 +561,6 @@ z <- c("ftsZ", "sigE", "bldN", "whiA", "whiB", "rdlA", "chpA");
 
 unname(x)
 
-# 4. Make a copy of x in vecx. We will use it in the next
-# script.
-
-
 ~~~
 
 <!-- >>> -->
@@ -581,6 +592,8 @@ unname(x)
 
 # User defined functions.
 
+rm(list = ls());
+
 bmi <- function(kilograms, metres) {
   return(kilograms / metres ** 2);
 }
@@ -592,7 +605,6 @@ bmi(m = 1.65, 65);
 #  1. Formal argument list.
 #  2. Body
 #  3. Environment
-
 
 ### Arguments
 
@@ -730,13 +742,8 @@ x <- y <- z <- 42
 # 2. Hints:
 # - Multiply Celsius by 1.8 then add 32 to get Fahrenheit.
 
-cel2fah <- function(cel) {
-fah <- (cel * 1.8) + 32;
-return(fah)
-}
-
-
 ### Write your function here ###
+
 
 # 3. Test your function by calling it as below.
 
@@ -796,6 +803,9 @@ x + y
 '+'(x,y)
 '*'(x,y)
 
+vecx <- c(2.9, 4.1, 3.9, 4.5, 3.7, 45.3, 21.6);
+z <- c("ftsZ", "sigE", "bldN", "whiA", "whiB", "rdlA", "chpA");
+names(vecx) <- z;
 
 '['(vecx, 4);
 '['(vecx, "whiA");
@@ -816,8 +826,6 @@ x + y
 # Scope of a variable is where, in a running program, it is
 # accessible.
 
-x <- 42;
-
 # Functions and environments define the scope of variables
 # in them. In an R session the default environment is the global
 # environment named .GlobalEnv
@@ -837,6 +845,9 @@ withvat <- function(exvat) {
   return(exvat + (exvat * rate))
 }
 
+withvat(100)
+rate <- 0.3;
+withvat(100);
 
 vatfuncgen <- function(vatrate) {
   vatfun <- function(exvat) {
@@ -867,9 +878,6 @@ sl.env$vatrate <- 0.05;
 environment(superlow) <- sl.env;
 
 superlow(100);
-parent.env(environment(superlow));
-parent.env(parent.env(environment(superlow)));
-parent.env(parent.env(parent.env(environment(superlow))));
 
 ### assign() and get() ###
 
@@ -883,6 +891,10 @@ get("vatrate", envir = environment(superlow));
 
 # The effective environment is almost always a nesting of
 # environments.
+
+parent.env(environment(superlow));
+parent.env(parent.env(environment(superlow)));
+parent.env(parent.env(parent.env(environment(superlow))));
 
 #################################
 ### The search path. search() ###
@@ -915,6 +927,9 @@ vatfun(100); # But you can still call vatfun.
 
 # The mode of an object signifies the type of data in it.
 # numeric, character, logical, complex and raw.
+
+rm(list = ls());
+
 x <- seq(1, 5, by = 0.5);
 mode(x);
 y <- as.integer(x);
@@ -1050,6 +1065,11 @@ detach("package:limma", unload = TRUE)
 help("seq")
 help("plot")
 
+# plot is a generic function.
+# Classes can define their own plot function which will be used if
+# the argument to plot is an object of that class.
+#
+# Otherwise, plot.default
 
 # help.search() shows all the packages which
 # have anything to do with "sequence".
@@ -1135,6 +1155,8 @@ help("Reserved");
 ### Do the following yourself ###
 #################################
 
+rm(list = ls());
+
 # 1. Store the sequence from 1 to 5 in vector x.
 # 2. Store the sequence from 21 to 25 in vector y.
 # 3. Examine the result of y * x.
@@ -1174,6 +1196,8 @@ help("Reserved");
 #############################
 
 # c(): concatenate.
+
+rm(list = ls());
 
 x <- c(2.17, 3.14, 13, 29, 48.356);
 y <- c(200,300);
@@ -1222,6 +1246,8 @@ ceiling(pi)
 
 # Always return a character vector.
 
+rm(list = ls());
+
 x <- LETTERS[1:10]
 y <- seq(1,10);
 
@@ -1235,7 +1261,7 @@ paste0(x, y);  # No separator.
 y <- seq(1,5);
 paste0(x, y);  # y is shorter than x, hence recycling.
 
-z <- c("-rep1", "-rep2");
+z <- c(".k1", ".k2");
 paste0(x, y, z); # z is also recycled as needed.
 
 
@@ -1262,7 +1288,6 @@ mtn <- seq(1,12)
 
 
 
-
 ~~~
 
 <!-- >>> -->
@@ -1276,10 +1301,7 @@ mtn <- seq(1,12)
 ### Lists ###
 #############
 
-# Lists are generic vectors.
-
-# Generally, when we say "vector" we mean "atomic
-# vectors".
+# Lists are "generic" vectors.
 
 # Individual elements of a list can refer to any type of
 # R object of any complexity, including other lists.
@@ -1289,6 +1311,8 @@ mtn <- seq(1,12)
 
 # Functions returning a lot of related information
 # often return their results as lists.
+
+rm(list = ls());
 
 x <- seq(1,20, by = 5);
 y <- c("one", "two", "three");
@@ -1344,7 +1368,7 @@ class(unlist(k))
 # 5. In one step, extract the fourth element from the
 # alpha member of li.
 
-
+# What does length(li) return?
 
 ~~~
 
@@ -1385,6 +1409,8 @@ class(unlist(k))
 ###################################################
 ### Step and think through the statements below ###
 ###################################################
+
+rm(list = ls());
 
 x <- seq(1,10);
 x
@@ -1436,6 +1462,8 @@ attributes(x);
 # install it by doing the following.
 
 # install.packages("readxl");
+
+rm(list = ls());
 
 library("readxl");
 library("tidyverse");
@@ -1489,7 +1517,7 @@ colnames(nht) <- c("hw", "strain", "microscope");
 # frame. read.csv() assumes the presence of a header.
 
 # Use read_csv() in R to read the csv file into a tibble.
-# read_csv() assumes the presence of a header.
+# read_csv() also assumes the presence of a header.
 
 # Some other named arguments to read.csv() which might
 # be useful are stringsAsFactors and row.names. We will
@@ -1532,7 +1560,6 @@ colnames(nht) <- c("hw", "strain", "microscope");
 # 3. Try the command class(expt).
 
 
-
 ~~~
 
 <!-- >>> -->
@@ -1549,6 +1576,7 @@ colnames(nht) <- c("hw", "strain", "microscope");
 
 # Think of them as categories.
 
+rm(list = ls());
 
 numbers <- c(1.200261, 1.479827, 1.482392, 1.716793, 1.518791, 1.000030,
              1.933209, 1.841415, 1.315890, 1.849663);
@@ -1556,23 +1584,23 @@ numbers <- c(1.200261, 1.479827, 1.482392, 1.716793, 1.518791, 1.000030,
 category <- c("A", "A", "B", "B", "B", "A",
               "C", "C", "A", "B");
 
-factr <- factor(category);
+f <- factor(category);
 
 typeof(category);
 
 class(category);
 
-typeof(factr);
+typeof(f);
 
-class(factr);
+class(f);
 
 #####################################################
   
-tapply(numbers, factr, mean);
+tapply(numbers, f, mean);
 
 tapply(numbers, category, mean);
 
-levels(factr);
+levels(f);
 
 levels(category)
 
@@ -1586,6 +1614,12 @@ levels(category)
 #################################
 ### Do the following yourself ###
 #################################
+
+rm(list = ls());
+
+hwf <- read.csv("data/hw.csv", stringsAsFactors = TRUE);
+head(hwf);
+nrow(hwf);
 
 # 1. Find out the class of hwf$strain.
 
@@ -1606,6 +1640,9 @@ levels(category)
 # read_csv() has an option (col_types) to let you specify
 # column types when you are reading data in.
 
+hwt <- read_csv("data/hw.csv");
+hwt;
+
 mutate(hwt, strain = factor(strain),
        microscope = factor(microscope))
 
@@ -1619,7 +1656,6 @@ summarise(grmean = mean(hw));
 # Via an intermediate object.
 bygr <- group_by(hwt, strain);
 summarise(bygr, grmean = mean(hw));
-
 
 ~~~
 
@@ -1642,6 +1678,8 @@ summarise(bygr, grmean = mean(hw));
 # Similarly for uniform, binomial, gamma, t, etc.
 
 ### Example: Normal distribution.
+
+rm(list = ls());
 
 x <- rnorm(500, mean = 15, sd = 5);
 
@@ -1710,8 +1748,6 @@ legend(cto, 0.8, "P(X <= x)", bty = "n", xjust = 1)
 # using any object other than x, find the SEM. Should
 # be approximately 0.06.
 
-
-
 ~~~
 
 <!-- >>> -->
@@ -1724,6 +1760,8 @@ legend(cto, 0.8, "P(X <= x)", bty = "n", xjust = 1)
 ##################
 ### Truth in R ###
 ##################
+
+rm(list = ls());
 
 x <- rnorm(10, mean = 5, sd = 1);
 x;
@@ -1815,8 +1853,6 @@ abs(x - y)
 ### Do the following yourself ###
 #################################
 
-# 0. rm(m,n);
-
 # 1. Store the value of 0.5 - 0.3 into m
 
 # 2. Store the value of 0.3 - 0.1 into n
@@ -1842,7 +1878,6 @@ abs(x - y)
 # point numbers.
 
 # mean(abs(x-y))/mean(abs(x))
-
 
 
 ~~~
