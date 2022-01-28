@@ -2928,7 +2928,6 @@ search()
 
 <!-- >>> -->
 
-
 <!-- <<< rnaseq.r -->
 # RNA-seq
 
@@ -3018,7 +3017,7 @@ levels(fg$files);
 levels(fg$group);
 
 # labels for each sample.
-lbs <- paste(groups, c("A", "B"), sep = "");
+lbs <- paste0(groups, c("A", "B"));
 lbs
 # Examine the values of fg and lbs at this stage
 # to make sure they are as you want them to be.
@@ -3318,7 +3317,7 @@ plot(x);
 boxplot(x);
 
 m <- matrix(x, nrow = 200, ncol = 5);
-plot(m[,1], m[,2]);
+plot(m[,1], m[,2]); # same as plot(m);
 
 plot(m[,1], m[,3]);
 
