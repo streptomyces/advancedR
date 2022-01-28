@@ -2642,9 +2642,11 @@ hiup2
 ### Regular Expressions ###
 ###########################
 
-
 # Suppose we want all genes with logFC more than 2.5 AND which
 # are not "hypothetical proteins".
+
+rm(list = ls());
+data <- readRDS("data.rds");
 
 notHypoth2.5 <- data[
   abs(data$logFC) >= 2.5 &
@@ -2737,7 +2739,6 @@ grepl("favou?rite +colou?r", f, ignore.case = TRUE);
 spacefixed <- gsub(" {2,}", " ", f);
 spellfixed <- gsub("vori", "vouri", spacefixed);
 
-
 tof.not.hypo <- !grepl(
 "hypothetical +protein",
 data$product, ignore.case = TRUE);
@@ -2764,6 +2765,40 @@ head(notHypoth2.5)
 # sub()
 # gsub()
 
+#####################
+### stringr style ###
+#####################
+
+# Equivalent of grep
+
+str_which(f, "\\w+ou\\w+");
+
+str_which(f, "^fav");
+
+str_which(f, regex("^fav", ignore_case = T));
+
+data[
+str_which(data$product,
+regex("hypothetical\\s+protein", ignore_case = T)),
+]
+
+# equivalent of grepl
+
+str_detect(f, "\\w+ou\\w+");
+
+data[
+!str_detect(data$product,
+regex("hypothetical\\s+protein", ignore_case = T)),
+]
+
+# Equivalent of grep(..., value = T);
+
+str_subset(f, "\\s{2,}");
+
+# Equivalent of gsub
+
+fixed <- str_replace_all(f, " {2,}", " ");
+fixed <- str_replace_all(fixed, "vori", "vouri");
 
 
 ~~~
@@ -2780,25 +2815,44 @@ head(notHypoth2.5)
 ######################
 
 ### apply() ###
+
+rm(list = ls());
+
+# Make a matrix
+
 x <- runif(60, min = 20, max = 30)
 dim(x) <- c(15, 4);
 x
 
+# Define a function to be applied later.
+
 apfun <- function(arg1) {
 return(arg1 - mean(arg1));
 }
+
+# Apply the function to each row of x
+
 apply(x, 1, apfun);
+
+# Each application results in a column in the returned matrix.
+# Hence the transpose below.
+
 t(apply(x, 1, apfun));
 
 y <- cbind(x, t(apply(x, 1, apfun)));
 y
 
 
-### lapply() and sapply() ###
+### lapply() ###
 
+# Apply a function over a list or a vector.
+# Returned list is as long as the argument.
+
+# Single column data frame.
 strepgenes <- read.csv("data/strepGenes.txt", header = F,
                        stringsAsFactors = F);
 
+# Function to apply
 canoname <- function(x) {
 spl <- strsplit(x, "\\s+", perl = TRUE);
 cano <- spl[[1]][!grepl("SVEN_|SVEN15_|vnz_|^-$",
@@ -2806,11 +2860,16 @@ cano <- spl[[1]][!grepl("SVEN_|SVEN15_|vnz_|^-$",
 return(cano);
 }
 
-lapply(strepgenes[[1]], canoname);
+lapply(strepgenes[[1]], canoname); # a list
 
-unlist(lapply(strepgenes[[1]], canoname));
+unlist(lapply(strepgenes[[1]], canoname)); # a vector.
 
-sapply(strepgenes[[1]], canoname);
+
+### sapply() ###
+
+# Will try to simplify the return value to a vector.
+
+sapply(strepgenes[[1]], canoname); # named vector
 
 unname(sapply(strepgenes[[1]], canoname));
 
@@ -2821,7 +2880,10 @@ cano = unname(sapply(strepgenes[[1]], canoname)));
 
 # We saw this when doing Factors.
 
+hwf <- read.csv("data/hw.csv", stringsAsFactors = TRUE);
 
+tapply(hwf$hw, hwf$strain, mean);
+tapply(hwf$hw, hwf$strain, sd);
 
 ~~~
 
@@ -2838,7 +2900,6 @@ cano = unname(sapply(strepgenes[[1]], canoname)));
 
 # It is a convenience feature allowing you to refer to df$column
 # as just column.
-
 
 rm(list = ls());
 
@@ -2863,62 +2924,10 @@ detach(df)
 search()
 
 
-
 ~~~
 
 <!-- >>> -->
 
-<!-- <<< clear.r -->
-# Clearing your workspace
-
-~~~ {.r}
-
-################################
-### Clearing your work space ###
-################################
-
-### Scenario 1 ###
-
-x <- rnorm(20, mean = 20, sd = 3);
-y <- rnorm(20, mean = 10, sd = 3);
-
-# The above x and y are two objects sitting around from older work.
-
-# Below you create x and y again for some new analysis.
-# But the assignment to y fails because of a syntax error.
-
-x <- rnorm(20, mean = 212, sd = 3);
-y <- rnorm(20, mean = 210, , sd = 3);   # Assignment fails.
-
-z <- x - y;  # This is being evaluated using the new x and the old y!
-
-z;
-
-
-### Scenario 2 ###
-
-rm(list=ls());
-
-x <- rnorm(20, mean = 212, sd = 3);
-y <- rnorm(20, mean = 210, , sd = 3);  # Assignment fails.
-
-z <- x - y; # Fails.
-z;
-
-# You make the correction needed and run again.
-
-x <- rnorm(20, mean = 210, sd = 3);
-y <- rnorm(20, mean = 212, sd = 3);
-
-z <- x - y;
-
-z;
-
-
-
-~~~
-
-<!-- >>> -->
 
 <!-- <<< rnaseq.r -->
 # RNA-seq
