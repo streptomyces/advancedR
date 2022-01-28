@@ -1893,6 +1893,8 @@ abs(x - y)
 ### Subscripts are used to get subsets of data frames
 #   (and other types of objects) in R.
 
+rm(list = ls());
+
 df <- data.frame(x = runif(26, min = 3, max = 12),
                  y = runif(26, min = 30, max = 120));
 rownames(df) <- LETTERS;
@@ -1948,6 +1950,13 @@ df[2, c("x", "y")]
 ### Do the following yourself ###
 #################################
 
+hwf <- read.csv("data/hw.csv", stringsAsFactors = TRUE);
+head(hwf);
+nrow(hwf);
+
+hwt <- read_csv("data/hw.csv");
+hwt;
+
 # 1. Make a vector, ronum, containing the numbers 21 to 30
 # and 51 to 60 by concatenating (remember c()?) two
 # calls to seq().
@@ -1968,7 +1977,6 @@ slice(hwt, ronum);
 
 hwt[58, "strain"]
 
-
 ~~~
 
 <!-- >>> -->
@@ -1978,11 +1986,11 @@ hwt[58, "strain"]
 
 ~~~ {.r}
 
-# Include na.omit, na.fail etc.
-
 ##########################
 ### NA, NaN, Inf, NULL ###
 ##########################
+
+rm(list = ls());
 
 x <- seq(from = 2, to = 10, by = 2);
 x <- c(x, NA);
@@ -1993,7 +2001,7 @@ sd(x);
 
 ####################################################
 
-books <- c("Animal Rights", "A Theory of Justice",
+books <- c("Animal Liberation", "A Theory of Justice",
            "The Wealth of Nations", "What Money Can't Buy");
 
 authors <- c("Peter Singer", "John Rawls", NA,
@@ -2007,6 +2015,8 @@ ba
 
 # What is the type of NA?
 
+
+
 #################################
 ### Do the following yourself ###
 #################################
@@ -2019,6 +2029,17 @@ ba
 
 # 3. Examine the output of is.na(x).
 
+#################################
+### Do the following yourself ###
+#################################
+
+# Examine the output of the following
+
+na.omit(ba)
+
+na.pass(ba)
+
+na.fail(ba);
  
 ### Inf and -Inf are reserved words in R.
 
@@ -2053,6 +2074,8 @@ x
 
 # Complete absence of any value or object.
 
+# It is a type in itself.
+
 ######################################################
 ### Think about the output of the following blocks ###
 ######################################################
@@ -2065,8 +2088,6 @@ retval
 is.null(0/0)
 
 is.null(authors[3]);
-
-
 
 
 ~~~
@@ -2088,6 +2109,8 @@ is.null(authors[3]);
 # All elements in a matrix have to be of the same type.
 
 ### Making a matrix by using matrix().
+
+rm(list = ls());
 
 x <- seq(1,50);
 x;
@@ -2161,7 +2184,7 @@ attributes(s);
 ### Do the following yourself ###
 #################################
 
-# 1. Store the sequence 1 to 28 to a vector d.
+# 1. Assign the sequence 1 to 28 to a vector named d.
 
 # 2. Use matrix() to make a matrix x from d having 7 columns and
 #    4 rows such that the first row reads 1,2,3,4,5,6,7 as shown
@@ -2208,6 +2231,8 @@ attributes(s);
 # You can think of a 3 dimensional array as a collection
 # of matrices.
 # Function named array().
+
+rm(list = ls());
 
 a <- array(rnorm(60), c(3,2,10),
            dimnames=list (
@@ -2266,6 +2291,8 @@ class(a[,,6]);    # matrix
 # The file data/expression.csv has the same contents as the
 # "expression" sheet of file.xlsx.
 
+rm(list = ls());
+
 data <- read.csv("data/expression.csv", header = TRUE, row.names = 1)
 head(data)
 nf <- cbind(data, logFC = data$treatment - data$control)
@@ -2301,8 +2328,10 @@ head(nf)
 # same as in data. Hint: Use rownames(data) to subset
 # temp.
 
-# The data frame "data" is needed in the later
-# exercises. Keep it.
+# 6. After making sure that "data" is as resuired run the
+# following.
+
+saveRDS(data, file = "data.rds");
 
 ###################
 ### dplyr style ###
@@ -2344,7 +2373,7 @@ tib <- tib %>% left_join(select(temptib, gene, product),
                          by = "gene")
 tib;
 
-
+saveRDS(tib, file = "tib.rds");
 
 ~~~
 
@@ -2362,6 +2391,8 @@ tib;
 # Three related functions: sort(), order(), rank()
 
 ### sort() ###
+
+rm(list = ls());
 
 set.seed(56)
 x <- as.integer(runif(10, 1, 50) * 7)
@@ -2396,6 +2427,8 @@ ox;
 
 # 2. Then we use the order to sort the entire data frame.
 
+data <- readRDS("data.rds");
+
 ordvec <- order(data$logFC);
 sdata <- data[ordvec, ];
 head(sdata);
@@ -2405,14 +2438,7 @@ tail(sdata);
 ### Do the following yourself ###
 #################################
 
-# Run the following block if you have lost or broken the
-# data frame named "data" made earlier.
-data <- read.csv("data/expression.csv", header = TRUE, row.names = 1)
-data$logFC <- data$treatment - data$control;
-temp <- read.csv("data/products.csv", row.names = 1,
-                    stringsAsFactors = FALSE);
-data$product <- temp[rownames(data), "product"]
-
+data <- readRDS("data.rds");
 
 # 1. It would be more meaningful to sort data on absolute log
 #    fold change and to have the highest change at the top.
@@ -2425,6 +2451,7 @@ data$product <- temp[rownames(data), "product"]
 # 4. Now sort data by decreasing value of absolute logFC.
 
 
+### Breaking ties ###
 
 # If you have ties in the column you are sorting by then you
 # might wish to use a second column to break the ties.
@@ -2447,6 +2474,8 @@ head(sdata2)
 ### dplyr style ###
 ###################
 
+tib <- readRDS("tib.rds");
+
 stib <- arrange(tib, logFC);
 stib
 
@@ -2468,15 +2497,9 @@ stib
 ### Conditional subsetting ###
 ##############################
 
-# Run the following block if you have lost or broken the
-# data frame named "data" made earlier.
-data <- read.csv("data/expression.csv", header = TRUE,
-                 row.names = 1)
-data$logFC <- data$treatment - data$control;
-temp <- read.csv("data/products.csv", row.names = 1,
-                    stringsAsFactors = FALSE);
-data$product <- temp[rownames(data), "product"]
+rm(list = ls());
 
+data <- readRDS("data.rds");
 
 head(data);
 nrow(data)
@@ -2558,6 +2581,9 @@ subset(df, x < 4 || y < 15);
 
 ### group_by() and summarise() ###
 
+tib <- readRDS("tib.rds");
+stib <- arrange(tib, desc(abs(logFC)));
+
 group_by(stib, lfc3 = abs(logFC) >= 3) %>%
 summarise(count = n());
 
@@ -2602,8 +2628,6 @@ hiup2 <- filter(stib, logFC >= 1 & control >= 7
       ignore.case = T))
     ); 
 hiup2
-
-
 
 ~~~
 
