@@ -3470,18 +3470,20 @@ ht <- runif(19, min = 5, max = 20)
 barplot(ht, col = colmix)
 
 
-### Function generator ###
+### Colour ramp function generator ###
 
-crpfun <- colorRampPalette(c(rgb(0,0,1,1), rgb(1,0,0,1)),
+blured.ramp <- colorRampPalette(c(rgb(0,0,1,1), rgb(1,0,0,1)),
                            alpha = TRUE);
 
-crpfun <- colorRampPalette(c("blue", "red"),
+blured.ramp <- colorRampPalette(c("blue", "red"),
                            alpha = TRUE);
 
+class(blured.ramp);
+typeof(blured.ramp);
 
-crpfun(19)
+blured.ramp(19)
 ht <- runif(19, min = 5, max = 20)
-barplot(ht, col = crpfun(19))
+barplot(ht, col = blured.ramp(19))
 
 
 
@@ -3563,22 +3565,48 @@ p1 + geom_path(aes(hour, wt), colour = "red") +
   geom_path(aes(hour, tfaG), colour = "blue")
 
 
+theme_set(theme_bw());
+theme_update(plot.title = element_text(size = 24, face = "bold",
+                                hjust = 0.5));
+theme_update(axis.title = element_text(size = 15, face = "bold",
+                                vjust = 0.5));
+theme_update(axis.text.y = element_text(size = 12, face = "plain",
+                                vjust = 0.5));
+theme_update(axis.text.x = element_text(size = 12, face = "plain",
+                                vjust = 0.5));
 
-p2 <- p1 +
+yylab = expression(paste(Log[2], " expression"))
+p2 <- ggplot(df) +
 geom_path(aes(hour, wt), colour = "darkred", size = 1.2) +
 geom_path(aes(hour, tfaG), colour = "blue", size = 1.2) +
 geom_point(aes(hour, wt), colour = "darkred", size = 3) +
 geom_point(aes(hour, tfaG), colour = "blue", size = 3) +
-xlab("Hours of growth") +
-ylab("Log2 expression") +
-ggtitle("Expression of spoF in wt and tfaG deletion strains") +
-theme_bw() +
-theme(plot.title = element_text(size = 24, face = "bold",
-                                hjust = 0.5)) +
-theme(axis.title = element_text(size = 15, face = "bold",
-                                vjust = 0.5)) +
-theme(axis.text = element_text(size = 12, face = "plain",
-                                vjust = 0.5))
+labs(x = "Hours of growth", y = yylab) +
+# labs(x = "Hours of growth", y = "Log2 Expression") +
+ggtitle("Expression of spoF in wt and tfaG deletion strains")
+
+
+theme_set(theme_bw());
+theme_update(plot.title = element_text(size = 24, face = "bold",
+                                hjust = 0.5));
+theme_update(axis.title.x = element_text(size = 15, face = "bold",
+                                vjust = 0.5));
+theme_update(axis.title.y = element_text(size = 15, face = "bold",
+                                vjust = 0.5));
+theme_update(axis.text.y = element_text(size = 12, face = "plain",
+                                vjust = 0.5));
+theme_update(axis.text.x = element_text(size = 12, face = "plain",
+                                vjust = 0.5));
+
+p2
+
+# theme_bw() +
+# theme(plot.title = element_text(size = 24, face = "bold",
+#                                 hjust = 0.5)) +
+# theme(axis.title = element_text(size = 15, face = "bold",
+#                                 vjust = 0.5)) +
+# theme(axis.text = element_text(size = 12, face = "plain",
+#                                 vjust = 0.5))
 
 graphics.off()
 p2
