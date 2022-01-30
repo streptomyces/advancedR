@@ -3663,7 +3663,7 @@ p5 <- p4 +
   theme(panel.grid = element_blank())
 
 p5
-ggsave("expression.png", p5)
+ggsave("../expression.png", p5)
 
 
 # Theme (set)
@@ -3683,7 +3683,7 @@ theme_set(theme_gray());
 p4
 theme_set(febtheme);
 p4
-ggsave("ourthemeExpression.png", p4)
+ggsave("../ourthemeExpression.png", p4)
 
 #################################
 ### Do the following yourself ###
@@ -3898,6 +3898,8 @@ ggplot(cdf, aes(x = strain, y = count)) +
 # distances in μm and the second column contains either
 # "wt" or "mut" (factor).
 
+rm(list = ls());
+
 df <- read.csv("data/septaldist.csv");
 head(df)
 tail(df)
@@ -4018,7 +4020,7 @@ dev.off()
 # ggsave()
 
 pdffn <- c("../hist1.pdf");
-ggsave(pdffn, h1)
+ggsave(pdffn, h1) # One plot only.
 
 ~~~
 
@@ -4035,14 +4037,6 @@ ggsave(pdffn, h1)
 
 * You can find plenty of help and support for Python and
   Perl around the NRP.
-
-* If you are good at learning on your own, or can find
-  someone to learn with, then consider Julia very seriously.
-
-* Like any other skill, the best way to maintain and
-  advance your R skills is by using it regularly. Try to get
-  together with a friend and use R regularly. You will learn
-  a lot faster if you practice in pairs. 
 
 * Ability to read documentation quickly is more important
   than you think. Not just in R.
