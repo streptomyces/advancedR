@@ -231,7 +231,7 @@ literals        scientific notation         1e6, 1e-6
 * Parentheses, (), are required in function calls even if
 you are not passing any arguments to the function being
 called. `ls()` works but `ls` shows you the definition of
-the function `ls`. Functions are objects too.
+the function `ls`.
 
 * The parentheses makes it easy to identify individual
 function calls in long and complex R statements where
@@ -266,7 +266,7 @@ to be object names.
 - While doing the tasks during this course you will not always be
   explicitly asked name your objects.
 
-- Name your objects  as needed. e.g. if a task says make a vector
+- Name your objects as needed. e.g. if a task says make a vector
   of the numbers 1 to 10 do
 
 ~~~ 
@@ -327,6 +327,8 @@ with.*
 I will start the code in almost every topic with
 `rm(list = ls())`. This is to make sure that there are no
 old variables lying around to mess with the current task.
+
+This is also important during actual work.
 
 <!-- >>> -->
 
@@ -415,8 +417,8 @@ typeof(y);
 # There are no simple variables in R. Everything is an object i.e.
 # belongs to one class or another.
 
-# Even if you need to store just one value you use a data
-# structure that is capable of storing multiple values.
+# Even if you need to store just one value you use an object
+# that is capable of storing multiple values.
 
 # Function ls() will list all objects in existence.
 
@@ -589,13 +591,19 @@ unname(x)
 
 # User defined functions.
 
+# Type of brackets:
+
+## () parentheses
+## [] brackets or square brackets
+## {} braces or curly braces
+
 rm(list = ls());
 
 bmi <- function(kilograms, metres) {
   return(kilograms / metres ** 2);
 }
 
-bmi(m = 1.65, 65);
+bmi(65, 1.65);
 
 ### Components of functions ###
 
@@ -750,11 +758,14 @@ x <- y <- z <- 42
 
 # 4. Try the below.
 
-curve(cel2fah, -20, 50, xlab = "Celsius",
+curve(cel2fah, -50, 50, xlab = "Celsius",
       ylab = "Fahrenheit", lwd = 3, col = "royalblue")
 
 # Functions are objects. We passed a function as an argument
 # to another function.
+
+class(cel2fah)
+typeof(cel2fah)
 
 # Another example of passing a function as an argument to
 # another function.
