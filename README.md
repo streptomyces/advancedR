@@ -3511,7 +3511,7 @@ barplot(ht, col = blured.ramp(19))
 # Much more structured and formal than the collection of
 # graphics commands in base R.
 
-### Three essential components of a ggplot ###
+### The essential components of a ggplot ###
 
 # 1. Data. Usually a dataframe or a tibble.
 
@@ -3522,6 +3522,9 @@ barplot(ht, col = blured.ramp(19))
 # 3. Layers. Actual rendering on the plotting device.
 # Functions: geom_*(). The kind of plot you want.
 # Multiple layers are allowed and indeed, common.
+
+# 4. Theme. Control the appearance of various components of the
+# plot. Functions theme(), theme_*(), set_theme() etc.
 
 ### Function ggplot() ###
 
@@ -3534,82 +3537,24 @@ barplot(ht, col = blured.ramp(19))
 # included in ggplot() the values are inherited by all
 # layers.
 
-### Layers ###
-
 # To the result of the call to ggplot() we can add
 # layers.
 
-### Theme ###
+# Finally we can add a theme to the plot before rendering it.
+# Otherwise the current theme (which we can change) is used for
+# rendering the plot.
 
-# Function theme().
-
-# Control the overall appearance of a plot.
-
+##########################################
 
 rm(list = ls());
 df <- read.csv("data/tfaG.csv");
 head(df);
 
+# Plot
+
 ggplot(df) +
-  geom_point(aes(hour, wt), colour = "red") +
-  geom_point(aes(hour, tfaG), colour = "blue")
-
-p1 <- ggplot(df)
-p1 + geom_point(aes(hour, wt), colour = "red")
-p1 + geom_point(aes(hour, tfaG), colour = "blue")
-
-p1 + geom_point(aes(hour, wt), colour = "red") + 
-  geom_point(aes(hour, tfaG), colour = "blue")
-
-p1 + geom_path(aes(hour, wt), colour = "red") + 
+  geom_path(aes(hour, wt), colour = "red") +
   geom_path(aes(hour, tfaG), colour = "blue")
-
-
-theme_set(theme_bw());
-theme_update(plot.title = element_text(size = 24, face = "bold",
-                                hjust = 0.5));
-theme_update(axis.title = element_text(size = 15, face = "bold",
-                                vjust = 0.5));
-theme_update(axis.text.y = element_text(size = 12, face = "plain",
-                                vjust = 0.5));
-theme_update(axis.text.x = element_text(size = 12, face = "plain",
-                                vjust = 0.5));
-
-yylab = expression(paste(Log[2], " expression"))
-p2 <- ggplot(df) +
-geom_path(aes(hour, wt), colour = "darkred", size = 1.2) +
-geom_path(aes(hour, tfaG), colour = "blue", size = 1.2) +
-geom_point(aes(hour, wt), colour = "darkred", size = 3) +
-geom_point(aes(hour, tfaG), colour = "blue", size = 3) +
-labs(x = "Hours of growth", y = yylab) +
-# labs(x = "Hours of growth", y = "Log2 Expression") +
-ggtitle("Expression of spoF in wt and tfaG deletion strains")
-
-
-theme_set(theme_bw());
-theme_update(plot.title = element_text(size = 24, face = "bold",
-                                hjust = 0.5));
-theme_update(axis.title.x = element_text(size = 15, face = "bold",
-                                vjust = 0.5));
-theme_update(axis.title.y = element_text(size = 15, face = "bold",
-                                vjust = 0.5));
-theme_update(axis.text.y = element_text(size = 12, face = "plain",
-                                vjust = 0.5));
-theme_update(axis.text.x = element_text(size = 12, face = "plain",
-                                vjust = 0.5));
-
-p2
-
-# theme_bw() +
-# theme(plot.title = element_text(size = 24, face = "bold",
-#                                 hjust = 0.5)) +
-# theme(axis.title = element_text(size = 15, face = "bold",
-#                                 vjust = 0.5)) +
-# theme(axis.text = element_text(size = 12, face = "plain",
-#                                 vjust = 0.5))
-
-graphics.off()
-p2
 
 
 # The above is not the best way to organise your data for
@@ -3635,22 +3580,17 @@ p2
 # 119   59   tfaG 2.755333
 # 120   60   tfaG 2.775126
 
-# Think like this: everything on the x-axis goes in one
-# column no matter how many categories those values
-# belong to. The categories can be specified in other
-# columns. Similarly for the values intended for the
-# y-axis.
-
+# Think like this: everything on the x-axis goes in one column no
+# matter how many categories those values belong to. The
+# categories can be specified (as factors) in other columns.
+# Similarly for the values intended for the y-axis.
 
 # Below is one way of getting from df to gdf.
-#
-# There may be functions in available packages to do
-# this.
 
-gdf <- data.frame(hour = rep(df$hour, 2),
-      strain = c(rep(colnames(df)[2], 60),
-      rep(colnames(df)[3], 60)),
-      logexpr = c(df$wt, df$tfaG)
+gdf <- data.frame(
+ hour = rep(df$hour, 2),
+ strain = c(rep(colnames(df)[2], 60), rep(colnames(df)[3], 60)),
+ logexpr = c(df$wt, df$tfaG)
 )
 head(gdf)
 class(gdf$strain)
@@ -3659,8 +3599,7 @@ class(gdf$strain)
 
 ggplot(gdf, aes(hour, logexpr, colour = strain)) +
   geom_point() +
-  geom_path() +
-  theme_bw()
+  geom_path()
 
 
 ggplot(gdf, aes(hour, logexpr, colour = strain)) +
@@ -3669,68 +3608,45 @@ ggplot(gdf, aes(hour, logexpr, colour = strain)) +
   theme_bw()
 
 
-### We will save the plot objects as we build them.
-# gdfcols <- c("#129628", "#961254");
-p1 <- ggplot(gdf, aes(hour, logexpr, colour = strain,
-                      shape = strain))
-p2 <- p1 + geom_point(size = 3) +
-  geom_path(size = 1.2)
-p2
-# scale_colour_manual(values = c(gdfcols))
+### You can save intermediate plot objects.
+
+gdfcols <- c("#bb0000", "#00bb00");
+p1 <- ggplot(gdf, aes(hour, logexpr, colour = strain)) +
+geom_point(size = 3) +
+geom_path(size = 1.2)
+
+p1 <- p1 + scale_colour_manual(labels = c("tfag deletion", "m600"),
+values = unname(gdfcols), name = "Strain")
+
+p1
 
 
 # Axis labels and grid lines.
+yylab = expression(bold(paste(Log[2], " Expression"))); # help(plotmath)
 
-p2 +
-  scale_x_continuous(name = "Hours of growth") +
-  scale_y_continuous(name = "Log2 expression")
+p2 <- p1 + labs(x = "Hours of growth", y = yylab)
 
-xbr <- seq(0, 60, by = 5)
 p3 <- p2 +
-  scale_y_continuous(name = "Log2 expression") +
-  scale_x_continuous(name = "Duration of culture",
-                     breaks = xbr,
+  scale_x_continuous(breaks = xbr,
                      labels = paste0(xbr, "h"))
 
 p3
 
-
-# Legend
-
-# p4 <- p3 + scale_colour_discrete(name = "spoF expression in",
-#                            labels = c("tfaG deletion strain",
-#                                      "Wild type strain"))
-
-# p4
-
-
-# Our colours
-
-# p3 + labs(colour = "Strain", shape = "Strain")
-
-gdfcols <- c("#129628", "#961254");
-# gdfcols <- c("darkblue", "red");
-p5 <- p3 + scale_colour_manual(name = "Strain id",
-   values = gdfcols,
-   labels = c("tfaG deletion strain",
-   "M600")) +
-scale_shape_discrete(name = "Strain id",
-   labels = c("tfaG deletion strain",
-   "M600"))
-
-# p3 + labs(colour = "Strain", shape = "Strain")
-
-
-p5
-
 # Main title
 
-p6 <- p5 + 
-ggtitle("Expression of SpoF in M600 and tfaG deletion strains\nover 60 hours of growth in shaken flask");
-p6
+plot.title <- paste0("Expression of SpoF in M600 and",
+" tfaG deletion strains\n",
+" over 60 hours of growth in shaken flask");
 
-# Theme
-p7 <- p6 +
+p4 <- p3 + 
+ggtitle(plot.title);
+p4
+
+
+
+# Theme (addition).
+
+p5 <- p4 +
   theme_bw() +
   theme(plot.title = element_text(size = 24, face = "bold",
                                   hjust = 0.5)) +
@@ -3746,13 +3662,36 @@ p7 <- p6 +
   theme(plot.margin = margin(1, 1, 1, 1, "cm")) +
   theme(panel.grid = element_blank())
 
-p7
-ggsave("../expression.pdf", p7)
-ggsave("../expression.png", p7)
+p5
+ggsave("expression.png", p5)
+
+
+# Theme (set)
+
+theme_set(theme_bw());
+theme_update(plot.title = element_text(size = 24, face = "bold",
+                                hjust = 0.5));
+theme_update(axis.title = element_text(size = 15, face = "bold",
+                                vjust = 0.5));
+theme_update(axis.text.y = element_text(size = 12, face = "plain",
+                                vjust = 0.5));
+theme_update(axis.text.x = element_text(size = 12, face = "plain",
+                                vjust = 0.5));
+febtheme <- theme_get();
+
+theme_set(theme_gray());
+p4
+theme_set(febtheme);
+p4
+ggsave("ourthemeExpression.png", p4)
 
 #################################
 ### Do the following yourself ###
 #################################
+
+# Revert to the default theme.
+
+theme_set(theme_gray());
 
 # A while back we saved a RDS file named
 # unsorted_lfc.rds.
@@ -3760,11 +3699,13 @@ ggsave("../expression.png", p7)
 # Use readRDS() to read this file into an object named
 # ulfc. Determine its class and head() it.
 
-# Use ggplot() to plot the logFC column on the y-axis
-# against serial numbers on the x-axis.
+# Use ggplot() to plot -(log10(PValue)) on the y-axis against logFC
+# on the x-axis;
 
-# Convert logFC to linear fold change and plot as above.
+# Try adding the following to the plot made above.
 
+geom_vline(xintercept = c(-1.5, 1.5), color = "#dd0000") +
+geom_hline(yintercept = -log10(0.05), color = "#00dd00")
 
 
 ~~~
