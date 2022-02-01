@@ -137,8 +137,8 @@ with me. Resist the temptation to charge ahead.
     
     list.files()
     
-    # download.file("https://github.com/streptomyces/advancedR/raw/feb2022/adr.zip", "adr.zip")
-    download.file("https://streptomyces.s3.eu-west-1.amazonaws.com/adr.zip", "adr.zip");
+    download.file("https://github.com/streptomyces/advancedR/raw/feb2022/adr.zip", "adr.zip")
+    # download.file("https://streptomyces.s3.eu-west-1.amazonaws.com/adr.zip", "adr.zip");
     
     list.files()
     
@@ -3173,9 +3173,9 @@ de.table["SS_0520",];
 # 2. Create top30.rpkm by subscripting wt.hfq.rpkm to
 # get the rows in vector v made above and all columns.
 
-##################
-### Why logFC? ###
-##################
+#####################################
+### Why use log2 for fold change? ###
+#####################################
 
 # Linear scale is asymmetric.
 
@@ -3194,7 +3194,7 @@ plot(lfc, pch = 20)
 plot(2**(lfc), pch = 20)
 
 # Table of linear to log2 values.
-x <- c(seq(2,16), seq(20, 200, by = 20));
+x <- c(seq(2,16), seq(20, 200, by = 20), 500, 1000);
 lx <- log2(x);
 lin2log <- data.frame(x = x, log2.x = lx)
 lin2log
