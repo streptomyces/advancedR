@@ -3710,9 +3710,21 @@ theme_set(theme_gray());
 # ulfc. Determine its class and head() it.
 
 # Use ggplot() to plot -(log10(PValue)) on the y-axis against logFC
-# on the x-axis;
+# on the x-axis. Such is plot is commonly known as a volcano plot.
 
-# Try adding the following to the plot made above.
+# Below a character vector named udu is being made to indicate
+# unchanged, upregulated and, downregulated genes.
+
+udu <- rep("unchanged", nrow(ulfc));
+udu[ulfc$logFC >= 1.5 & ulfc$FDR <= 0.05] <- "upregulated";
+udu[ulfc$logFC <= -1.5 & ulfc$FDR <= 0.05] <- "downregulated";
+
+# Add the vector udu to ulfc as a column named udu.
+
+# Make the same volcano plot as above but use the udu column to
+# colour the points.
+
+# Finally, add the following horizontal and vertical lines to your plot.
 
 geom_vline(xintercept = c(-1.5, 1.5), color = "#dd0000") +
 geom_hline(yintercept = -log10(0.05), color = "#00dd00")
