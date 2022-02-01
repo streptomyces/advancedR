@@ -3998,7 +3998,7 @@ dev.off()
 # png() above to get an eps file of your plot.
 
 
-### Using the ggplot2 library ###
+### Using ggplot2 ###
 
 ggplot(df, aes(sep.dist, fill = strain)) +
   geom_histogram(alpha = 0.3, bins = 60, colour = "grey80")
