@@ -29,7 +29,7 @@
 Course                       0930  to   1100
 Coffee break                 1100  to   1130
 Course                       1130  to   1300
-Lunch (not provided)         1300  to   1400
+Lunch                        1300  to   1400
 Course                       1400  to   1530
 Coffee break                 1530  to   1600
 Course                       1600  to   1730
@@ -3635,6 +3635,7 @@ yylab = expression(bold(paste(Log[2], " Expression"))); # help(plotmath)
 
 p2 <- p1 + labs(x = "Hours of growth", y = yylab)
 
+xbr <- seq(0, 60, by = 5)
 p3 <- p2 +
   scale_x_continuous(breaks = xbr,
                      labels = paste0(xbr, "h"))
