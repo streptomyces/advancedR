@@ -227,11 +227,22 @@ Numeric         Unquoted digits and         2345, 42L, 3.14
 literals        scientific notation         1e6, 1e-6
 ~~~
 
+# Type of brackets:
+
+## () parentheses
+## [] brackets or square brackets
+## {} braces or curly braces
+
 
 * Parentheses, (), are required in function calls even if
 you are not passing any arguments to the function being
 called. `ls()` works but `ls` shows you the definition of
 the function `ls`.
+
+* The other two bracketing characters are
+
+- Brackets or square brackets []
+- Braces or curly braces {}
 
 * The parentheses makes it easy to identify individual
 function calls in long and complex R statements where
@@ -590,12 +601,6 @@ unname(x)
 # rather than their return value.
 
 # User defined functions.
-
-# Type of brackets:
-
-## () parentheses
-## [] brackets or square brackets
-## {} braces or curly braces
 
 rm(list = ls());
 
