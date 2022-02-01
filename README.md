@@ -234,8 +234,8 @@ called. `ls()` works but `ls` shows you the definition of
 the function `ls`.
 
 * The other two bracketing characters are
-  - Brackets or square brackets []
-  - Braces or curly braces {}
+  - Brackets or square brackets `[]`
+  - Braces or curly braces `{}`
 
 * The parentheses makes it easy to identify individual
 function calls in long and complex R statements where
