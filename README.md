@@ -4065,16 +4065,12 @@ ggsave(pdffn, h1) # One plot only.
 * Ability to read documentation quickly is more important
   than you think. Not just in R.
 
-* R manuals webpage.
-  https://cran.r-project.org/manuals.html
+* [R manuals webpage](https://cran.r-project.org/manuals.html)
 
-* PDF of the Introduction to R book.
-  https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf
+* [PDF of the Introduction to R book](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)
 
-* Tidyverse (dplyr, tibbles, ggplot and more) documentation.
-  https://www.tidyverse.org/
+* [Tidyverse (dplyr, tibbles, ggplot and more) documentation](https://www.tidyverse.org/)
 
-* RNA-Seq data analysis using edgeR.
-  https://f1000research.com/articles/5-1438
+* [RNA-Seq data analysis using edgeR](https://f1000research.com/articles/5-1438)
 
 <!-- >>> -->
