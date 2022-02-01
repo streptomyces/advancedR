@@ -69,6 +69,8 @@ Course                       1600  to   1730
 
 [Preparations](preparations.html)
 
+[.](readme.html)
+
 <!-- >>> -->
 
 <!-- <<< preparations.md -->
