@@ -125,7 +125,7 @@ In Rstudio, use the drop down menu to do
 
 In the blank R script we will write and run
 the indented lines shown below. Please do this
-with me. Resist the temptation to charge ahead.
+with me so I can explain each step.
 
     setwd("u:/")
     unlink("Rtrain", recursive = TRUE)
@@ -285,7 +285,7 @@ instead of
 seq(1,10);
 ~~~
 
-- Then you will have a named you can use in the
+- Then you will have a named object you can use in the
   following steps of the task.
 
 - Use as many intermediate objects as you need to complete the
