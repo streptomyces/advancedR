@@ -2051,7 +2051,11 @@ na.omit(ba)
 na.pass(ba)
 
 na.fail(ba);
- 
+
+
+###### End of Day 1 ######
+
+
 ### Inf and -Inf are reserved words in R.
 
 #################################
