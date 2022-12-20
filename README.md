@@ -9,7 +9,7 @@
 <!-- <<< readme.md -->
 # readme.md
 
-# Advanced R 2 and 3 Feb 2022
+# Advanced R 30 Jan and 1 Feb 2023
 
 # [https://bit.ly/3pPBwwC](https://bit.ly/3pPBwwC)
 
@@ -23,7 +23,7 @@
   on the first day) to be able to install some required add-on packages
   for R.
 
-## Timings for both Wed 2 Feb and Thu 3 Feb
+## Timings for both Mon 30 Jan and Wed 1 Feb 2023
 
 ---------------------        ---------------
 Course                       0930  to   1100
@@ -35,7 +35,9 @@ Coffee break                 1530  to   1600
 Course                       1600  to   1730
 ---------------------        ---------------
 
-## As soon as you join the MS Teams meeting
+## As soon as you arrive
+
+* Login to a PC in the training theatre using your institute identity.
 
 * Point your web browser to the url shown at the top
   which is [https://bit.ly/3pPBwwC](https://bit.ly/3pPBwwC)
