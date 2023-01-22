@@ -1,0 +1,82 @@
+<!DOCTYPE "html"> 
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style type="text/css">
+body {
+background: #dddddd;
+font-family: sans-serif;
+width: 800px;
+font-size: 120%;
+}
+.tta {background: #ffff00}
+.timestamp {font-size: x-small}
+td, table, tr, th {
+border-collapse: collapse;
+border: solid black 1px;
+padding: 3px;
+}
+.species {font-style: italic}
+.genus {font-style: italic}
+a:link, a:visited, a:active {color: blue; text-decoration: none}
+a:hover {color: magenta; text-decoration: none}
+</style>
+</head>
+
+<h1 id="rstudio">RStudio</h1>
+<ul>
+<li>Start RStudio.</li>
+</ul>
+<h2 id="getting-the-scripts-and-data-we-will-be-using">Getting the scripts and data we will be using</h2>
+<p>In Rstudio, use the drop down menu to do</p>
+<pre><code>File -&gt; New File -&gt; R Script</code></pre>
+<p>In the blank R script we will write and run the indented lines shown below. Please do this with me so I can explain each step.</p>
+<pre><code>setwd(&quot;u:/&quot;)
+unlink(&quot;Rtrain&quot;, recursive = TRUE)
+dir.create(&quot;Rtrain&quot;)
+
+setwd(&quot;Rtrain&quot;)
+
+getwd()
+
+unlink(&quot;*&quot;)
+
+list.files()
+
+download.file(&quot;https://github.com/streptomyces/advancedR/raw/feb2022/adr.zip&quot;, &quot;adr.zip&quot;)
+# download.file(&quot;https://streptomyces.s3.eu-west-1.amazonaws.com/adr.zip&quot;, &quot;adr.zip&quot;);
+
+list.files()
+
+unzip(&quot;adr.zip&quot;)
+
+setwd(&quot;adr&quot;)
+
+list.files()</code></pre>
+<h3 id="four-panes">Four panes</h3>
+<ul>
+<li>Source editor</li>
+<li>Console</li>
+<li>Environment and History</li>
+<li>File, Plots, Help etc.</li>
+</ul>
+<h3 id="getting-started">Getting started</h3>
+<ul>
+<li><p>Type commands in the <em>source</em> editor.</p></li>
+<li><p>To run a command from the <em>source</em> editor place the cursor anywhere on that line and press <code>Control-Enter</code>.</p></li>
+<li><p>You can also select multiple lines and then press <code>Control-Enter</code> to run all the selected lines.</p></li>
+<li><p>Finally, you can use <code>Control-Shift-Enter</code> to <em>source</em> (i.e. run) the entire script.</p></li>
+<li><p>The action happens in the <em>Console</em> pane. i.e. any output from R is shown in the console frame. You can also type commands directly in the console.</p></li>
+<li><p>R keeps a history of your commands which you can see in the history tab of RStudio.</p></li>
+<li><p>You can select and run commands from the history tab as well. Just press enter on the current line or select some lines and press enter.</p></li>
+<li><p>However you run a command, it is like typing it into the console and pressing Enter.</p></li>
+<li><p>Matching parentheses and quotes are automatically inserted. You can disable this in options. I do. (<code>Tools -&gt; Global Options -&gt; Code -&gt; Editing</code>)</p></li>
+</ul>
+<h4 id="my-preferred-arrangement-of-rstudio-panes">My preferred arrangement of RStudio panes</h4>
+<p>Use the drop down menus to do the following.</p>
+<pre><code>Tools -&gt; Global Options -&gt; Pane layout</code></pre>
+<p>Arrange to have <em>Source</em> on the top left and <em>Console</em> on the top right. With this arrangement we can minimise two bottom panes most of the time and have more of screen space.</p>
+<hr />
+</body>
+</html>
+
