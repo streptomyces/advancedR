@@ -513,9 +513,6 @@ x[v];
 
 # 1. Make the vectors x and z as discussed above.
 
-x <- c(2.9, 4.1, 3.9, 4.5, 3.7, 45.3, 21.6);
-z <- c("ftsZ", "sigE", "bldN", "whiA", "whiB", "rdlA", "chpA");
-
 # 2. Name the elements of x as the strings in z.
 
 # 3. Examine the output of
@@ -548,8 +545,8 @@ unname(x)
 # then the returned value may be printed on the console.
 # invisible()
 
-# Some functions used primarily for their side-effects
-# rather than their return value.
+# Some functions are used primarily for their
+# side-effects rather than their return value.
 
 # User defined functions.
 
@@ -710,7 +707,11 @@ x <- y <- z <- 42
 
 #    a. cel2fah(100)
 #    b. cel2fah(0)
-#    c. cel2fas(ds)
+#    c. cel2fah(seq(0,100))
+
+# Discuss call c. above.
+
+# You cannot do cel2fah(0,10).
 
 # 4. Try the below.
 
@@ -724,7 +725,9 @@ class(cel2fah)
 typeof(cel2fah)
 
 # Another example of passing a function as an argument to
-# another function.
+# another function. Trignometric functions such as sin()
+# or cos() take their arguments in radians. But I am more
+# comfortable thinking in degrees.
 
 deg2rad <- function(deg) {
 return(deg * 2 * pi / 360);
@@ -738,21 +741,22 @@ curve(cos, deg2rad(0), deg2rad(360), col = "blue", lwd = 3, add = T);
 ### ... (three dots) ###
 ########################
 
-dotdemo <- function(x, ...) {
+dotdemo1 <- function(x, ...) {
   cat("x is: ", x, "\n");
-  dots <- list(...);
-  cat("Then: ", dots[[1]], "\n");
+  vargs <- list(...);
+  cat("Then: ", vargs[[1]], "\n");
 }
-dotdemo("stuff", "morestuff");
+dotdemo1("stuff", "morestuff");
 
 
-dotdemo <- function(x, ...) {
+dotdemo2 <- function(x, ...) {
   cat("x is: ", x, "\n");
-  dots <- list(...);
-  cat("y: ", dots$y, "\n");
-  cat("Then: ", dots[[2]], "\n");
+  vargs <- list(...);
+  cat("y as named: ", vargs$y, "\n");
+  cat("y as positional: ", vargs[[1]], "\n");
+  cat("Then: ", vargs[[2]], "\n");
 }
-dotdemo(x = "stuff", y = "morestuff", 23);
+dotdemo2(x = "stuff", y = "morestuff", 23);
 
 
 ##############################

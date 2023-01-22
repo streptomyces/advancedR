@@ -431,14 +431,11 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb14-76" title="76"></a>
 <a class="sourceLine" id="cb14-77" title="77"><span class="co"># 1. Make the vectors x and z as discussed above.</span></a>
 <a class="sourceLine" id="cb14-78" title="78"></a>
-<a class="sourceLine" id="cb14-79" title="79">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.9</span>, <span class="fl">4.1</span>, <span class="fl">3.9</span>, <span class="fl">4.5</span>, <span class="fl">3.7</span>, <span class="fl">45.3</span>, <span class="fl">21.6</span>);</a>
-<a class="sourceLine" id="cb14-80" title="80">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ftsZ&quot;</span>, <span class="st">&quot;sigE&quot;</span>, <span class="st">&quot;bldN&quot;</span>, <span class="st">&quot;whiA&quot;</span>, <span class="st">&quot;whiB&quot;</span>, <span class="st">&quot;rdlA&quot;</span>, <span class="st">&quot;chpA&quot;</span>);</a>
-<a class="sourceLine" id="cb14-81" title="81"></a>
-<a class="sourceLine" id="cb14-82" title="82"><span class="co"># 2. Name the elements of x as the strings in z.</span></a>
-<a class="sourceLine" id="cb14-83" title="83"></a>
-<a class="sourceLine" id="cb14-84" title="84"><span class="co"># 3. Examine the output of</span></a>
-<a class="sourceLine" id="cb14-85" title="85"></a>
-<a class="sourceLine" id="cb14-86" title="86"><span class="kw">unname</span>(x)</a></code></pre></div>
+<a class="sourceLine" id="cb14-79" title="79"><span class="co"># 2. Name the elements of x as the strings in z.</span></a>
+<a class="sourceLine" id="cb14-80" title="80"></a>
+<a class="sourceLine" id="cb14-81" title="81"><span class="co"># 3. Examine the output of</span></a>
+<a class="sourceLine" id="cb14-82" title="82"></a>
+<a class="sourceLine" id="cb14-83" title="83"><span class="kw">unname</span>(x)</a></code></pre></div>
 <!-- >>> -->
 <!-- <<< functions.r -->
 <h1 id="functions">Functions</h1>
@@ -460,8 +457,8 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb15-16" title="16"><span class="co"># then the returned value may be printed on the console.</span></a>
 <a class="sourceLine" id="cb15-17" title="17"><span class="co"># invisible()</span></a>
 <a class="sourceLine" id="cb15-18" title="18"></a>
-<a class="sourceLine" id="cb15-19" title="19"><span class="co"># Some functions used primarily for their side-effects</span></a>
-<a class="sourceLine" id="cb15-20" title="20"><span class="co"># rather than their return value.</span></a>
+<a class="sourceLine" id="cb15-19" title="19"><span class="co"># Some functions are used primarily for their</span></a>
+<a class="sourceLine" id="cb15-20" title="20"><span class="co"># side-effects rather than their return value.</span></a>
 <a class="sourceLine" id="cb15-21" title="21"></a>
 <a class="sourceLine" id="cb15-22" title="22"><span class="co"># User defined functions.</span></a>
 <a class="sourceLine" id="cb15-23" title="23"></a>
@@ -622,69 +619,76 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb15-178" title="178"></a>
 <a class="sourceLine" id="cb15-179" title="179"><span class="co">#    a. cel2fah(100)</span></a>
 <a class="sourceLine" id="cb15-180" title="180"><span class="co">#    b. cel2fah(0)</span></a>
-<a class="sourceLine" id="cb15-181" title="181"><span class="co">#    c. cel2fas(ds)</span></a>
+<a class="sourceLine" id="cb15-181" title="181"><span class="co">#    c. cel2fah(seq(0,100))</span></a>
 <a class="sourceLine" id="cb15-182" title="182"></a>
-<a class="sourceLine" id="cb15-183" title="183"><span class="co"># 4. Try the below.</span></a>
+<a class="sourceLine" id="cb15-183" title="183"><span class="co"># Discuss call c. above.</span></a>
 <a class="sourceLine" id="cb15-184" title="184"></a>
-<a class="sourceLine" id="cb15-185" title="185"><span class="kw">curve</span>(cel2fah, <span class="dv">-50</span>, <span class="dv">50</span>, <span class="dt">xlab =</span> <span class="st">&quot;Celsius&quot;</span>,</a>
-<a class="sourceLine" id="cb15-186" title="186">      <span class="dt">ylab =</span> <span class="st">&quot;Fahrenheit&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;royalblue&quot;</span>)</a>
-<a class="sourceLine" id="cb15-187" title="187"></a>
-<a class="sourceLine" id="cb15-188" title="188"><span class="co"># Functions are objects. We passed a function as an argument</span></a>
-<a class="sourceLine" id="cb15-189" title="189"><span class="co"># to another function.</span></a>
-<a class="sourceLine" id="cb15-190" title="190"></a>
-<a class="sourceLine" id="cb15-191" title="191"><span class="kw">class</span>(cel2fah)</a>
-<a class="sourceLine" id="cb15-192" title="192"><span class="kw">typeof</span>(cel2fah)</a>
-<a class="sourceLine" id="cb15-193" title="193"></a>
-<a class="sourceLine" id="cb15-194" title="194"><span class="co"># Another example of passing a function as an argument to</span></a>
-<a class="sourceLine" id="cb15-195" title="195"><span class="co"># another function.</span></a>
-<a class="sourceLine" id="cb15-196" title="196"></a>
-<a class="sourceLine" id="cb15-197" title="197">deg2rad &lt;-<span class="st"> </span><span class="cf">function</span>(deg) {</a>
-<a class="sourceLine" id="cb15-198" title="198"><span class="kw">return</span>(deg <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">/</span><span class="st"> </span><span class="dv">360</span>);</a>
-<a class="sourceLine" id="cb15-199" title="199">}</a>
-<a class="sourceLine" id="cb15-200" title="200"><span class="kw">curve</span>(sin, <span class="kw">deg2rad</span>(<span class="dv">0</span>), <span class="kw">deg2rad</span>(<span class="dv">360</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb15-201" title="201">      <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;x in radians&quot;</span>);</a>
-<a class="sourceLine" id="cb15-202" title="202"><span class="kw">curve</span>(cos, <span class="kw">deg2rad</span>(<span class="dv">0</span>), <span class="kw">deg2rad</span>(<span class="dv">360</span>), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">add =</span> T);</a>
-<a class="sourceLine" id="cb15-203" title="203"></a>
-<a class="sourceLine" id="cb15-204" title="204"></a>
-<a class="sourceLine" id="cb15-205" title="205"><span class="co">########################</span></a>
-<a class="sourceLine" id="cb15-206" title="206"><span class="co">### ... (three dots) </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb15-207" title="207"><span class="co">########################</span></a>
-<a class="sourceLine" id="cb15-208" title="208"></a>
-<a class="sourceLine" id="cb15-209" title="209">dotdemo &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) {</a>
-<a class="sourceLine" id="cb15-210" title="210">  <span class="kw">cat</span>(<span class="st">&quot;x is: &quot;</span>, x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-211" title="211">  dots &lt;-<span class="st"> </span><span class="kw">list</span>(...);</a>
-<a class="sourceLine" id="cb15-212" title="212">  <span class="kw">cat</span>(<span class="st">&quot;Then: &quot;</span>, dots[[<span class="dv">1</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-213" title="213">}</a>
-<a class="sourceLine" id="cb15-214" title="214"><span class="kw">dotdemo</span>(<span class="st">&quot;stuff&quot;</span>, <span class="st">&quot;morestuff&quot;</span>);</a>
-<a class="sourceLine" id="cb15-215" title="215"></a>
-<a class="sourceLine" id="cb15-216" title="216"></a>
-<a class="sourceLine" id="cb15-217" title="217">dotdemo &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) {</a>
-<a class="sourceLine" id="cb15-218" title="218">  <span class="kw">cat</span>(<span class="st">&quot;x is: &quot;</span>, x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-219" title="219">  dots &lt;-<span class="st"> </span><span class="kw">list</span>(...);</a>
-<a class="sourceLine" id="cb15-220" title="220">  <span class="kw">cat</span>(<span class="st">&quot;y: &quot;</span>, dots<span class="op">$</span>y, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-221" title="221">  <span class="kw">cat</span>(<span class="st">&quot;Then: &quot;</span>, dots[[<span class="dv">2</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-222" title="222">}</a>
-<a class="sourceLine" id="cb15-223" title="223"><span class="kw">dotdemo</span>(<span class="dt">x =</span> <span class="st">&quot;stuff&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;morestuff&quot;</span>, <span class="dv">23</span>);</a>
-<a class="sourceLine" id="cb15-224" title="224"></a>
-<a class="sourceLine" id="cb15-225" title="225"></a>
-<a class="sourceLine" id="cb15-226" title="226"><span class="co">##############################</span></a>
-<a class="sourceLine" id="cb15-227" title="227"><span class="co">### Operators as functions </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb15-228" title="228"><span class="co">##############################</span></a>
-<a class="sourceLine" id="cb15-229" title="229"></a>
-<a class="sourceLine" id="cb15-230" title="230">x &lt;-<span class="st"> </span><span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb15-231" title="231">y &lt;-<span class="st"> </span><span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb15-185" title="185"><span class="co"># You cannot do cel2fah(0,10).</span></a>
+<a class="sourceLine" id="cb15-186" title="186"></a>
+<a class="sourceLine" id="cb15-187" title="187"><span class="co"># 4. Try the below.</span></a>
+<a class="sourceLine" id="cb15-188" title="188"></a>
+<a class="sourceLine" id="cb15-189" title="189"><span class="kw">curve</span>(cel2fah, <span class="dv">-50</span>, <span class="dv">50</span>, <span class="dt">xlab =</span> <span class="st">&quot;Celsius&quot;</span>,</a>
+<a class="sourceLine" id="cb15-190" title="190">      <span class="dt">ylab =</span> <span class="st">&quot;Fahrenheit&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;royalblue&quot;</span>)</a>
+<a class="sourceLine" id="cb15-191" title="191"></a>
+<a class="sourceLine" id="cb15-192" title="192"><span class="co"># Functions are objects. We passed a function as an argument</span></a>
+<a class="sourceLine" id="cb15-193" title="193"><span class="co"># to another function.</span></a>
+<a class="sourceLine" id="cb15-194" title="194"></a>
+<a class="sourceLine" id="cb15-195" title="195"><span class="kw">class</span>(cel2fah)</a>
+<a class="sourceLine" id="cb15-196" title="196"><span class="kw">typeof</span>(cel2fah)</a>
+<a class="sourceLine" id="cb15-197" title="197"></a>
+<a class="sourceLine" id="cb15-198" title="198"><span class="co"># Another example of passing a function as an argument to</span></a>
+<a class="sourceLine" id="cb15-199" title="199"><span class="co"># another function. Trignometric functions such as sin()</span></a>
+<a class="sourceLine" id="cb15-200" title="200"><span class="co"># or cos() take their arguments in radians. But I am more</span></a>
+<a class="sourceLine" id="cb15-201" title="201"><span class="co"># comfortable thinking in degrees.</span></a>
+<a class="sourceLine" id="cb15-202" title="202"></a>
+<a class="sourceLine" id="cb15-203" title="203">deg2rad &lt;-<span class="st"> </span><span class="cf">function</span>(deg) {</a>
+<a class="sourceLine" id="cb15-204" title="204"><span class="kw">return</span>(deg <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">/</span><span class="st"> </span><span class="dv">360</span>);</a>
+<a class="sourceLine" id="cb15-205" title="205">}</a>
+<a class="sourceLine" id="cb15-206" title="206"><span class="kw">curve</span>(sin, <span class="kw">deg2rad</span>(<span class="dv">0</span>), <span class="kw">deg2rad</span>(<span class="dv">360</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb15-207" title="207">      <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;x in radians&quot;</span>);</a>
+<a class="sourceLine" id="cb15-208" title="208"><span class="kw">curve</span>(cos, <span class="kw">deg2rad</span>(<span class="dv">0</span>), <span class="kw">deg2rad</span>(<span class="dv">360</span>), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">add =</span> T);</a>
+<a class="sourceLine" id="cb15-209" title="209"></a>
+<a class="sourceLine" id="cb15-210" title="210"></a>
+<a class="sourceLine" id="cb15-211" title="211"><span class="co">########################</span></a>
+<a class="sourceLine" id="cb15-212" title="212"><span class="co">### ... (three dots) </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb15-213" title="213"><span class="co">########################</span></a>
+<a class="sourceLine" id="cb15-214" title="214"></a>
+<a class="sourceLine" id="cb15-215" title="215">dotdemo1 &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) {</a>
+<a class="sourceLine" id="cb15-216" title="216">  <span class="kw">cat</span>(<span class="st">&quot;x is: &quot;</span>, x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-217" title="217">  vargs &lt;-<span class="st"> </span><span class="kw">list</span>(...);</a>
+<a class="sourceLine" id="cb15-218" title="218">  <span class="kw">cat</span>(<span class="st">&quot;Then: &quot;</span>, vargs[[<span class="dv">1</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-219" title="219">}</a>
+<a class="sourceLine" id="cb15-220" title="220"><span class="kw">dotdemo1</span>(<span class="st">&quot;stuff&quot;</span>, <span class="st">&quot;morestuff&quot;</span>);</a>
+<a class="sourceLine" id="cb15-221" title="221"></a>
+<a class="sourceLine" id="cb15-222" title="222"></a>
+<a class="sourceLine" id="cb15-223" title="223">dotdemo2 &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) {</a>
+<a class="sourceLine" id="cb15-224" title="224">  <span class="kw">cat</span>(<span class="st">&quot;x is: &quot;</span>, x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-225" title="225">  vargs &lt;-<span class="st"> </span><span class="kw">list</span>(...);</a>
+<a class="sourceLine" id="cb15-226" title="226">  <span class="kw">cat</span>(<span class="st">&quot;y as named: &quot;</span>, vargs<span class="op">$</span>y, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-227" title="227">  <span class="kw">cat</span>(<span class="st">&quot;y as positional: &quot;</span>, vargs[[<span class="dv">1</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-228" title="228">  <span class="kw">cat</span>(<span class="st">&quot;Then: &quot;</span>, vargs[[<span class="dv">2</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-229" title="229">}</a>
+<a class="sourceLine" id="cb15-230" title="230"><span class="kw">dotdemo2</span>(<span class="dt">x =</span> <span class="st">&quot;stuff&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;morestuff&quot;</span>, <span class="dv">23</span>);</a>
+<a class="sourceLine" id="cb15-231" title="231"></a>
 <a class="sourceLine" id="cb15-232" title="232"></a>
-<a class="sourceLine" id="cb15-233" title="233">x <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb15-234" title="234"></a>
-<a class="sourceLine" id="cb15-235" title="235"><span class="st">&#39;+&#39;</span>(x,y)</a>
-<a class="sourceLine" id="cb15-236" title="236"><span class="st">&#39;*&#39;</span>(x,y)</a>
-<a class="sourceLine" id="cb15-237" title="237"></a>
-<a class="sourceLine" id="cb15-238" title="238">vecx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.9</span>, <span class="fl">4.1</span>, <span class="fl">3.9</span>, <span class="fl">4.5</span>, <span class="fl">3.7</span>, <span class="fl">45.3</span>, <span class="fl">21.6</span>);</a>
-<a class="sourceLine" id="cb15-239" title="239">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ftsZ&quot;</span>, <span class="st">&quot;sigE&quot;</span>, <span class="st">&quot;bldN&quot;</span>, <span class="st">&quot;whiA&quot;</span>, <span class="st">&quot;whiB&quot;</span>, <span class="st">&quot;rdlA&quot;</span>, <span class="st">&quot;chpA&quot;</span>);</a>
-<a class="sourceLine" id="cb15-240" title="240"><span class="kw">names</span>(vecx) &lt;-<span class="st"> </span>z;</a>
+<a class="sourceLine" id="cb15-233" title="233"><span class="co">##############################</span></a>
+<a class="sourceLine" id="cb15-234" title="234"><span class="co">### Operators as functions </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb15-235" title="235"><span class="co">##############################</span></a>
+<a class="sourceLine" id="cb15-236" title="236"></a>
+<a class="sourceLine" id="cb15-237" title="237">x &lt;-<span class="st"> </span><span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb15-238" title="238">y &lt;-<span class="st"> </span><span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb15-239" title="239"></a>
+<a class="sourceLine" id="cb15-240" title="240">x <span class="op">+</span><span class="st"> </span>y</a>
 <a class="sourceLine" id="cb15-241" title="241"></a>
-<a class="sourceLine" id="cb15-242" title="242"><span class="st">&#39;[&#39;</span>(vecx, <span class="dv">4</span>);</a>
-<a class="sourceLine" id="cb15-243" title="243"><span class="st">&#39;[&#39;</span>(vecx, <span class="st">&quot;whiA&quot;</span>);</a></code></pre></div>
+<a class="sourceLine" id="cb15-242" title="242"><span class="st">&#39;+&#39;</span>(x,y)</a>
+<a class="sourceLine" id="cb15-243" title="243"><span class="st">&#39;*&#39;</span>(x,y)</a>
+<a class="sourceLine" id="cb15-244" title="244"></a>
+<a class="sourceLine" id="cb15-245" title="245">vecx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.9</span>, <span class="fl">4.1</span>, <span class="fl">3.9</span>, <span class="fl">4.5</span>, <span class="fl">3.7</span>, <span class="fl">45.3</span>, <span class="fl">21.6</span>);</a>
+<a class="sourceLine" id="cb15-246" title="246">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ftsZ&quot;</span>, <span class="st">&quot;sigE&quot;</span>, <span class="st">&quot;bldN&quot;</span>, <span class="st">&quot;whiA&quot;</span>, <span class="st">&quot;whiB&quot;</span>, <span class="st">&quot;rdlA&quot;</span>, <span class="st">&quot;chpA&quot;</span>);</a>
+<a class="sourceLine" id="cb15-247" title="247"><span class="kw">names</span>(vecx) &lt;-<span class="st"> </span>z;</a>
+<a class="sourceLine" id="cb15-248" title="248"></a>
+<a class="sourceLine" id="cb15-249" title="249"><span class="st">&#39;[&#39;</span>(vecx, <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb15-250" title="250"><span class="st">&#39;[&#39;</span>(vecx, <span class="st">&quot;whiA&quot;</span>);</a></code></pre></div>
 <!-- >>> -->
 <!-- <<< scopeenv.r -->
 <h1 id="scope-and-environment">Scope and Environment</h1>
