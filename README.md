@@ -80,7 +80,7 @@ In Rstudio, use the drop down menu to do
     File -> New File -> R Script
 
 In the blank R script we will write and run
-the indented lines shown below. Please do this
+the lines of code shown below. Please do this
 with me so I can explain each step.
 
     setwd("u:/")
@@ -687,9 +687,9 @@ rep(seq(1,4), each = 4);
 #################################
 
 # 1. Run the code below.
-#
+
 x <- y <- z <- 42
-#
+
 # 2. Check the values of x, y and z.
 
 
