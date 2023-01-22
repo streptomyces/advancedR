@@ -1,10 +1,10 @@
 <!--
 % Introduction to R
 % Feb 2021
-% Thu Nov 25 14:35:25 2021
+% Sun 22 Jan 2023
 -->
-
 <!-- vim: tw=66 nosmartindent fmr=<<<,>>> cms=<!--%s-->
+<!-- set tw=66 nosmartindent fmr=<<<,>>> cms=<!--%s -->
 
 <!-- <<< readme.md -->
 # readme.md
@@ -55,57 +55,19 @@ Course                       1600  to   1730
 
 ## Limitations
 
-* I use R on a daily basis but not RStudio.
 * The focus of this course is on R syntax and
   techniques rather than statistics.
 * The aim is to clarify the workings of R so that you
   can build your own data analysis solutions and workflows.
 
-[Preparations](preparations.html)
+[Preparations](rstudio.html)
 
 [.](readme.html)
 
 <!-- >>> -->
 
-<!-- <<< preparations.md -->
-# preparations.md
-
-# Installing `tidyverse` and `edgeR` packages
-
-We will do this on the first day at the very beginning of the
-course.
-
-* Make sure RStudio is NOT running.
-* Start R (not RStudio) as the administrator.
-
-Then
-
-    getOption("repos");
-    
-    setRepositories();
-    # In the graphical menu that pops up select
-    # "CRAN" as well as "BioC software".
-
-    chooseCRANmirror()
-    # Select the one in London.
-    
-    getOption("repos");
-    
-    install.packages("BiocManager")
-    BiocManager::install("edgeR")
-    # When asked to update some older packages select "all".
-    # When asked to install from source select "No".
-
-    install.packages("tidyverse")
-
-    # Check whether `readxl` is installed or not.
-    sort(rownames(installed.packages()));
-    # install.packages("readxl");
-
-The above has to be done as the administrator because packages are
-written to directories which are not normally writable by normal
-users.
-
+<!-- <<< rstudio.md -->
+# rstudio.md
 
 # RStudio
 
