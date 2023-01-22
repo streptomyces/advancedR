@@ -95,7 +95,7 @@ with me so I can explain each step.
     
     list.files()
     
-    download.file("https://github.com/streptomyces/advancedR/raw/feb2022/adr.zip", "adr.zip")
+    download.file("https://github.com/streptomyces/advancedR/raw/jan2023/adr.zip", "adr.zip")
     # download.file("https://streptomyces.s3.eu-west-1.amazonaws.com/adr.zip", "adr.zip");
     
     list.files()
