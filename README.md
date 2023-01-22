@@ -2547,7 +2547,7 @@ fc1c7;
 ### Vectorised or non-vectorised ###
 ####################################
 
-set.seed(3141593); # So that we have the same random numbers.
+set.seed(20230201); # So that we have the same random numbers.
 x <- runif(10, min = 3, max = 6);
 y <- runif(10, min = 12, max = 20);
 df <- data.frame(x = x, y = y);
