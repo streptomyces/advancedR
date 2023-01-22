@@ -500,6 +500,13 @@ length(z)
 
 names(x) <- z;
 x;
+names(x);
+
+# Several functions can act as getters and setters.
+
+names(x)[1] <- "rsiG";
+names(x);
+
 
 x["whiA"]; # is the same as x[4];
 
@@ -969,7 +976,7 @@ methods(class = "data.frame");
 
 # installed.packages() where row names are names of packages.
 # To just see the row names of this matrix (e.g. to check whether
-# a package is installed.
+# a package is installed).
 
 sort(rownames(installed.packages()));
 
@@ -1464,9 +1471,14 @@ nht <- read_excel("data/noheader.xlsx", sheet = "hyphal_width",
 nht # Notice the column names.
 
 # You can use colnames() to change the column names to more
-# meaningful ones.
+# meaningful ones after getting your tibble.
 
 colnames(nht) <- c("hw", "strain", "microscope");
+
+# Or specify the column names in the call to read_excel().
+
+nht <- read_excel("data/noheader.xlsx", sheet = "hyphal_width",
+                 col_names = c("hw", "strain", "microscope"));
 
 #########################
 ### Reading CSV files ###
@@ -1516,7 +1528,7 @@ colnames(nht) <- c("hw", "strain", "microscope");
 ### Do the following yourself ###
 #################################
 
-# The sheet named "expression" in the file file.xlsx
+# The sheet named "expression" in the file data/file.xlsx
 # contains the columns named "gene", "control" and
 # "treatment".
 
@@ -1527,6 +1539,8 @@ colnames(nht) <- c("hw", "strain", "microscope");
 
 # 3. Try the command class(expt).
 
+# 4. How will you change the column names "control" to "WT"
+# and "treatment" to "dwhiG"?
 
 ~~~
 
