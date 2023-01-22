@@ -13,16 +13,6 @@
 
 # [https://bit.ly/3pPBwwC](https://bit.ly/3pPBwwC)
 
-## Requirements
-
-* A reasonably capable computer.
-* Installation of R version 4. (4.1.2 is the most recent).
-* Installation of a recent version of RStudio (2021.09.2-382 is
-  the most recent).
-* Administrative rights on your computer will be needed (at least
-  on the first day) to be able to install some required add-on packages
-  for R.
-
 ## Timings for both Mon 30 Jan and Wed 1 Feb 2023
 
 ---------------------        ---------------
@@ -37,7 +27,9 @@ Course                       1600  to   1730
 
 ## As soon as you arrive
 
-* Login to a PC in the training theatre using your institute identity.
+* Login to a PC in the training theatre using your institute identity. This
+  will ensure that everything you do during this course will be available to you
+  after the course.
 
 * Point your web browser to the url shown at the top
   which is [https://bit.ly/3pPBwwC](https://bit.ly/3pPBwwC)
