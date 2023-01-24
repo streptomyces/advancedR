@@ -2671,7 +2671,7 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb36-84" title="84"></a>
 <a class="sourceLine" id="cb36-85" title="85">x &lt;-<span class="st"> </span>hwt<span class="op">$</span>microscope</a>
 <a class="sourceLine" id="cb36-86" title="86"></a>
-<a class="sourceLine" id="cb36-87" title="87">x[<span class="kw">is.na</span>(x)] &lt;-<span class="st"> &quot;E&quot;</span>;</a>
+<a class="sourceLine" id="cb36-87" title="87">x[<span class="kw">is.na</span>(x)] &lt;-<span class="st"> &quot;U&quot;</span>;</a>
 <a class="sourceLine" id="cb36-88" title="88"></a>
 <a class="sourceLine" id="cb36-89" title="89">hwt &lt;-<span class="st"> </span>hwt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">microscope =</span> x)</a>
 <a class="sourceLine" id="cb36-90" title="90"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>

@@ -2884,7 +2884,7 @@ print(hwt[49:60,], n = 30)
 
 x <- hwt$microscope
 
-x[is.na(x)] <- "E";
+x[is.na(x)] <- "U";
 
 hwt <- hwt %>% mutate(microscope = x)
 print(hwt[49:60,], n = 30)
