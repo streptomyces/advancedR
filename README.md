@@ -2869,11 +2869,28 @@ cano = unname(sapply(strepgenes[[1]], canoname)));
 
 # We saw this when doing Factors.
 
-hwf <- read.csv("data/hw.csv", stringsAsFactors = TRUE);
+hwt <- read_csv("data/hw.csv");
 
-tapply(hwf$hw, hwf$strain, mean);
-tapply(hwf$hw, hwf$strain, sd);
+tapply(hwt$hw, hwt$strain, mean);
+tapply(hwt$hw, hwt$strain, sd);
 
+### aggregate() ###
+
+aggregate(hwt$hw, by = list(hwt$microscope, hwt$strain),
+FUN = mean);
+
+# There are NAs in the microscope column.
+print(hwt[49:60,], n = 30)
+
+x <- hwt$microscope
+
+x[is.na(x)] <- "E";
+
+hwt <- hwt %>% mutate(microscope = x)
+print(hwt[49:60,], n = 30)
+
+aggregate(hwt$hw, by = list(hwt$microscope, hwt$strain),
+FUN = mean);
 ~~~
 
 <!-- >>> -->
@@ -2998,11 +3015,9 @@ files
 temp <- c("wt", "hfq");
 groups <- rep(temp, each = 2);
 
-fg <- data.frame(files = files, group = groups);
+fg <- data.frame(files = files, group = factor(groups));
 fg;
 
-# Both columns of fg are factors. So we can call levels() on them.
-levels(fg$files);
 levels(fg$group);
 
 # labels for each sample.
@@ -3085,8 +3100,8 @@ names(d)
 
 # 3. Have a look at the help for rpkm().
 
-# 4. Now use rpkm() to get the RPKMs and store them in
-# wt.hfq.rpkm.
+# 4. Now use rpkmByGroup() to get the RPKMs and store them
+# in wt.hfq.rpkm.
 
 # 5.  Examine the top of wt.hfq.rpkm using head().
 
@@ -3197,7 +3212,7 @@ log2lin
 
 # 4. Log of zero is -Inf.
 
-# 5. Raise the base to the logFC value to get the linear
+# 5. Raise the base (2) to the logFC value to get the linear
 # fold change.
 
 
