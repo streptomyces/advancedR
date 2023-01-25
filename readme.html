@@ -26,7 +26,7 @@ a:hover {color: magenta; text-decoration: none}
 
 <!--
 % Introduction to R
-% Feb 2021
+% January 2023
 % Sun 22 Jan 2023
 -->
 <!-- vim: tw=66 nosmartindent fmr=<<<,>>> cms=<!--%s-->
@@ -2624,60 +2624,70 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb36-37" title="37"><span class="co"># Apply a function over a list or a vector.</span></a>
 <a class="sourceLine" id="cb36-38" title="38"><span class="co"># Returned list is as long as the argument.</span></a>
 <a class="sourceLine" id="cb36-39" title="39"></a>
-<a class="sourceLine" id="cb36-40" title="40"><span class="co"># Single column data frame.</span></a>
-<a class="sourceLine" id="cb36-41" title="41">strepgenes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/strepGenes.txt&quot;</span>, <span class="dt">header =</span> F,</a>
-<a class="sourceLine" id="cb36-42" title="42">                       <span class="dt">stringsAsFactors =</span> F);</a>
-<a class="sourceLine" id="cb36-43" title="43"></a>
-<a class="sourceLine" id="cb36-44" title="44"><span class="co"># Function to apply</span></a>
-<a class="sourceLine" id="cb36-45" title="45">canoname &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
-<a class="sourceLine" id="cb36-46" title="46">spl &lt;-<span class="st"> </span><span class="kw">strsplit</span>(x, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">s+&quot;</span>, <span class="dt">perl =</span> <span class="ot">TRUE</span>);</a>
-<a class="sourceLine" id="cb36-47" title="47">cano &lt;-<span class="st"> </span>spl[[<span class="dv">1</span>]][<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&quot;SVEN_|SVEN15_|vnz_|^-$&quot;</span>,</a>
-<a class="sourceLine" id="cb36-48" title="48">                        spl[[<span class="dv">1</span>]], <span class="dt">perl =</span> <span class="ot">TRUE</span>)];</a>
-<a class="sourceLine" id="cb36-49" title="49"><span class="kw">return</span>(cano);</a>
-<a class="sourceLine" id="cb36-50" title="50">}</a>
-<a class="sourceLine" id="cb36-51" title="51"></a>
-<a class="sourceLine" id="cb36-52" title="52"><span class="kw">lapply</span>(strepgenes[[<span class="dv">1</span>]], canoname); <span class="co"># a list</span></a>
+<a class="sourceLine" id="cb36-40" title="40">y &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">runif</span>(<span class="dv">300</span>, <span class="dt">min =</span> <span class="dv">2</span>, <span class="dt">max =</span> <span class="dv">6</span>));</a>
+<a class="sourceLine" id="cb36-41" title="41">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">300</span>)</a>
+<a class="sourceLine" id="cb36-42" title="42">z &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y);</a>
+<a class="sourceLine" id="cb36-43" title="43">mod &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> z)</a>
+<a class="sourceLine" id="cb36-44" title="44"><span class="kw">plot</span>(z<span class="op">$</span>x, z<span class="op">$</span>y, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>));</a>
+<a class="sourceLine" id="cb36-45" title="45"><span class="kw">abline</span>(mod);</a>
+<a class="sourceLine" id="cb36-46" title="46"></a>
+<a class="sourceLine" id="cb36-47" title="47"></a>
+<a class="sourceLine" id="cb36-48" title="48"><span class="kw">lapply</span>(z, summary);</a>
+<a class="sourceLine" id="cb36-49" title="49"></a>
+<a class="sourceLine" id="cb36-50" title="50"><span class="co"># Single column data frame.</span></a>
+<a class="sourceLine" id="cb36-51" title="51">strepgenes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/strepGenes.txt&quot;</span>, <span class="dt">header =</span> F,</a>
+<a class="sourceLine" id="cb36-52" title="52">                       <span class="dt">stringsAsFactors =</span> F);</a>
 <a class="sourceLine" id="cb36-53" title="53"></a>
-<a class="sourceLine" id="cb36-54" title="54"><span class="kw">unlist</span>(<span class="kw">lapply</span>(strepgenes[[<span class="dv">1</span>]], canoname)); <span class="co"># a vector.</span></a>
-<a class="sourceLine" id="cb36-55" title="55"></a>
-<a class="sourceLine" id="cb36-56" title="56"></a>
-<a class="sourceLine" id="cb36-57" title="57"><span class="co">### sapply() </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb36-58" title="58"></a>
-<a class="sourceLine" id="cb36-59" title="59"><span class="co"># Will try to simplify the return value to a vector.</span></a>
-<a class="sourceLine" id="cb36-60" title="60"></a>
-<a class="sourceLine" id="cb36-61" title="61"><span class="kw">sapply</span>(strepgenes[[<span class="dv">1</span>]], canoname); <span class="co"># named vector</span></a>
-<a class="sourceLine" id="cb36-62" title="62"></a>
-<a class="sourceLine" id="cb36-63" title="63"><span class="kw">unname</span>(<span class="kw">sapply</span>(strepgenes[[<span class="dv">1</span>]], canoname));</a>
-<a class="sourceLine" id="cb36-64" title="64"></a>
-<a class="sourceLine" id="cb36-65" title="65">temp &lt;-<span class="st"> </span><span class="kw">cbind</span>(strepgenes,</a>
-<a class="sourceLine" id="cb36-66" title="66"><span class="dt">cano =</span> <span class="kw">unname</span>(<span class="kw">sapply</span>(strepgenes[[<span class="dv">1</span>]], canoname)));</a>
-<a class="sourceLine" id="cb36-67" title="67"></a>
-<a class="sourceLine" id="cb36-68" title="68"><span class="co">### tapply() </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb36-69" title="69"></a>
-<a class="sourceLine" id="cb36-70" title="70"><span class="co"># We saw this when doing Factors.</span></a>
-<a class="sourceLine" id="cb36-71" title="71"></a>
-<a class="sourceLine" id="cb36-72" title="72">hwt &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/hw.csv&quot;</span>);</a>
-<a class="sourceLine" id="cb36-73" title="73"></a>
-<a class="sourceLine" id="cb36-74" title="74"><span class="kw">tapply</span>(hwt<span class="op">$</span>hw, hwt<span class="op">$</span>strain, mean);</a>
-<a class="sourceLine" id="cb36-75" title="75"><span class="kw">tapply</span>(hwt<span class="op">$</span>hw, hwt<span class="op">$</span>strain, sd);</a>
-<a class="sourceLine" id="cb36-76" title="76"></a>
-<a class="sourceLine" id="cb36-77" title="77"><span class="co">### aggregate() </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb36-78" title="78"></a>
-<a class="sourceLine" id="cb36-79" title="79"><span class="kw">aggregate</span>(hwt<span class="op">$</span>hw, <span class="dt">by =</span> <span class="kw">list</span>(hwt<span class="op">$</span>microscope, hwt<span class="op">$</span>strain),</a>
-<a class="sourceLine" id="cb36-80" title="80"><span class="dt">FUN =</span> mean);</a>
+<a class="sourceLine" id="cb36-54" title="54"><span class="co"># Function to apply</span></a>
+<a class="sourceLine" id="cb36-55" title="55">canoname &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb36-56" title="56">spl &lt;-<span class="st"> </span><span class="kw">strsplit</span>(x, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">s+&quot;</span>, <span class="dt">perl =</span> <span class="ot">TRUE</span>);</a>
+<a class="sourceLine" id="cb36-57" title="57">cano &lt;-<span class="st"> </span>spl[[<span class="dv">1</span>]][<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&quot;SVEN_|SVEN15_|vnz_|^-$&quot;</span>,</a>
+<a class="sourceLine" id="cb36-58" title="58">                        spl[[<span class="dv">1</span>]], <span class="dt">perl =</span> <span class="ot">TRUE</span>)];</a>
+<a class="sourceLine" id="cb36-59" title="59"><span class="kw">return</span>(cano);</a>
+<a class="sourceLine" id="cb36-60" title="60">}</a>
+<a class="sourceLine" id="cb36-61" title="61"></a>
+<a class="sourceLine" id="cb36-62" title="62"><span class="kw">lapply</span>(strepgenes[[<span class="dv">1</span>]], canoname); <span class="co"># a list</span></a>
+<a class="sourceLine" id="cb36-63" title="63"></a>
+<a class="sourceLine" id="cb36-64" title="64"><span class="kw">unlist</span>(<span class="kw">lapply</span>(strepgenes[[<span class="dv">1</span>]], canoname)); <span class="co"># a vector.</span></a>
+<a class="sourceLine" id="cb36-65" title="65"></a>
+<a class="sourceLine" id="cb36-66" title="66"></a>
+<a class="sourceLine" id="cb36-67" title="67"><span class="co">### sapply() </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb36-68" title="68"></a>
+<a class="sourceLine" id="cb36-69" title="69"><span class="co"># Will try to simplify the return value to a vector.</span></a>
+<a class="sourceLine" id="cb36-70" title="70"></a>
+<a class="sourceLine" id="cb36-71" title="71"><span class="kw">sapply</span>(strepgenes[[<span class="dv">1</span>]], canoname); <span class="co"># named vector</span></a>
+<a class="sourceLine" id="cb36-72" title="72"></a>
+<a class="sourceLine" id="cb36-73" title="73"><span class="kw">unname</span>(<span class="kw">sapply</span>(strepgenes[[<span class="dv">1</span>]], canoname));</a>
+<a class="sourceLine" id="cb36-74" title="74"></a>
+<a class="sourceLine" id="cb36-75" title="75">temp &lt;-<span class="st"> </span><span class="kw">cbind</span>(strepgenes,</a>
+<a class="sourceLine" id="cb36-76" title="76"><span class="dt">cano =</span> <span class="kw">unname</span>(<span class="kw">sapply</span>(strepgenes[[<span class="dv">1</span>]], canoname)));</a>
+<a class="sourceLine" id="cb36-77" title="77"></a>
+<a class="sourceLine" id="cb36-78" title="78"><span class="co">### tapply() </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb36-79" title="79"></a>
+<a class="sourceLine" id="cb36-80" title="80"><span class="co"># We saw this when doing Factors.</span></a>
 <a class="sourceLine" id="cb36-81" title="81"></a>
-<a class="sourceLine" id="cb36-82" title="82"><span class="co"># There are NAs in the microscope column.</span></a>
-<a class="sourceLine" id="cb36-83" title="83"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb36-84" title="84"></a>
-<a class="sourceLine" id="cb36-85" title="85">x &lt;-<span class="st"> </span>hwt<span class="op">$</span>microscope</a>
+<a class="sourceLine" id="cb36-82" title="82">hwt &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/hw.csv&quot;</span>);</a>
+<a class="sourceLine" id="cb36-83" title="83"></a>
+<a class="sourceLine" id="cb36-84" title="84"><span class="kw">tapply</span>(hwt<span class="op">$</span>hw, hwt<span class="op">$</span>strain, mean);</a>
+<a class="sourceLine" id="cb36-85" title="85"><span class="kw">tapply</span>(hwt<span class="op">$</span>hw, hwt<span class="op">$</span>strain, sd);</a>
 <a class="sourceLine" id="cb36-86" title="86"></a>
-<a class="sourceLine" id="cb36-87" title="87">x[<span class="kw">is.na</span>(x)] &lt;-<span class="st"> &quot;U&quot;</span>;</a>
+<a class="sourceLine" id="cb36-87" title="87"><span class="co">### aggregate() </span><span class="al">###</span></a>
 <a class="sourceLine" id="cb36-88" title="88"></a>
-<a class="sourceLine" id="cb36-89" title="89">hwt &lt;-<span class="st"> </span>hwt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">microscope =</span> x)</a>
-<a class="sourceLine" id="cb36-90" title="90"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb36-89" title="89"><span class="kw">aggregate</span>(hwt<span class="op">$</span>hw, <span class="dt">by =</span> <span class="kw">list</span>(hwt<span class="op">$</span>microscope, hwt<span class="op">$</span>strain),</a>
+<a class="sourceLine" id="cb36-90" title="90"><span class="dt">FUN =</span> mean);</a>
 <a class="sourceLine" id="cb36-91" title="91"></a>
-<a class="sourceLine" id="cb36-92" title="92"><span class="kw">aggregate</span>(hwt<span class="op">$</span>hw, <span class="dt">by =</span> <span class="kw">list</span>(hwt<span class="op">$</span>microscope, hwt<span class="op">$</span>strain),</a>
-<a class="sourceLine" id="cb36-93" title="93"><span class="dt">FUN =</span> mean);</a></code></pre></div>
+<a class="sourceLine" id="cb36-92" title="92"><span class="co"># There are NAs in the microscope column.</span></a>
+<a class="sourceLine" id="cb36-93" title="93"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb36-94" title="94"></a>
+<a class="sourceLine" id="cb36-95" title="95">x &lt;-<span class="st"> </span>hwt<span class="op">$</span>microscope</a>
+<a class="sourceLine" id="cb36-96" title="96"></a>
+<a class="sourceLine" id="cb36-97" title="97">x[<span class="kw">is.na</span>(x)] &lt;-<span class="st"> &quot;U&quot;</span>;</a>
+<a class="sourceLine" id="cb36-98" title="98"></a>
+<a class="sourceLine" id="cb36-99" title="99">hwt &lt;-<span class="st"> </span>hwt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">microscope =</span> x)</a>
+<a class="sourceLine" id="cb36-100" title="100"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb36-101" title="101"></a>
+<a class="sourceLine" id="cb36-102" title="102"><span class="kw">aggregate</span>(hwt<span class="op">$</span>hw, <span class="dt">by =</span> <span class="kw">list</span>(hwt<span class="op">$</span>microscope, hwt<span class="op">$</span>strain),</a>
+<a class="sourceLine" id="cb36-103" title="103"><span class="dt">FUN =</span> mean);</a></code></pre></div>
 <!-- >>> -->
 <!-- <<< attach.r -->
 <h1 id="attach">Attach</h1>

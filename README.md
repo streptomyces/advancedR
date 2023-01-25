@@ -1,6 +1,6 @@
 <!--
 % Introduction to R
-% Feb 2021
+% January 2023
 % Sun 22 Jan 2023
 -->
 <!-- vim: tw=66 nosmartindent fmr=<<<,>>> cms=<!--%s-->
@@ -2836,6 +2836,16 @@ y
 
 # Apply a function over a list or a vector.
 # Returned list is as long as the argument.
+
+y <- sort(runif(300, min = 2, max = 6));
+x <- seq(1:300)
+z <- data.frame(x = x, y = y);
+mod <- lm(y ~ x, data = z)
+plot(z$x, z$y, ylim = c(0,6));
+abline(mod);
+
+
+lapply(z, summary);
 
 # Single column data frame.
 strepgenes <- read.csv("data/strepGenes.txt", header = F,
