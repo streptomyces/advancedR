@@ -2904,8 +2904,9 @@ FUN = mean);
 ### Attaching a data frame ###
 ##############################
 
-# It is a convenience feature allowing you to refer to df$column
-# as just column.
+# It is a convenience feature allowing you to refer to
+# columns of data frames by their names only rather
+# than as df$colname
 
 rm(list = ls());
 
@@ -2928,7 +2929,6 @@ search()
 detach(df)
 
 search()
-
 
 ~~~
 
@@ -3606,9 +3606,10 @@ ggplot(gdf, aes(hour, logexpr, colour = strain)) +
   geom_path()
 
 
+# Suppressing some legends.
 ggplot(gdf, aes(hour, logexpr, colour = strain)) +
   geom_point(size = 3) +
-  geom_path(size = 1.2) +
+  geom_path(size = 1.2, show.legend = F) +
   theme_bw()
 
 
@@ -3623,6 +3624,10 @@ p1 <- p1 + scale_colour_manual(labels = c("tfag deletion", "m600"),
 values = unname(gdfcols), name = "Strain")
 
 p1
+
+# Two ways of suppressing the legend.
+p1 + guides(colour = "none");
+p1 + theme(legend.position = "none")
 
 
 # Axis labels and grid lines.
@@ -3640,11 +3645,11 @@ p3
 # Main title
 
 plot.title <- paste0("Expression of SpoF in M600 and",
-" tfaG deletion strains\n",
-" over 60 hours of growth in shaken flask");
+" tfaG deletion strains");
+plot.subtitle <- paste0("From 0 to 60 hours");
 
-p4 <- p3 + 
-ggtitle(plot.title);
+p4 <- p3 + labs(title = plot.title, subtitle = plot.subtitle);
+# help("labs")
 p4
 
 
@@ -3871,7 +3876,6 @@ ggplot(sldf, aes(x = strain)) +
   geom_bar(colour = "brown", fill = "brown") +
   facet_wrap(~medium)
 
-
 # geom_col() does not count. Use this if you have
 # counts.
 
@@ -4001,7 +4005,6 @@ ggplot(df, aes(sep.dist, fill = strain)) +
 ggplot(df, aes(sep.dist, fill = strain)) +
   geom_histogram(alpha = 1, bins = 40, colour = "grey80") +
   facet_wrap(~strain)
-
 
 
 h1 <- ggplot(df, aes(sep.dist, fill = strain)) +
