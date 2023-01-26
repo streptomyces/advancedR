@@ -2383,7 +2383,7 @@ saveRDS(tib, file = "tib.rds");
 
 rm(list = ls());
 
-set.seed(56)
+set.seed(20230201); # So that we have the same random numbers.
 x <- as.integer(runif(10, 1, 50) * 7)
 x
 sx <- sort(x)
@@ -2809,9 +2809,14 @@ rm(list = ls());
 
 # Make a matrix
 
+set.seed(20230201); # So that we have the same random numbers.
 x <- runif(60, min = 20, max = 30)
 dim(x) <- c(15, 4);
 x
+
+d <- as.data.frame(x);
+d
+
 
 # Define a function to be applied later.
 
@@ -2822,58 +2827,46 @@ return(arg1 - mean(arg1));
 # Apply the function to each row of x
 
 apply(x, 1, apfun);
+apply(d, 1, apfun);
 
 # Each application results in a column in the returned matrix.
 # Hence the transpose below.
 
 t(apply(x, 1, apfun));
+t(apply(d, 1, apfun));
 
-y <- cbind(x, t(apply(x, 1, apfun)));
-y
+# Apply the function to each column of x
 
+apply(x, 2, apfun);
+apply(d, 2, apfun);
 
-### lapply() ###
+# You still get one column per application.
 
-# Apply a function over a list or a vector.
-# Returned list is as long as the argument.
+# If each application returns a single value then
 
-y <- sort(runif(300, min = 2, max = 6));
-x <- seq(1:300)
-z <- data.frame(x = x, y = y);
-mod <- lm(y ~ x, data = z)
-plot(z$x, z$y, ylim = c(0,6));
-abline(mod);
+# The option simplify is TRUE by default.
 
+apply(x, 2, FUN = apfun, simplify = T);
 
-lapply(z, summary);
-
-# Single column data frame.
-strepgenes <- read.csv("data/strepGenes.txt", header = F,
-                       stringsAsFactors = F);
-
-# Function to apply
-canoname <- function(x) {
-spl <- strsplit(x, "\\s+", perl = TRUE);
-cano <- spl[[1]][!grepl("SVEN_|SVEN15_|vnz_|^-$",
-                        spl[[1]], perl = TRUE)];
-return(cano);
-}
-
-lapply(strepgenes[[1]], canoname); # a list
-
-unlist(lapply(strepgenes[[1]], canoname)); # a vector.
+# Below gives a list with one element for each application
+# of FUN
+apply(x, 2, FUN = apfun, simplify = F);
 
 
-### sapply() ###
+### lapply() and sapply() ###
+# Apply a function over a List or a Vector.
+# sapply() tries to simplify the return value to a vector or
+# matrix.
 
-# Will try to simplify the return value to a vector.
+lapply(x, apfun) # Matrices are vectors with dimensions!
+sapply(x, apfun) # Matrices are vectors with dimensions!
 
-sapply(strepgenes[[1]], canoname); # named vector
+# Data frames are lists of columns.
+lapply(d, apfun)
+sapply(d, apfun) # Same as apply(d, 2, apfun);
 
-unname(sapply(strepgenes[[1]], canoname));
-
-temp <- cbind(strepgenes,
-cano = unname(sapply(strepgenes[[1]], canoname)));
+lapply(d, mean)
+sapply(d, mean)
 
 ### tapply() ###
 
@@ -2883,6 +2876,7 @@ hwt <- read_csv("data/hw.csv");
 
 tapply(hwt$hw, hwt$strain, mean);
 tapply(hwt$hw, hwt$strain, sd);
+tapply(hwt$hw, hwt[, c("strain", "microscope")], sd);
 
 ### aggregate() ###
 
@@ -2893,9 +2887,7 @@ FUN = mean);
 print(hwt[49:60,], n = 30)
 
 x <- hwt$microscope
-
 x[is.na(x)] <- "U";
-
 hwt <- hwt %>% mutate(microscope = x)
 print(hwt[49:60,], n = 30)
 

@@ -2188,7 +2188,7 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb33-9" title="9"></a>
 <a class="sourceLine" id="cb33-10" title="10"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>());</a>
 <a class="sourceLine" id="cb33-11" title="11"></a>
-<a class="sourceLine" id="cb33-12" title="12"><span class="kw">set.seed</span>(<span class="dv">56</span>)</a>
+<a class="sourceLine" id="cb33-12" title="12"><span class="kw">set.seed</span>(<span class="dv">20230201</span>); <span class="co"># So that we have the same random numbers.</span></a>
 <a class="sourceLine" id="cb33-13" title="13">x &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="kw">runif</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">50</span>) <span class="op">*</span><span class="st"> </span><span class="dv">7</span>)</a>
 <a class="sourceLine" id="cb33-14" title="14">x</a>
 <a class="sourceLine" id="cb33-15" title="15">sx &lt;-<span class="st"> </span><span class="kw">sort</span>(x)</a>
@@ -2596,98 +2596,90 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb36-9" title="9"></a>
 <a class="sourceLine" id="cb36-10" title="10"><span class="co"># Make a matrix</span></a>
 <a class="sourceLine" id="cb36-11" title="11"></a>
-<a class="sourceLine" id="cb36-12" title="12">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">60</span>, <span class="dt">min =</span> <span class="dv">20</span>, <span class="dt">max =</span> <span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb36-13" title="13"><span class="kw">dim</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">4</span>);</a>
-<a class="sourceLine" id="cb36-14" title="14">x</a>
-<a class="sourceLine" id="cb36-15" title="15"></a>
-<a class="sourceLine" id="cb36-16" title="16"><span class="co"># Define a function to be applied later.</span></a>
-<a class="sourceLine" id="cb36-17" title="17"></a>
-<a class="sourceLine" id="cb36-18" title="18">apfun &lt;-<span class="st"> </span><span class="cf">function</span>(arg1) {</a>
-<a class="sourceLine" id="cb36-19" title="19"><span class="kw">return</span>(arg1 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(arg1));</a>
-<a class="sourceLine" id="cb36-20" title="20">}</a>
-<a class="sourceLine" id="cb36-21" title="21"></a>
-<a class="sourceLine" id="cb36-22" title="22"><span class="co"># Apply the function to each row of x</span></a>
-<a class="sourceLine" id="cb36-23" title="23"></a>
-<a class="sourceLine" id="cb36-24" title="24"><span class="kw">apply</span>(x, <span class="dv">1</span>, apfun);</a>
-<a class="sourceLine" id="cb36-25" title="25"></a>
-<a class="sourceLine" id="cb36-26" title="26"><span class="co"># Each application results in a column in the returned matrix.</span></a>
-<a class="sourceLine" id="cb36-27" title="27"><span class="co"># Hence the transpose below.</span></a>
+<a class="sourceLine" id="cb36-12" title="12"><span class="kw">set.seed</span>(<span class="dv">20230201</span>); <span class="co"># So that we have the same random numbers.</span></a>
+<a class="sourceLine" id="cb36-13" title="13">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">60</span>, <span class="dt">min =</span> <span class="dv">20</span>, <span class="dt">max =</span> <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb36-14" title="14"><span class="kw">dim</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb36-15" title="15">x</a>
+<a class="sourceLine" id="cb36-16" title="16"></a>
+<a class="sourceLine" id="cb36-17" title="17">d &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(x);</a>
+<a class="sourceLine" id="cb36-18" title="18">d</a>
+<a class="sourceLine" id="cb36-19" title="19"></a>
+<a class="sourceLine" id="cb36-20" title="20"></a>
+<a class="sourceLine" id="cb36-21" title="21"><span class="co"># Define a function to be applied later.</span></a>
+<a class="sourceLine" id="cb36-22" title="22"></a>
+<a class="sourceLine" id="cb36-23" title="23">apfun &lt;-<span class="st"> </span><span class="cf">function</span>(arg1) {</a>
+<a class="sourceLine" id="cb36-24" title="24"><span class="kw">return</span>(arg1 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(arg1));</a>
+<a class="sourceLine" id="cb36-25" title="25">}</a>
+<a class="sourceLine" id="cb36-26" title="26"></a>
+<a class="sourceLine" id="cb36-27" title="27"><span class="co"># Apply the function to each row of x</span></a>
 <a class="sourceLine" id="cb36-28" title="28"></a>
-<a class="sourceLine" id="cb36-29" title="29"><span class="kw">t</span>(<span class="kw">apply</span>(x, <span class="dv">1</span>, apfun));</a>
-<a class="sourceLine" id="cb36-30" title="30"></a>
-<a class="sourceLine" id="cb36-31" title="31">y &lt;-<span class="st"> </span><span class="kw">cbind</span>(x, <span class="kw">t</span>(<span class="kw">apply</span>(x, <span class="dv">1</span>, apfun)));</a>
-<a class="sourceLine" id="cb36-32" title="32">y</a>
-<a class="sourceLine" id="cb36-33" title="33"></a>
+<a class="sourceLine" id="cb36-29" title="29"><span class="kw">apply</span>(x, <span class="dv">1</span>, apfun);</a>
+<a class="sourceLine" id="cb36-30" title="30"><span class="kw">apply</span>(d, <span class="dv">1</span>, apfun);</a>
+<a class="sourceLine" id="cb36-31" title="31"></a>
+<a class="sourceLine" id="cb36-32" title="32"><span class="co"># Each application results in a column in the returned matrix.</span></a>
+<a class="sourceLine" id="cb36-33" title="33"><span class="co"># Hence the transpose below.</span></a>
 <a class="sourceLine" id="cb36-34" title="34"></a>
-<a class="sourceLine" id="cb36-35" title="35"><span class="co">### lapply() </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb36-36" title="36"></a>
-<a class="sourceLine" id="cb36-37" title="37"><span class="co"># Apply a function over a list or a vector.</span></a>
-<a class="sourceLine" id="cb36-38" title="38"><span class="co"># Returned list is as long as the argument.</span></a>
+<a class="sourceLine" id="cb36-35" title="35"><span class="kw">t</span>(<span class="kw">apply</span>(x, <span class="dv">1</span>, apfun));</a>
+<a class="sourceLine" id="cb36-36" title="36"><span class="kw">t</span>(<span class="kw">apply</span>(d, <span class="dv">1</span>, apfun));</a>
+<a class="sourceLine" id="cb36-37" title="37"></a>
+<a class="sourceLine" id="cb36-38" title="38"><span class="co"># Apply the function to each column of x</span></a>
 <a class="sourceLine" id="cb36-39" title="39"></a>
-<a class="sourceLine" id="cb36-40" title="40">y &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">runif</span>(<span class="dv">300</span>, <span class="dt">min =</span> <span class="dv">2</span>, <span class="dt">max =</span> <span class="dv">6</span>));</a>
-<a class="sourceLine" id="cb36-41" title="41">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">300</span>)</a>
-<a class="sourceLine" id="cb36-42" title="42">z &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y);</a>
-<a class="sourceLine" id="cb36-43" title="43">mod &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> z)</a>
-<a class="sourceLine" id="cb36-44" title="44"><span class="kw">plot</span>(z<span class="op">$</span>x, z<span class="op">$</span>y, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">6</span>));</a>
-<a class="sourceLine" id="cb36-45" title="45"><span class="kw">abline</span>(mod);</a>
+<a class="sourceLine" id="cb36-40" title="40"><span class="kw">apply</span>(x, <span class="dv">2</span>, apfun);</a>
+<a class="sourceLine" id="cb36-41" title="41"><span class="kw">apply</span>(d, <span class="dv">2</span>, apfun);</a>
+<a class="sourceLine" id="cb36-42" title="42"></a>
+<a class="sourceLine" id="cb36-43" title="43"><span class="co"># You still get one column per application.</span></a>
+<a class="sourceLine" id="cb36-44" title="44"></a>
+<a class="sourceLine" id="cb36-45" title="45"><span class="co"># If each application returns a single value then</span></a>
 <a class="sourceLine" id="cb36-46" title="46"></a>
-<a class="sourceLine" id="cb36-47" title="47"></a>
-<a class="sourceLine" id="cb36-48" title="48"><span class="kw">lapply</span>(z, summary);</a>
-<a class="sourceLine" id="cb36-49" title="49"></a>
-<a class="sourceLine" id="cb36-50" title="50"><span class="co"># Single column data frame.</span></a>
-<a class="sourceLine" id="cb36-51" title="51">strepgenes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/strepGenes.txt&quot;</span>, <span class="dt">header =</span> F,</a>
-<a class="sourceLine" id="cb36-52" title="52">                       <span class="dt">stringsAsFactors =</span> F);</a>
-<a class="sourceLine" id="cb36-53" title="53"></a>
-<a class="sourceLine" id="cb36-54" title="54"><span class="co"># Function to apply</span></a>
-<a class="sourceLine" id="cb36-55" title="55">canoname &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
-<a class="sourceLine" id="cb36-56" title="56">spl &lt;-<span class="st"> </span><span class="kw">strsplit</span>(x, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">s+&quot;</span>, <span class="dt">perl =</span> <span class="ot">TRUE</span>);</a>
-<a class="sourceLine" id="cb36-57" title="57">cano &lt;-<span class="st"> </span>spl[[<span class="dv">1</span>]][<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&quot;SVEN_|SVEN15_|vnz_|^-$&quot;</span>,</a>
-<a class="sourceLine" id="cb36-58" title="58">                        spl[[<span class="dv">1</span>]], <span class="dt">perl =</span> <span class="ot">TRUE</span>)];</a>
-<a class="sourceLine" id="cb36-59" title="59"><span class="kw">return</span>(cano);</a>
-<a class="sourceLine" id="cb36-60" title="60">}</a>
-<a class="sourceLine" id="cb36-61" title="61"></a>
-<a class="sourceLine" id="cb36-62" title="62"><span class="kw">lapply</span>(strepgenes[[<span class="dv">1</span>]], canoname); <span class="co"># a list</span></a>
+<a class="sourceLine" id="cb36-47" title="47"><span class="co"># The option simplify is TRUE by default.</span></a>
+<a class="sourceLine" id="cb36-48" title="48"></a>
+<a class="sourceLine" id="cb36-49" title="49"><span class="kw">apply</span>(x, <span class="dv">2</span>, <span class="dt">FUN =</span> apfun, <span class="dt">simplify =</span> T);</a>
+<a class="sourceLine" id="cb36-50" title="50"></a>
+<a class="sourceLine" id="cb36-51" title="51"><span class="co"># Below gives a list with one element for each application</span></a>
+<a class="sourceLine" id="cb36-52" title="52"><span class="co"># of FUN</span></a>
+<a class="sourceLine" id="cb36-53" title="53"><span class="kw">apply</span>(x, <span class="dv">2</span>, <span class="dt">FUN =</span> apfun, <span class="dt">simplify =</span> F);</a>
+<a class="sourceLine" id="cb36-54" title="54"></a>
+<a class="sourceLine" id="cb36-55" title="55"></a>
+<a class="sourceLine" id="cb36-56" title="56"><span class="co">### lapply() and sapply() </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb36-57" title="57"><span class="co"># Apply a function over a List or a Vector.</span></a>
+<a class="sourceLine" id="cb36-58" title="58"><span class="co"># sapply() tries to simplify the return value to a vector or</span></a>
+<a class="sourceLine" id="cb36-59" title="59"><span class="co"># matrix.</span></a>
+<a class="sourceLine" id="cb36-60" title="60"></a>
+<a class="sourceLine" id="cb36-61" title="61"><span class="kw">lapply</span>(x, apfun) <span class="co"># Matrices are vectors with dimensions!</span></a>
+<a class="sourceLine" id="cb36-62" title="62"><span class="kw">sapply</span>(x, apfun) <span class="co"># Matrices are vectors with dimensions!</span></a>
 <a class="sourceLine" id="cb36-63" title="63"></a>
-<a class="sourceLine" id="cb36-64" title="64"><span class="kw">unlist</span>(<span class="kw">lapply</span>(strepgenes[[<span class="dv">1</span>]], canoname)); <span class="co"># a vector.</span></a>
-<a class="sourceLine" id="cb36-65" title="65"></a>
-<a class="sourceLine" id="cb36-66" title="66"></a>
-<a class="sourceLine" id="cb36-67" title="67"><span class="co">### sapply() </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb36-68" title="68"></a>
-<a class="sourceLine" id="cb36-69" title="69"><span class="co"># Will try to simplify the return value to a vector.</span></a>
+<a class="sourceLine" id="cb36-64" title="64"><span class="co"># Data frames are lists of columns.</span></a>
+<a class="sourceLine" id="cb36-65" title="65"><span class="kw">lapply</span>(d, apfun)</a>
+<a class="sourceLine" id="cb36-66" title="66"><span class="kw">sapply</span>(d, apfun) <span class="co"># Same as apply(d, 2, apfun);</span></a>
+<a class="sourceLine" id="cb36-67" title="67"></a>
+<a class="sourceLine" id="cb36-68" title="68"><span class="kw">lapply</span>(d, mean)</a>
+<a class="sourceLine" id="cb36-69" title="69"><span class="kw">sapply</span>(d, mean)</a>
 <a class="sourceLine" id="cb36-70" title="70"></a>
-<a class="sourceLine" id="cb36-71" title="71"><span class="kw">sapply</span>(strepgenes[[<span class="dv">1</span>]], canoname); <span class="co"># named vector</span></a>
+<a class="sourceLine" id="cb36-71" title="71"><span class="co">### tapply() </span><span class="al">###</span></a>
 <a class="sourceLine" id="cb36-72" title="72"></a>
-<a class="sourceLine" id="cb36-73" title="73"><span class="kw">unname</span>(<span class="kw">sapply</span>(strepgenes[[<span class="dv">1</span>]], canoname));</a>
+<a class="sourceLine" id="cb36-73" title="73"><span class="co"># We saw this when doing Factors.</span></a>
 <a class="sourceLine" id="cb36-74" title="74"></a>
-<a class="sourceLine" id="cb36-75" title="75">temp &lt;-<span class="st"> </span><span class="kw">cbind</span>(strepgenes,</a>
-<a class="sourceLine" id="cb36-76" title="76"><span class="dt">cano =</span> <span class="kw">unname</span>(<span class="kw">sapply</span>(strepgenes[[<span class="dv">1</span>]], canoname)));</a>
-<a class="sourceLine" id="cb36-77" title="77"></a>
-<a class="sourceLine" id="cb36-78" title="78"><span class="co">### tapply() </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb36-79" title="79"></a>
-<a class="sourceLine" id="cb36-80" title="80"><span class="co"># We saw this when doing Factors.</span></a>
-<a class="sourceLine" id="cb36-81" title="81"></a>
-<a class="sourceLine" id="cb36-82" title="82">hwt &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/hw.csv&quot;</span>);</a>
-<a class="sourceLine" id="cb36-83" title="83"></a>
-<a class="sourceLine" id="cb36-84" title="84"><span class="kw">tapply</span>(hwt<span class="op">$</span>hw, hwt<span class="op">$</span>strain, mean);</a>
-<a class="sourceLine" id="cb36-85" title="85"><span class="kw">tapply</span>(hwt<span class="op">$</span>hw, hwt<span class="op">$</span>strain, sd);</a>
-<a class="sourceLine" id="cb36-86" title="86"></a>
-<a class="sourceLine" id="cb36-87" title="87"><span class="co">### aggregate() </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb36-75" title="75">hwt &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/hw.csv&quot;</span>);</a>
+<a class="sourceLine" id="cb36-76" title="76"></a>
+<a class="sourceLine" id="cb36-77" title="77"><span class="kw">tapply</span>(hwt<span class="op">$</span>hw, hwt<span class="op">$</span>strain, mean);</a>
+<a class="sourceLine" id="cb36-78" title="78"><span class="kw">tapply</span>(hwt<span class="op">$</span>hw, hwt<span class="op">$</span>strain, sd);</a>
+<a class="sourceLine" id="cb36-79" title="79"><span class="kw">tapply</span>(hwt<span class="op">$</span>hw, hwt[, <span class="kw">c</span>(<span class="st">&quot;strain&quot;</span>, <span class="st">&quot;microscope&quot;</span>)], sd);</a>
+<a class="sourceLine" id="cb36-80" title="80"></a>
+<a class="sourceLine" id="cb36-81" title="81"><span class="co">### aggregate() </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb36-82" title="82"></a>
+<a class="sourceLine" id="cb36-83" title="83"><span class="kw">aggregate</span>(hwt<span class="op">$</span>hw, <span class="dt">by =</span> <span class="kw">list</span>(hwt<span class="op">$</span>microscope, hwt<span class="op">$</span>strain),</a>
+<a class="sourceLine" id="cb36-84" title="84"><span class="dt">FUN =</span> mean);</a>
+<a class="sourceLine" id="cb36-85" title="85"></a>
+<a class="sourceLine" id="cb36-86" title="86"><span class="co"># There are NAs in the microscope column.</span></a>
+<a class="sourceLine" id="cb36-87" title="87"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>
 <a class="sourceLine" id="cb36-88" title="88"></a>
-<a class="sourceLine" id="cb36-89" title="89"><span class="kw">aggregate</span>(hwt<span class="op">$</span>hw, <span class="dt">by =</span> <span class="kw">list</span>(hwt<span class="op">$</span>microscope, hwt<span class="op">$</span>strain),</a>
-<a class="sourceLine" id="cb36-90" title="90"><span class="dt">FUN =</span> mean);</a>
-<a class="sourceLine" id="cb36-91" title="91"></a>
-<a class="sourceLine" id="cb36-92" title="92"><span class="co"># There are NAs in the microscope column.</span></a>
-<a class="sourceLine" id="cb36-93" title="93"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb36-94" title="94"></a>
-<a class="sourceLine" id="cb36-95" title="95">x &lt;-<span class="st"> </span>hwt<span class="op">$</span>microscope</a>
-<a class="sourceLine" id="cb36-96" title="96"></a>
-<a class="sourceLine" id="cb36-97" title="97">x[<span class="kw">is.na</span>(x)] &lt;-<span class="st"> &quot;U&quot;</span>;</a>
-<a class="sourceLine" id="cb36-98" title="98"></a>
-<a class="sourceLine" id="cb36-99" title="99">hwt &lt;-<span class="st"> </span>hwt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">microscope =</span> x)</a>
-<a class="sourceLine" id="cb36-100" title="100"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb36-101" title="101"></a>
-<a class="sourceLine" id="cb36-102" title="102"><span class="kw">aggregate</span>(hwt<span class="op">$</span>hw, <span class="dt">by =</span> <span class="kw">list</span>(hwt<span class="op">$</span>microscope, hwt<span class="op">$</span>strain),</a>
-<a class="sourceLine" id="cb36-103" title="103"><span class="dt">FUN =</span> mean);</a></code></pre></div>
+<a class="sourceLine" id="cb36-89" title="89">x &lt;-<span class="st"> </span>hwt<span class="op">$</span>microscope</a>
+<a class="sourceLine" id="cb36-90" title="90">x[<span class="kw">is.na</span>(x)] &lt;-<span class="st"> &quot;U&quot;</span>;</a>
+<a class="sourceLine" id="cb36-91" title="91">hwt &lt;-<span class="st"> </span>hwt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">microscope =</span> x)</a>
+<a class="sourceLine" id="cb36-92" title="92"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb36-93" title="93"></a>
+<a class="sourceLine" id="cb36-94" title="94"><span class="kw">aggregate</span>(hwt<span class="op">$</span>hw, <span class="dt">by =</span> <span class="kw">list</span>(hwt<span class="op">$</span>microscope, hwt<span class="op">$</span>strain),</a>
+<a class="sourceLine" id="cb36-95" title="95"><span class="dt">FUN =</span> mean);</a></code></pre></div>
 <!-- >>> -->
 <!-- <<< attach.r -->
 <h1 id="attach">Attach</h1>
