@@ -2876,7 +2876,7 @@ hwt <- read_csv("data/hw.csv");
 
 tapply(hwt$hw, hwt$strain, mean);
 tapply(hwt$hw, hwt$strain, sd);
-tapply(hwt$hw, hwt[, c("strain", "microscope")], sd);
+tapply(hwt$hw, hwt[, c("strain", "microscope")], mean);
 
 ### aggregate() ###
 
