@@ -3906,6 +3906,26 @@ ggplot(cdf, aes(x = strain, y = count)) +
 
 <!-- >>> -->
 
+
+<!-- <<< images.r -->
+# Basic image manipulation
+
+~~~ {.r}
+
+###############
+### EBImage ###
+###############
+
+library("EBImage");
+
+jpgfn <- c("data/hollyhock.jpg");
+hhock <- readImage(jpgfn);
+
+
+~~~
+
+<!-- >>> -->
+
 <!-- <<< histograms.r -->
 # Histograms
 
@@ -4047,6 +4067,8 @@ ggsave(pdffn, h1) # One plot only.
 ~~~
 
 <!-- >>> -->
+
+
 
 <!-- <<< close.md -->
 # Closing comments
