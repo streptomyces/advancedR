@@ -3962,6 +3962,8 @@ x11(type = "cairo")
 cfinch <- readImage("data/goldfinch.jpg");
 gfinch <- readImage("data/grayfinch.jpg");
 
+# Brightness
+
 brighter <- gfinch + 0.1;
 darker <- gfinch - 0.1;
 par(mfrow = c(2,2));
@@ -3976,18 +3978,25 @@ display(cfinch);
 display(dark1);
 display(dark2);
 
+# Image object to file
+
 writeImage(dark2, "darkfinch.jpg", "jpeg", quality = 70) 
+
+# Cropping
 
 headfinch <- dark1[100:500, 10:180,]
 
+# Adding text to image
 
-cfinch
-gfinch
+x11(type = "cairo");
+display(dark1)
+text(650, 30, labels = "Goldfinch on wire", col = "#eeeeee",
+cex = 1.5);
 
+# Display to file
 
-
-dev.print(jpeg, filename = "copy.jpg", width = dim(hhock)[1],
-height = dim(hhock)[2], quality = 70);
+dev.print(jpeg, filename = "annofinch.jpg", width = dim(dark1)[1],
+height = dim(dark1)[2], quality = 70);
 
 ~~~
 
