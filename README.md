@@ -1583,7 +1583,6 @@ getOption("thisMeansNothing");
 
 <!-- >>> -->
 
-
 <!-- <<< factors.r -->
 # Factors
 
@@ -2352,7 +2351,7 @@ head(nf)
 # same as in data. Hint: Use rownames(data) to subset
 # temp.
 
-# 6. After making sure that "data" is as resuired run the
+# 6. After making sure that "data" is as required run the
 # following.
 
 saveRDS(data, file = "data.rds");
@@ -3940,7 +3939,6 @@ ggplot(cdf, aes(x = strain, y = count)) +
 ~~~
 
 <!-- >>> -->
-
 
 <!-- <<< images.r -->
 # Basic image manipulation
