@@ -3,8 +3,8 @@
 % January 2023
 % Sun 22 Jan 2023
 -->
-<!-- vim: tw=66 nosmartindent fmr=<<<,>>> cms=<!--%s-->
-<!-- set tw=66 nosmartindent fmr=<<<,>>> cms=<!--%s -->
+<!-- vim: tw=60 nosmartindent fmr=<<<,>>> cms=<!--%s-->
+<!-- set tw=60 nosmartindent fmr=<<<,>>> cms=<!--%s -->
 
 <!-- <<< readme.md -->
 # readme.md
@@ -1443,6 +1443,9 @@ rm(list = ls());
 library("readxl");
 library("tidyverse");
 
+# Make sure I tell you about name conflicts and how to deal with
+# them.
+
 # Determine for format of the excel file. .xlsx or .xls
 excel_format("data/file.xlsx")
 
@@ -1503,6 +1506,7 @@ nht <- read_excel("data/noheader.xlsx", sheet = "hyphal_width",
 # be useful are stringsAsFactors and row.names. We will
 # come to these later.
 
+
 # data frame
 hwf <- read.csv("data/hw.csv");
 head(hwf);
@@ -1545,6 +1549,40 @@ colnames(nht) <- c("hw", "strain", "microscope");
 ~~~
 
 <!-- >>> -->
+
+<!-- <<< options.r -->
+# Options
+
+~~~ {.r}
+
+###############
+### Options ###
+###############
+
+# Default behaviour in R is controlled by some global
+# options. stringsAsFactors is one of the options. To see
+# the setting of an option we use the function getOption.
+
+getOption("stringsAsFactors");
+getOption("digits");
+
+# To change or set options we use the function options().
+
+options(stringsAsFactors = FALSE, digits = 7,
+EBImage.display = "raster");
+
+getOption("EBImage.display");
+
+# Any option can be set; whether it has any effect or not
+# depends on whether base R or any package read it or not.
+
+options(thisMeansNothing = "really");
+getOption("thisMeansNothing");
+
+~~~
+
+<!-- >>> -->
+
 
 <!-- <<< factors.r -->
 # Factors
@@ -3918,9 +3956,18 @@ ggplot(cdf, aes(x = strain, y = count)) +
 
 library("EBImage");
 
-jpgfn <- c("data/hollyhock.jpg");
-hhock <- readImage(jpgfn);
+options(EBImage.display = "raster");
 
+cfinch <- readImage("data/goldfinch.jpg");
+gfinch <- readImage("data/grayfinch.jpg");
+
+cfinch
+gfinch
+
+
+
+dev.print(jpeg, filename = "copy.jpg", width = dim(hhock)[1],
+height = dim(hhock)[2], quality = 70);
 
 ~~~
 
@@ -4094,3 +4141,4 @@ ggsave(pdffn, h1) # One plot only.
 * [RNA-Seq data analysis using edgeR](https://f1000research.com/articles/5-1438)
 
 <!-- >>> -->
+<!-- vim: tw=60 nosmartindent fmr=<<<,>>> cms=<!--%s-->
