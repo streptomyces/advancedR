@@ -3715,14 +3715,35 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb46-38" title="38"><span class="co"># Adding text to image</span></a>
 <a class="sourceLine" id="cb46-39" title="39"></a>
 <a class="sourceLine" id="cb46-40" title="40"><span class="kw">x11</span>(<span class="dt">type =</span> <span class="st">&quot;cairo&quot;</span>);</a>
-<a class="sourceLine" id="cb46-41" title="41"><span class="kw">display</span>(dark1)</a>
-<a class="sourceLine" id="cb46-42" title="42"><span class="kw">text</span>(<span class="dv">650</span>, <span class="dv">30</span>, <span class="dt">labels =</span> <span class="st">&quot;Goldfinch on wire&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;#eeeeee&quot;</span>,</a>
-<a class="sourceLine" id="cb46-43" title="43"><span class="dt">cex =</span> <span class="fl">1.5</span>);</a>
-<a class="sourceLine" id="cb46-44" title="44"></a>
-<a class="sourceLine" id="cb46-45" title="45"><span class="co"># Display to file</span></a>
-<a class="sourceLine" id="cb46-46" title="46"></a>
-<a class="sourceLine" id="cb46-47" title="47"><span class="kw">dev.print</span>(jpeg, <span class="dt">filename =</span> <span class="st">&quot;annofinch.jpg&quot;</span>, <span class="dt">width =</span> <span class="kw">dim</span>(dark1)[<span class="dv">1</span>],</a>
-<a class="sourceLine" id="cb46-48" title="48"><span class="dt">height =</span> <span class="kw">dim</span>(dark1)[<span class="dv">2</span>], <span class="dt">quality =</span> <span class="dv">70</span>);</a></code></pre></div>
+<a class="sourceLine" id="cb46-41" title="41"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>));</a>
+<a class="sourceLine" id="cb46-42" title="42"><span class="kw">display</span>(dark1)</a>
+<a class="sourceLine" id="cb46-43" title="43"><span class="kw">text</span>(<span class="dv">650</span>, <span class="dv">30</span>, <span class="dt">labels =</span> <span class="st">&quot;Goldfinch on wire&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;#eeeeee&quot;</span>,</a>
+<a class="sourceLine" id="cb46-44" title="44"><span class="dt">cex =</span> <span class="fl">1.5</span>);</a>
+<a class="sourceLine" id="cb46-45" title="45"></a>
+<a class="sourceLine" id="cb46-46" title="46"><span class="co"># Display to file</span></a>
+<a class="sourceLine" id="cb46-47" title="47"></a>
+<a class="sourceLine" id="cb46-48" title="48"><span class="kw">dev.print</span>(jpeg, <span class="dt">filename =</span> <span class="st">&quot;annofinch.jpg&quot;</span>, <span class="dt">width =</span> <span class="kw">dim</span>(dark1)[<span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb46-49" title="49"><span class="dt">height =</span> <span class="kw">dim</span>(dark1)[<span class="dv">2</span>], <span class="dt">quality =</span> <span class="dv">70</span>);</a>
+<a class="sourceLine" id="cb46-50" title="50"></a>
+<a class="sourceLine" id="cb46-51" title="51"><span class="co"># Separating channels</span></a>
+<a class="sourceLine" id="cb46-52" title="52"></a>
+<a class="sourceLine" id="cb46-53" title="53">reds &lt;-<span class="st"> </span><span class="kw">channel</span>(cfinch, <span class="st">&quot;red&quot;</span>);</a>
+<a class="sourceLine" id="cb46-54" title="54">greens &lt;-<span class="st"> </span><span class="kw">channel</span>(cfinch, <span class="st">&quot;green&quot;</span>);</a>
+<a class="sourceLine" id="cb46-55" title="55">blues &lt;-<span class="st"> </span><span class="kw">channel</span>(cfinch, <span class="st">&quot;blue&quot;</span>);</a>
+<a class="sourceLine" id="cb46-56" title="56"></a>
+<a class="sourceLine" id="cb46-57" title="57"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>));</a>
+<a class="sourceLine" id="cb46-58" title="58"><span class="kw">display</span>(reds);</a>
+<a class="sourceLine" id="cb46-59" title="59"><span class="kw">display</span>(greens);</a>
+<a class="sourceLine" id="cb46-60" title="60"><span class="kw">display</span>(blues);</a>
+<a class="sourceLine" id="cb46-61" title="61"></a>
+<a class="sourceLine" id="cb46-62" title="62"><span class="co"># Combining channels</span></a>
+<a class="sourceLine" id="cb46-63" title="63"></a>
+<a class="sourceLine" id="cb46-64" title="64">blen &lt;-<span class="st"> </span>blues <span class="op">-</span><span class="st"> </span><span class="fl">0.17</span></a>
+<a class="sourceLine" id="cb46-65" title="65">blu.en &lt;-<span class="st"> </span><span class="kw">rgbImage</span>(reds, greens, blen);</a>
+<a class="sourceLine" id="cb46-66" title="66"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>));</a>
+<a class="sourceLine" id="cb46-67" title="67"><span class="kw">display</span>(cfinch)</a>
+<a class="sourceLine" id="cb46-68" title="68"><span class="kw">display</span>(blu.en);</a>
+<a class="sourceLine" id="cb46-69" title="69"></a></code></pre></div>
 <!-- >>> -->
 <!-- <<< histograms.r -->
 <h1 id="histograms">Histograms</h1>

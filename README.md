@@ -3989,6 +3989,7 @@ headfinch <- dark1[100:500, 10:180,]
 # Adding text to image
 
 x11(type = "cairo");
+par(mfrow = c(1,1));
 display(dark1)
 text(650, 30, labels = "Goldfinch on wire", col = "#eeeeee",
 cex = 1.5);
@@ -3997,6 +3998,26 @@ cex = 1.5);
 
 dev.print(jpeg, filename = "annofinch.jpg", width = dim(dark1)[1],
 height = dim(dark1)[2], quality = 70);
+
+# Separating channels
+
+reds <- channel(cfinch, "red");
+greens <- channel(cfinch, "green");
+blues <- channel(cfinch, "blue");
+
+par(mfrow = c(3,1));
+display(reds);
+display(greens);
+display(blues);
+
+# Combining channels
+
+blen <- blues - 0.17
+blu.en <- rgbImage(reds, greens, blen);
+par(mfrow = c(2,1));
+display(cfinch)
+display(blu.en);
+
 
 ~~~
 
