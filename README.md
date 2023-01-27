@@ -2065,9 +2065,6 @@ na.pass(ba)
 na.fail(ba);
 
 
-###### End of Day 1 ######
-
-
 ### Inf and -Inf are reserved words in R.
 
 #################################
@@ -3957,12 +3954,11 @@ ggplot(cdf, aes(x = strain, y = count)) +
 library("EBImage");
 
 options(EBImage.display = "raster");
-x11(type = "cairo")
 
 cfinch <- readImage("data/goldfinch.jpg");
 gfinch <- readImage("data/grayfinch.jpg");
 
-# Brightness
+### Brightness
 
 brighter <- gfinch + 0.1;
 darker <- gfinch - 0.1;
@@ -3978,28 +3974,29 @@ display(cfinch);
 display(dark1);
 display(dark2);
 
-# Image object to file
+### Image object to file
 
 writeImage(dark2, "darkfinch.jpg", "jpeg", quality = 70) 
 
-# Cropping
+### Cropping
 
 headfinch <- dark1[100:500, 10:180,]
 
-# Adding text to image
+### Adding text to image
 
-x11(type = "cairo");
+# x11(type = "cairo");
+windows();
 par(mfrow = c(1,1));
 display(dark1)
 text(650, 30, labels = "Goldfinch on wire", col = "#eeeeee",
 cex = 1.5);
 
-# Display to file
+### Display to file
 
 dev.print(jpeg, filename = "annofinch.jpg", width = dim(dark1)[1],
 height = dim(dark1)[2], quality = 70);
 
-# Separating channels
+### Separating channels
 
 reds <- channel(cfinch, "red");
 greens <- channel(cfinch, "green");
@@ -4010,162 +4007,24 @@ display(reds);
 display(greens);
 display(blues);
 
-# Combining channels
+### Combining channels
 
-blen <- blues - 0.17
-blu.en <- rgbImage(reds, greens, blen);
+blue.lo <- blues - 0.12
+loblue <- rgbImage(reds, greens, blue.lo);
 par(mfrow = c(2,1));
 display(cfinch)
-display(blu.en);
+display(loblue);
 
+# Order of channels is important!
+ch.shuf <- rgbImage(greens, blues, reds);
+par(mfrow = c(2,1));
+display(cfinch)
+display(ch.shuf);
 
+dev.off();
 ~~~
 
 <!-- >>> -->
-
-<!-- <<< histograms.r -->
-# Histograms
-
-~~~ {.r}
-
-##################
-### Histograms ###
-##################
-
-# The data in septaldist.csv contains the inter-septal
-# distances measured in the wild type and a mutant
-# strain of Streptomyces. The first column contains the
-# distances in μm and the second column contains either
-# "wt" or "mut" (factor).
-
-rm(list = ls());
-
-df <- read.csv("data/septaldist.csv");
-head(df)
-tail(df)
-wt <- df[df$strain == "wt", 1]
-mut <- df[df$strain == "mut", 1]
-
-# We have the two vectors made above and we wish to plot
-# their histograms next to each other so that we can see
-# the overlap between them. hist() has an argument named
-# add which adds to an existing histogram rather than
-# plot a new one. So we decide to use this.
-
-hist(wt, breaks = 20, col = "#00009955",
-     main = "Histograms of WT and Mutant");
-
-# Notice the add argument below.
-hist(mut, breaks = 20, col = "#00990055", add = TRUE);
-
-
-# Most of the histogram for the mutant is beyond the
-# limit of the x axis. So we decide to extend the limits
-# of the x-axis.
-
-hist(wt, breaks = 20, col = "#00009955",
-     xlim = c( min(c(wt,mut)), max(c(wt,mut)) ),
-     main = "Histograms of WT and Mutant");
-hist(mut, breaks = 30, col = "#00990055", add = TRUE);
-
-# Now we are losing the tops of the central bars of the
-# mutant histogram. So we need to extend the y-axis as
-# well. The problem is that the y-axis range gets
-# decided in the call to hist(). It cannot be determined
-# by the looking at data.
-
-# We need to find out the height of the tallest bar in
-# the histogram and adjust the upper limit of the y-axis
-# before the histogram is actually drawn. For this we
-# need to save the return values of the calls to hist()
-# and also suppress actual plotting when hist() is
-# called.
-
-hwt <- hist(wt, breaks = 20, plot = FALSE);
-hmut <- hist(mut, breaks = 30, plot = FALSE);
-
-# Examine hwt and hmut here.
-
-xlm <- c( min(c(wt,mut)), max(c(wt,mut)) );
-ylm <- c( min(c(hwt$counts, hmut$counts)), max(c(hwt$counts, hmut$counts)) );
-
-plot(hwt, col = "#00009955",
-     xlim = xlm, ylim = ylm, xlab = "Septal distance",
-     main = "Histograms of WT and Mutant"
-);
-
-plot(hmut, col = "#00990055", add = TRUE);
-
-### Putting the final plot in a png file.
-
-png(filename = "../intersept.png", width = 1200, height = 800);
-plot(hwt, col = "#00009955",
-     xlim = xlm, ylim = ylm, xlab = "Septal distance",
-     main = "Histograms of WT and Mutant"
-);
-
-plot(hmut, col = "#00990055", add = TRUE);
-dev.off()
-
-# There are similar functions for jpeg, tiff, pdf,
-# postscript (ps) etc.
-#
-# Journals often want Encapsulated Postscript (eps) files.
-# setEPS() calls ps.options() with reasonable defaults.
-# Then you can call postscript() just like you called
-# png() above to get an eps file of your plot.
-
-
-### Using ggplot2 ###
-
-ggplot(df, aes(sep.dist, fill = strain)) +
-  geom_histogram(alpha = 0.3, bins = 60, colour = "grey80")
-
-ggplot(df, aes(sep.dist, fill = strain)) +
-  geom_histogram(alpha = 1, bins = 40, colour = "grey80") +
-  facet_wrap(~strain)
-
-
-h1 <- ggplot(df, aes(sep.dist, fill = strain)) +
-  geom_histogram(alpha = 0.3, bins = 60, color = "grey70")
-h1
-
-
-# Main title
-mt <- "Histogram of interseptal distances in mutant"
-mt <- paste(mt, "and wild type strains");
-
-# Axis labels
-h1 <- h1 + labs(x = "Interseptal Distance", y = "Count",
-                title = mt);
-h1
-
-h2 <- ggplot(df, aes(strain, sep.dist, colour = strain)) +
-  geom_boxplot()
-
-h3 <- ggplot(df, aes(strain, sep.dist, colour = strain)) +
-  geom_violin()
-
-
-# Writing ggplot2 objects to a file.
-
-pdffn <- c("../hist123.pdf");
-pdf(pdffn)
-print(h1)
-print(h2)
-print(h3)
-dev.off()
-
-# ggsave()
-
-pdffn <- c("../hist1.pdf");
-ggsave(pdffn, h1) # One plot only.
-
-~~~
-
-<!-- >>> -->
-
-
 
 <!-- <<< close.md -->
 # Closing comments
