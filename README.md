@@ -3957,9 +3957,29 @@ ggplot(cdf, aes(x = strain, y = count)) +
 library("EBImage");
 
 options(EBImage.display = "raster");
+x11(type = "cairo")
 
 cfinch <- readImage("data/goldfinch.jpg");
 gfinch <- readImage("data/grayfinch.jpg");
+
+brighter <- gfinch + 0.1;
+darker <- gfinch - 0.1;
+par(mfrow = c(2,2));
+display(gfinch);
+display(brighter);
+display(darker);
+
+dark1 <- cfinch - 0.1;
+dark2 <- cfinch - 0.2;
+par(mfrow = c(2,2));
+display(cfinch);
+display(dark1);
+display(dark2);
+
+writeImage(dark2, "darkfinch.jpg", "jpeg", quality = 70) 
+
+headfinch <- dark1[100:500, 10:180,]
+
 
 cfinch
 gfinch
