@@ -386,6 +386,19 @@ typeof(y);
 
 ls()
 
+#########################
+### Generic Functions ###
+#########################
+
+# Assume an object O belonging to class C.
+
+# When a function like plot(O) or print(O) is called it
+# looks for a function named print.C or plot.C and runs it.
+# If this is not found then print.default or plot.default is
+# run.
+
+methods(plot)
+
 ~~~
 
 <!-- >>> -->
