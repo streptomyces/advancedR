@@ -469,9 +469,9 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb15-7" title="7"></a>
 <a class="sourceLine" id="cb15-8" title="8"><span class="co"># Need arguments to work on.</span></a>
 <a class="sourceLine" id="cb15-9" title="9"></a>
-<a class="sourceLine" id="cb15-10" title="10"><span class="co"># May assume default arguments if none are provided.</span></a>
+<a class="sourceLine" id="cb15-10" title="10"><span class="co"># Assume default arguments if none are provided.</span></a>
 <a class="sourceLine" id="cb15-11" title="11"></a>
-<a class="sourceLine" id="cb15-12" title="12"><span class="co"># May return something which you may wish to store as a</span></a>
+<a class="sourceLine" id="cb15-12" title="12"><span class="co"># Return a value which you may wish to store as a</span></a>
 <a class="sourceLine" id="cb15-13" title="13"><span class="co"># new object.</span></a>
 <a class="sourceLine" id="cb15-14" title="14"></a>
 <a class="sourceLine" id="cb15-15" title="15"><span class="co"># If you are not assigning the returned value to an object</span></a>
@@ -501,215 +501,219 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb15-39" title="39"></a>
 <a class="sourceLine" id="cb15-40" title="40"><span class="co"># Arguments are values or objects a function acts on. The</span></a>
 <a class="sourceLine" id="cb15-41" title="41"><span class="co"># process of getting arguments into functions is called</span></a>
-<a class="sourceLine" id="cb15-42" title="42"><span class="co"># argument passing.</span></a>
-<a class="sourceLine" id="cb15-43" title="43"></a>
-<a class="sourceLine" id="cb15-44" title="44"><span class="co"># Supplied arguments are matched to formal arguments in a</span></a>
-<a class="sourceLine" id="cb15-45" title="45"><span class="co"># three pass process.</span></a>
-<a class="sourceLine" id="cb15-46" title="46"></a>
-<a class="sourceLine" id="cb15-47" title="47"><span class="co">#  1. Exact matching on tags</span></a>
-<a class="sourceLine" id="cb15-48" title="48"><span class="co">#  2. Partial matching on tags</span></a>
-<a class="sourceLine" id="cb15-49" title="49"><span class="co">#  3. Positional matching.</span></a>
+<a class="sourceLine" id="cb15-42" title="42"><span class="co"># argument passing. If you assign in the argument list then</span></a>
+<a class="sourceLine" id="cb15-43" title="43"><span class="co"># the assigned value(s) becomes the default for the</span></a>
+<a class="sourceLine" id="cb15-44" title="44"><span class="co"># argument(s).</span></a>
+<a class="sourceLine" id="cb15-45" title="45"></a>
+<a class="sourceLine" id="cb15-46" title="46"><span class="co"># adr.fun &lt;- function(x, y = 2) {   }</span></a>
+<a class="sourceLine" id="cb15-47" title="47"></a>
+<a class="sourceLine" id="cb15-48" title="48"><span class="co"># Supplied arguments are matched to formal arguments in a</span></a>
+<a class="sourceLine" id="cb15-49" title="49"><span class="co"># three pass process.</span></a>
 <a class="sourceLine" id="cb15-50" title="50"></a>
-<a class="sourceLine" id="cb15-51" title="51"><span class="co"># We will use the seq() function of R as an example.</span></a>
-<a class="sourceLine" id="cb15-52" title="52"></a>
-<a class="sourceLine" id="cb15-53" title="53"><span class="co"># positional arguments</span></a>
-<a class="sourceLine" id="cb15-54" title="54"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>);</a>
-<a class="sourceLine" id="cb15-55" title="55"></a>
-<a class="sourceLine" id="cb15-56" title="56"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">2</span>);</a>
-<a class="sourceLine" id="cb15-57" title="57"></a>
-<a class="sourceLine" id="cb15-58" title="58"><span class="co"># Positional and named arguments</span></a>
-<a class="sourceLine" id="cb15-59" title="59"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>);</a>
-<a class="sourceLine" id="cb15-60" title="60"></a>
-<a class="sourceLine" id="cb15-61" title="61"><span class="co"># Named arguments only</span></a>
-<a class="sourceLine" id="cb15-62" title="62"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>);</a>
-<a class="sourceLine" id="cb15-63" title="63"></a>
-<a class="sourceLine" id="cb15-64" title="64"><span class="co"># Positional and named arguments</span></a>
-<a class="sourceLine" id="cb15-65" title="65"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>);</a>
-<a class="sourceLine" id="cb15-66" title="66"></a>
-<a class="sourceLine" id="cb15-67" title="67"><span class="co"># Positional and named arguments</span></a>
-<a class="sourceLine" id="cb15-68" title="68"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dt">by =</span> <span class="dv">2</span>, <span class="dv">10</span>);</a>
-<a class="sourceLine" id="cb15-69" title="69"></a>
-<a class="sourceLine" id="cb15-70" title="70"><span class="co"># Partial matching of argument names</span></a>
-<a class="sourceLine" id="cb15-71" title="71"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dt">fr =</span> <span class="dv">4</span>, <span class="dt">to =</span> <span class="dv">20</span>);</a>
-<a class="sourceLine" id="cb15-72" title="72"></a>
+<a class="sourceLine" id="cb15-51" title="51"><span class="co">#  1. Exact matching on tags</span></a>
+<a class="sourceLine" id="cb15-52" title="52"><span class="co">#  2. Partial matching on tags</span></a>
+<a class="sourceLine" id="cb15-53" title="53"><span class="co">#  3. Positional matching.</span></a>
+<a class="sourceLine" id="cb15-54" title="54"></a>
+<a class="sourceLine" id="cb15-55" title="55"><span class="co"># We will use the seq() function of R as an example.</span></a>
+<a class="sourceLine" id="cb15-56" title="56"></a>
+<a class="sourceLine" id="cb15-57" title="57"><span class="co"># positional arguments</span></a>
+<a class="sourceLine" id="cb15-58" title="58"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>);</a>
+<a class="sourceLine" id="cb15-59" title="59"></a>
+<a class="sourceLine" id="cb15-60" title="60"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb15-61" title="61"></a>
+<a class="sourceLine" id="cb15-62" title="62"><span class="co"># Positional and named arguments</span></a>
+<a class="sourceLine" id="cb15-63" title="63"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb15-64" title="64"></a>
+<a class="sourceLine" id="cb15-65" title="65"><span class="co"># Named arguments only</span></a>
+<a class="sourceLine" id="cb15-66" title="66"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb15-67" title="67"></a>
+<a class="sourceLine" id="cb15-68" title="68"><span class="co"># Positional and named arguments</span></a>
+<a class="sourceLine" id="cb15-69" title="69"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb15-70" title="70"></a>
+<a class="sourceLine" id="cb15-71" title="71"><span class="co"># Positional and named arguments</span></a>
+<a class="sourceLine" id="cb15-72" title="72"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dt">by =</span> <span class="dv">2</span>, <span class="dv">10</span>);</a>
 <a class="sourceLine" id="cb15-73" title="73"></a>
-<a class="sourceLine" id="cb15-74" title="74"><span class="co">#######################################</span></a>
-<a class="sourceLine" id="cb15-75" title="75"><span class="co">### Calling bmi() is different ways </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb15-76" title="76"><span class="co">#######################################</span></a>
-<a class="sourceLine" id="cb15-77" title="77"><span class="kw">bmi</span>(<span class="dv">65</span>, <span class="fl">1.68</span>);</a>
-<a class="sourceLine" id="cb15-78" title="78"><span class="kw">bmi</span>(<span class="dt">kilograms =</span> <span class="dv">65</span>, <span class="dt">metres =</span> <span class="fl">1.68</span>)</a>
-<a class="sourceLine" id="cb15-79" title="79"><span class="kw">bmi</span>(<span class="dt">metres =</span> <span class="fl">1.68</span>, <span class="dt">kilograms =</span> <span class="dv">65</span>)</a>
-<a class="sourceLine" id="cb15-80" title="80"><span class="kw">bmi</span>(<span class="dt">kilo =</span> <span class="dv">65</span>, <span class="dt">met =</span> <span class="fl">1.68</span>)</a>
-<a class="sourceLine" id="cb15-81" title="81"><span class="kw">bmi</span>(<span class="dt">m =</span> <span class="fl">1.68</span>, <span class="dt">k =</span> <span class="dv">65</span>)</a>
-<a class="sourceLine" id="cb15-82" title="82"><span class="kw">bmi</span>(<span class="dt">m =</span> <span class="fl">1.68</span>, <span class="dv">65</span>)</a>
-<a class="sourceLine" id="cb15-83" title="83"></a>
-<a class="sourceLine" id="cb15-84" title="84"></a>
-<a class="sourceLine" id="cb15-85" title="85"><span class="co">####################################</span></a>
-<a class="sourceLine" id="cb15-86" title="86"><span class="co">### Return values from functions </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb15-87" title="87"><span class="co">####################################</span></a>
+<a class="sourceLine" id="cb15-74" title="74"><span class="co"># Partial matching of argument names</span></a>
+<a class="sourceLine" id="cb15-75" title="75"><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dt">fr =</span> <span class="dv">4</span>, <span class="dt">to =</span> <span class="dv">20</span>);</a>
+<a class="sourceLine" id="cb15-76" title="76"></a>
+<a class="sourceLine" id="cb15-77" title="77"></a>
+<a class="sourceLine" id="cb15-78" title="78"><span class="co">#######################################</span></a>
+<a class="sourceLine" id="cb15-79" title="79"><span class="co">### Calling bmi() is different ways </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb15-80" title="80"><span class="co">#######################################</span></a>
+<a class="sourceLine" id="cb15-81" title="81"><span class="kw">bmi</span>(<span class="dv">65</span>, <span class="fl">1.68</span>);</a>
+<a class="sourceLine" id="cb15-82" title="82"><span class="kw">bmi</span>(<span class="dt">kilograms =</span> <span class="dv">65</span>, <span class="dt">metres =</span> <span class="fl">1.68</span>)</a>
+<a class="sourceLine" id="cb15-83" title="83"><span class="kw">bmi</span>(<span class="dt">metres =</span> <span class="fl">1.68</span>, <span class="dt">kilograms =</span> <span class="dv">65</span>)</a>
+<a class="sourceLine" id="cb15-84" title="84"><span class="kw">bmi</span>(<span class="dt">kilo =</span> <span class="dv">65</span>, <span class="dt">met =</span> <span class="fl">1.68</span>)</a>
+<a class="sourceLine" id="cb15-85" title="85"><span class="kw">bmi</span>(<span class="dt">m =</span> <span class="fl">1.68</span>, <span class="dt">k =</span> <span class="dv">65</span>)</a>
+<a class="sourceLine" id="cb15-86" title="86"><span class="kw">bmi</span>(<span class="dt">m =</span> <span class="fl">1.68</span>, <span class="dv">65</span>)</a>
+<a class="sourceLine" id="cb15-87" title="87"></a>
 <a class="sourceLine" id="cb15-88" title="88"></a>
-<a class="sourceLine" id="cb15-89" title="89"><span class="co"># If a function returns something and you want to keep it</span></a>
-<a class="sourceLine" id="cb15-90" title="90"><span class="co"># you have to assign it to a (new) object.</span></a>
-<a class="sourceLine" id="cb15-91" title="91"></a>
-<a class="sourceLine" id="cb15-92" title="92">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>);</a>
-<a class="sourceLine" id="cb15-93" title="93">x;</a>
-<a class="sourceLine" id="cb15-94" title="94">y =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">3</span>, <span class="dv">30</span>, <span class="dt">by =</span> <span class="dv">3</span>);</a>
-<a class="sourceLine" id="cb15-95" title="95">y;</a>
-<a class="sourceLine" id="cb15-96" title="96"></a>
-<a class="sourceLine" id="cb15-97" title="97"></a>
-<a class="sourceLine" id="cb15-98" title="98"><span class="co"># Some functions do not return anything (NULL).</span></a>
-<a class="sourceLine" id="cb15-99" title="99">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dt">by =</span> <span class="dv">5</span>);</a>
-<a class="sourceLine" id="cb15-100" title="100"><span class="kw">cat</span>(x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-101" title="101">catret &lt;-<span class="st"> </span><span class="kw">cat</span>(x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-102" title="102">catret;</a>
-<a class="sourceLine" id="cb15-103" title="103"></a>
-<a class="sourceLine" id="cb15-104" title="104"><span class="co"># Demonstrate invisible here.</span></a>
-<a class="sourceLine" id="cb15-105" title="105"></a>
-<a class="sourceLine" id="cb15-106" title="106">bmii &lt;-<span class="st"> </span><span class="cf">function</span>(kilograms, metres) {</a>
-<a class="sourceLine" id="cb15-107" title="107">  <span class="kw">invisible</span>(kilograms <span class="op">/</span><span class="st"> </span>metres <span class="op">**</span><span class="st"> </span><span class="dv">2</span>);</a>
-<a class="sourceLine" id="cb15-108" title="108">}</a>
+<a class="sourceLine" id="cb15-89" title="89"><span class="co">####################################</span></a>
+<a class="sourceLine" id="cb15-90" title="90"><span class="co">### Return values from functions </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb15-91" title="91"><span class="co">####################################</span></a>
+<a class="sourceLine" id="cb15-92" title="92"></a>
+<a class="sourceLine" id="cb15-93" title="93"><span class="co"># If a function returns something and you want to keep it</span></a>
+<a class="sourceLine" id="cb15-94" title="94"><span class="co"># you have to assign it to a (new) object.</span></a>
+<a class="sourceLine" id="cb15-95" title="95"></a>
+<a class="sourceLine" id="cb15-96" title="96">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>);</a>
+<a class="sourceLine" id="cb15-97" title="97">x;</a>
+<a class="sourceLine" id="cb15-98" title="98">y =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">3</span>, <span class="dv">30</span>, <span class="dt">by =</span> <span class="dv">3</span>);</a>
+<a class="sourceLine" id="cb15-99" title="99">y;</a>
+<a class="sourceLine" id="cb15-100" title="100"></a>
+<a class="sourceLine" id="cb15-101" title="101"></a>
+<a class="sourceLine" id="cb15-102" title="102"><span class="co"># Some functions do not return anything (NULL).</span></a>
+<a class="sourceLine" id="cb15-103" title="103">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dt">by =</span> <span class="dv">5</span>);</a>
+<a class="sourceLine" id="cb15-104" title="104"><span class="kw">cat</span>(x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-105" title="105">catret &lt;-<span class="st"> </span><span class="kw">cat</span>(x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-106" title="106">catret;</a>
+<a class="sourceLine" id="cb15-107" title="107"></a>
+<a class="sourceLine" id="cb15-108" title="108"><span class="co"># Demonstrate invisible here.</span></a>
 <a class="sourceLine" id="cb15-109" title="109"></a>
-<a class="sourceLine" id="cb15-110" title="110"><span class="kw">bmi</span>(<span class="dt">m =</span> <span class="fl">1.65</span>, <span class="dv">65</span>);</a>
-<a class="sourceLine" id="cb15-111" title="111"><span class="kw">bmii</span>(<span class="dt">m =</span> <span class="fl">1.65</span>, <span class="dv">65</span>);</a>
-<a class="sourceLine" id="cb15-112" title="112">bmx &lt;-<span class="st"> </span><span class="kw">bmii</span>(<span class="dt">m =</span> <span class="fl">1.65</span>, <span class="dv">65</span>);</a>
-<a class="sourceLine" id="cb15-113" title="113">bmx</a>
-<a class="sourceLine" id="cb15-114" title="114"></a>
-<a class="sourceLine" id="cb15-115" title="115"><span class="co">##############################################</span></a>
-<a class="sourceLine" id="cb15-116" title="116"><span class="co">### A note about assignment operators in R </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb15-117" title="117"><span class="co">##############################################</span></a>
+<a class="sourceLine" id="cb15-110" title="110">bmii &lt;-<span class="st"> </span><span class="cf">function</span>(kilograms, metres) {</a>
+<a class="sourceLine" id="cb15-111" title="111">  <span class="kw">invisible</span>(kilograms <span class="op">/</span><span class="st"> </span>metres <span class="op">**</span><span class="st"> </span><span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb15-112" title="112">}</a>
+<a class="sourceLine" id="cb15-113" title="113"></a>
+<a class="sourceLine" id="cb15-114" title="114"><span class="kw">bmi</span>(<span class="dt">m =</span> <span class="fl">1.65</span>, <span class="dv">65</span>);</a>
+<a class="sourceLine" id="cb15-115" title="115"><span class="kw">bmii</span>(<span class="dt">m =</span> <span class="fl">1.65</span>, <span class="dv">65</span>);</a>
+<a class="sourceLine" id="cb15-116" title="116">bmx &lt;-<span class="st"> </span><span class="kw">bmii</span>(<span class="dt">m =</span> <span class="fl">1.65</span>, <span class="dv">65</span>);</a>
+<a class="sourceLine" id="cb15-117" title="117">bmx</a>
 <a class="sourceLine" id="cb15-118" title="118"></a>
-<a class="sourceLine" id="cb15-119" title="119">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dt">by =</span> <span class="dv">5</span>);</a>
-<a class="sourceLine" id="cb15-120" title="120">x</a>
-<a class="sourceLine" id="cb15-121" title="121"><span class="co"># Works, but for the wrong reason.</span></a>
-<a class="sourceLine" id="cb15-122" title="122">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, by &lt;-<span class="st"> </span><span class="dv">5</span>);</a>
-<a class="sourceLine" id="cb15-123" title="123">x</a>
-<a class="sourceLine" id="cb15-124" title="124"></a>
-<a class="sourceLine" id="cb15-125" title="125"><span class="co"># Fails. Wrong sign in by argument.</span></a>
-<a class="sourceLine" id="cb15-126" title="126"><span class="kw">rm</span>(x);</a>
-<a class="sourceLine" id="cb15-127" title="127">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, by &lt;-<span class="st"> </span><span class="dv">5</span>, <span class="dv">100</span>);</a>
-<a class="sourceLine" id="cb15-128" title="128">x</a>
-<a class="sourceLine" id="cb15-129" title="129"></a>
-<a class="sourceLine" id="cb15-130" title="130"><span class="co"># Works. But unintended result.</span></a>
-<a class="sourceLine" id="cb15-131" title="131"><span class="kw">rm</span>(x);</a>
-<a class="sourceLine" id="cb15-132" title="132">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, by &lt;-<span class="st"> </span><span class="dv">5</span>, <span class="dv">-1</span>);</a>
-<a class="sourceLine" id="cb15-133" title="133">x</a>
-<a class="sourceLine" id="cb15-134" title="134"></a>
-<a class="sourceLine" id="cb15-135" title="135"><span class="co"># Alt-minus key combination gives you the</span></a>
-<a class="sourceLine" id="cb15-136" title="136"><span class="co"># assignment operator in RStudio</span></a>
-<a class="sourceLine" id="cb15-137" title="137"> </a>
-<a class="sourceLine" id="cb15-138" title="138"><span class="co"># Use &lt;- or = on the command line.</span></a>
-<a class="sourceLine" id="cb15-139" title="139"><span class="co"># Always use = in function calls and function definitions.</span></a>
-<a class="sourceLine" id="cb15-140" title="140"></a>
-<a class="sourceLine" id="cb15-141" title="141"><span class="co"># Function calls as arguments</span></a>
-<a class="sourceLine" id="cb15-142" title="142"></a>
-<a class="sourceLine" id="cb15-143" title="143"><span class="kw">rep</span>(<span class="dv">4</span>, <span class="dt">times =</span> <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb15-119" title="119"><span class="co">##############################################</span></a>
+<a class="sourceLine" id="cb15-120" title="120"><span class="co">### A note about assignment operators in R </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb15-121" title="121"><span class="co">##############################################</span></a>
+<a class="sourceLine" id="cb15-122" title="122"></a>
+<a class="sourceLine" id="cb15-123" title="123">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dt">by =</span> <span class="dv">5</span>);</a>
+<a class="sourceLine" id="cb15-124" title="124">x</a>
+<a class="sourceLine" id="cb15-125" title="125"><span class="co"># Works, but for the wrong reason.</span></a>
+<a class="sourceLine" id="cb15-126" title="126">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, by &lt;-<span class="st"> </span><span class="dv">5</span>);</a>
+<a class="sourceLine" id="cb15-127" title="127">x</a>
+<a class="sourceLine" id="cb15-128" title="128"></a>
+<a class="sourceLine" id="cb15-129" title="129"><span class="co"># Fails. Wrong sign in by argument.</span></a>
+<a class="sourceLine" id="cb15-130" title="130"><span class="kw">rm</span>(x);</a>
+<a class="sourceLine" id="cb15-131" title="131">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, by &lt;-<span class="st"> </span><span class="dv">5</span>, <span class="dv">100</span>);</a>
+<a class="sourceLine" id="cb15-132" title="132">x</a>
+<a class="sourceLine" id="cb15-133" title="133"></a>
+<a class="sourceLine" id="cb15-134" title="134"><span class="co"># Works. But unintended result.</span></a>
+<a class="sourceLine" id="cb15-135" title="135"><span class="kw">rm</span>(x);</a>
+<a class="sourceLine" id="cb15-136" title="136">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, by &lt;-<span class="st"> </span><span class="dv">5</span>, <span class="dv">-1</span>);</a>
+<a class="sourceLine" id="cb15-137" title="137">x</a>
+<a class="sourceLine" id="cb15-138" title="138"></a>
+<a class="sourceLine" id="cb15-139" title="139"><span class="co"># Alt-minus key combination gives you the</span></a>
+<a class="sourceLine" id="cb15-140" title="140"><span class="co"># assignment operator in RStudio</span></a>
+<a class="sourceLine" id="cb15-141" title="141"> </a>
+<a class="sourceLine" id="cb15-142" title="142"><span class="co"># Use &lt;- or = on the command line.</span></a>
+<a class="sourceLine" id="cb15-143" title="143"><span class="co"># Always use = in function calls and function definitions.</span></a>
 <a class="sourceLine" id="cb15-144" title="144"></a>
-<a class="sourceLine" id="cb15-145" title="145"><span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">times =</span> <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb15-145" title="145"><span class="co"># Function calls as arguments</span></a>
 <a class="sourceLine" id="cb15-146" title="146"></a>
-<a class="sourceLine" id="cb15-147" title="147"><span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">each =</span> <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb15-147" title="147"><span class="kw">rep</span>(<span class="dv">4</span>, <span class="dt">times =</span> <span class="dv">4</span>);</a>
 <a class="sourceLine" id="cb15-148" title="148"></a>
-<a class="sourceLine" id="cb15-149" title="149"><span class="co">#################################</span></a>
-<a class="sourceLine" id="cb15-150" title="150"><span class="co">### Do the following yourself </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb15-151" title="151"><span class="co">#################################</span></a>
+<a class="sourceLine" id="cb15-149" title="149"><span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">times =</span> <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb15-150" title="150"></a>
+<a class="sourceLine" id="cb15-151" title="151"><span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">each =</span> <span class="dv">4</span>);</a>
 <a class="sourceLine" id="cb15-152" title="152"></a>
-<a class="sourceLine" id="cb15-153" title="153"><span class="co"># 1. Run the code below.</span></a>
-<a class="sourceLine" id="cb15-154" title="154"></a>
-<a class="sourceLine" id="cb15-155" title="155">x &lt;-<span class="st"> </span>y &lt;-<span class="st"> </span>z &lt;-<span class="st"> </span><span class="dv">42</span></a>
+<a class="sourceLine" id="cb15-153" title="153"><span class="co">#################################</span></a>
+<a class="sourceLine" id="cb15-154" title="154"><span class="co">### Do the following yourself </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb15-155" title="155"><span class="co">#################################</span></a>
 <a class="sourceLine" id="cb15-156" title="156"></a>
-<a class="sourceLine" id="cb15-157" title="157"><span class="co"># 2. Check the values of x, y and z.</span></a>
+<a class="sourceLine" id="cb15-157" title="157"><span class="co"># 1. Run the code below.</span></a>
 <a class="sourceLine" id="cb15-158" title="158"></a>
-<a class="sourceLine" id="cb15-159" title="159"></a>
-<a class="sourceLine" id="cb15-160" title="160"><span class="co"># 1. Generate the sequence -20 to 50 increasing in steps</span></a>
-<a class="sourceLine" id="cb15-161" title="161"><span class="co"># of 5 and name it ds.</span></a>
+<a class="sourceLine" id="cb15-159" title="159">x &lt;-<span class="st"> </span>y &lt;-<span class="st"> </span>z &lt;-<span class="st"> </span><span class="dv">42</span></a>
+<a class="sourceLine" id="cb15-160" title="160"></a>
+<a class="sourceLine" id="cb15-161" title="161"><span class="co"># 2. Check the values of x, y and z.</span></a>
 <a class="sourceLine" id="cb15-162" title="162"></a>
-<a class="sourceLine" id="cb15-163" title="163"><span class="co"># 2. Check the value of ds.</span></a>
-<a class="sourceLine" id="cb15-164" title="164"></a>
-<a class="sourceLine" id="cb15-165" title="165"><span class="co">######################################################</span></a>
+<a class="sourceLine" id="cb15-163" title="163"></a>
+<a class="sourceLine" id="cb15-164" title="164"><span class="co"># 1. Generate the sequence -20 to 50 increasing in steps</span></a>
+<a class="sourceLine" id="cb15-165" title="165"><span class="co"># of 5 and name it ds.</span></a>
 <a class="sourceLine" id="cb15-166" title="166"></a>
-<a class="sourceLine" id="cb15-167" title="167"><span class="co"># 1. Write a function named cel2fah which takes one</span></a>
-<a class="sourceLine" id="cb15-168" title="168"><span class="co"># argument, the temperature in degrees Celsius, and returns</span></a>
-<a class="sourceLine" id="cb15-169" title="169"><span class="co"># the same temperature in Fahrenheit.</span></a>
+<a class="sourceLine" id="cb15-167" title="167"><span class="co"># 2. Check the value of ds.</span></a>
+<a class="sourceLine" id="cb15-168" title="168"></a>
+<a class="sourceLine" id="cb15-169" title="169"><span class="co">######################################################</span></a>
 <a class="sourceLine" id="cb15-170" title="170"></a>
-<a class="sourceLine" id="cb15-171" title="171"><span class="co"># 2. Hints:</span></a>
-<a class="sourceLine" id="cb15-172" title="172"><span class="co"># - Multiply Celsius by 1.8 then add 32 to get Fahrenheit.</span></a>
-<a class="sourceLine" id="cb15-173" title="173"></a>
-<a class="sourceLine" id="cb15-174" title="174"><span class="co">### Write your function here </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb15-175" title="175"></a>
-<a class="sourceLine" id="cb15-176" title="176"></a>
-<a class="sourceLine" id="cb15-177" title="177"><span class="co"># 3. Test your function by calling it as below.</span></a>
-<a class="sourceLine" id="cb15-178" title="178"></a>
-<a class="sourceLine" id="cb15-179" title="179"><span class="co">#    a. cel2fah(100)</span></a>
-<a class="sourceLine" id="cb15-180" title="180"><span class="co">#    b. cel2fah(0)</span></a>
-<a class="sourceLine" id="cb15-181" title="181"><span class="co">#    c. cel2fah(seq(0,100))</span></a>
+<a class="sourceLine" id="cb15-171" title="171"><span class="co"># 1. Write a function named cel2fah which takes one</span></a>
+<a class="sourceLine" id="cb15-172" title="172"><span class="co"># argument, the temperature in degrees Celsius, and returns</span></a>
+<a class="sourceLine" id="cb15-173" title="173"><span class="co"># the same temperature in Fahrenheit.</span></a>
+<a class="sourceLine" id="cb15-174" title="174"></a>
+<a class="sourceLine" id="cb15-175" title="175"><span class="co"># 2. Hints:</span></a>
+<a class="sourceLine" id="cb15-176" title="176"><span class="co"># - Multiply Celsius by 1.8 then add 32 to get Fahrenheit.</span></a>
+<a class="sourceLine" id="cb15-177" title="177"></a>
+<a class="sourceLine" id="cb15-178" title="178"><span class="co">### Write your function here </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb15-179" title="179"></a>
+<a class="sourceLine" id="cb15-180" title="180"></a>
+<a class="sourceLine" id="cb15-181" title="181"><span class="co"># 3. Test your function by calling it as below.</span></a>
 <a class="sourceLine" id="cb15-182" title="182"></a>
-<a class="sourceLine" id="cb15-183" title="183"><span class="co"># Discuss call c. above.</span></a>
-<a class="sourceLine" id="cb15-184" title="184"></a>
-<a class="sourceLine" id="cb15-185" title="185"><span class="co"># You cannot do cel2fah(0,10).</span></a>
+<a class="sourceLine" id="cb15-183" title="183"><span class="co">#    a. cel2fah(100)</span></a>
+<a class="sourceLine" id="cb15-184" title="184"><span class="co">#    b. cel2fah(0)</span></a>
+<a class="sourceLine" id="cb15-185" title="185"><span class="co">#    c. cel2fah(seq(0,100))</span></a>
 <a class="sourceLine" id="cb15-186" title="186"></a>
-<a class="sourceLine" id="cb15-187" title="187"><span class="co"># 4. Try the below.</span></a>
+<a class="sourceLine" id="cb15-187" title="187"><span class="co"># Discuss call c. above.</span></a>
 <a class="sourceLine" id="cb15-188" title="188"></a>
-<a class="sourceLine" id="cb15-189" title="189"><span class="kw">curve</span>(cel2fah, <span class="dv">-50</span>, <span class="dv">50</span>, <span class="dt">xlab =</span> <span class="st">&quot;Celsius&quot;</span>,</a>
-<a class="sourceLine" id="cb15-190" title="190">      <span class="dt">ylab =</span> <span class="st">&quot;Fahrenheit&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;royalblue&quot;</span>)</a>
-<a class="sourceLine" id="cb15-191" title="191"></a>
-<a class="sourceLine" id="cb15-192" title="192"><span class="co"># Functions are objects. We passed a function as an argument</span></a>
-<a class="sourceLine" id="cb15-193" title="193"><span class="co"># to another function.</span></a>
-<a class="sourceLine" id="cb15-194" title="194"></a>
-<a class="sourceLine" id="cb15-195" title="195"><span class="kw">class</span>(cel2fah)</a>
-<a class="sourceLine" id="cb15-196" title="196"><span class="kw">typeof</span>(cel2fah)</a>
-<a class="sourceLine" id="cb15-197" title="197"></a>
-<a class="sourceLine" id="cb15-198" title="198"><span class="co"># Another example of passing a function as an argument to</span></a>
-<a class="sourceLine" id="cb15-199" title="199"><span class="co"># another function. Trignometric functions such as sin()</span></a>
-<a class="sourceLine" id="cb15-200" title="200"><span class="co"># or cos() take their arguments in radians. But I am more</span></a>
-<a class="sourceLine" id="cb15-201" title="201"><span class="co"># comfortable thinking in degrees.</span></a>
-<a class="sourceLine" id="cb15-202" title="202"></a>
-<a class="sourceLine" id="cb15-203" title="203">deg2rad &lt;-<span class="st"> </span><span class="cf">function</span>(deg) {</a>
-<a class="sourceLine" id="cb15-204" title="204"><span class="kw">return</span>(deg <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">/</span><span class="st"> </span><span class="dv">360</span>);</a>
-<a class="sourceLine" id="cb15-205" title="205">}</a>
-<a class="sourceLine" id="cb15-206" title="206"><span class="kw">curve</span>(sin, <span class="kw">deg2rad</span>(<span class="dv">0</span>), <span class="kw">deg2rad</span>(<span class="dv">360</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb15-207" title="207">      <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;x in radians&quot;</span>);</a>
-<a class="sourceLine" id="cb15-208" title="208"><span class="kw">curve</span>(cos, <span class="kw">deg2rad</span>(<span class="dv">0</span>), <span class="kw">deg2rad</span>(<span class="dv">360</span>), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">add =</span> T);</a>
-<a class="sourceLine" id="cb15-209" title="209"></a>
-<a class="sourceLine" id="cb15-210" title="210"></a>
-<a class="sourceLine" id="cb15-211" title="211"><span class="co">########################</span></a>
-<a class="sourceLine" id="cb15-212" title="212"><span class="co">### ... (three dots) </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb15-213" title="213"><span class="co">########################</span></a>
+<a class="sourceLine" id="cb15-189" title="189"><span class="co"># You cannot do cel2fah(0,10).</span></a>
+<a class="sourceLine" id="cb15-190" title="190"></a>
+<a class="sourceLine" id="cb15-191" title="191"><span class="co"># 4. Try the below.</span></a>
+<a class="sourceLine" id="cb15-192" title="192"></a>
+<a class="sourceLine" id="cb15-193" title="193"><span class="kw">curve</span>(cel2fah, <span class="dv">-50</span>, <span class="dv">50</span>, <span class="dt">xlab =</span> <span class="st">&quot;Celsius&quot;</span>,</a>
+<a class="sourceLine" id="cb15-194" title="194">      <span class="dt">ylab =</span> <span class="st">&quot;Fahrenheit&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;royalblue&quot;</span>)</a>
+<a class="sourceLine" id="cb15-195" title="195"></a>
+<a class="sourceLine" id="cb15-196" title="196"><span class="co"># Functions are objects. We passed a function as an argument</span></a>
+<a class="sourceLine" id="cb15-197" title="197"><span class="co"># to another function.</span></a>
+<a class="sourceLine" id="cb15-198" title="198"></a>
+<a class="sourceLine" id="cb15-199" title="199"><span class="kw">class</span>(cel2fah)</a>
+<a class="sourceLine" id="cb15-200" title="200"><span class="kw">typeof</span>(cel2fah)</a>
+<a class="sourceLine" id="cb15-201" title="201"></a>
+<a class="sourceLine" id="cb15-202" title="202"><span class="co"># Another example of passing a function as an argument to</span></a>
+<a class="sourceLine" id="cb15-203" title="203"><span class="co"># another function. Trignometric functions such as sin()</span></a>
+<a class="sourceLine" id="cb15-204" title="204"><span class="co"># or cos() take their arguments in radians. But I am more</span></a>
+<a class="sourceLine" id="cb15-205" title="205"><span class="co"># comfortable thinking in degrees.</span></a>
+<a class="sourceLine" id="cb15-206" title="206"></a>
+<a class="sourceLine" id="cb15-207" title="207">deg2rad &lt;-<span class="st"> </span><span class="cf">function</span>(deg) {</a>
+<a class="sourceLine" id="cb15-208" title="208"><span class="kw">return</span>(deg <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">/</span><span class="st"> </span><span class="dv">360</span>);</a>
+<a class="sourceLine" id="cb15-209" title="209">}</a>
+<a class="sourceLine" id="cb15-210" title="210"><span class="kw">curve</span>(sin, <span class="kw">deg2rad</span>(<span class="dv">0</span>), <span class="kw">deg2rad</span>(<span class="dv">360</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb15-211" title="211">      <span class="dt">ylab =</span> <span class="st">&quot;f(x)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;x in radians&quot;</span>);</a>
+<a class="sourceLine" id="cb15-212" title="212"><span class="kw">curve</span>(cos, <span class="kw">deg2rad</span>(<span class="dv">0</span>), <span class="kw">deg2rad</span>(<span class="dv">360</span>), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">add =</span> T);</a>
+<a class="sourceLine" id="cb15-213" title="213"></a>
 <a class="sourceLine" id="cb15-214" title="214"></a>
-<a class="sourceLine" id="cb15-215" title="215">dotdemo1 &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) {</a>
-<a class="sourceLine" id="cb15-216" title="216">  <span class="kw">cat</span>(<span class="st">&quot;x is: &quot;</span>, x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-217" title="217">  vargs &lt;-<span class="st"> </span><span class="kw">list</span>(...);</a>
-<a class="sourceLine" id="cb15-218" title="218">  <span class="kw">cat</span>(<span class="st">&quot;Then: &quot;</span>, vargs[[<span class="dv">1</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-219" title="219">}</a>
-<a class="sourceLine" id="cb15-220" title="220"><span class="kw">dotdemo1</span>(<span class="st">&quot;stuff&quot;</span>, <span class="st">&quot;morestuff&quot;</span>);</a>
-<a class="sourceLine" id="cb15-221" title="221"></a>
-<a class="sourceLine" id="cb15-222" title="222"></a>
-<a class="sourceLine" id="cb15-223" title="223">dotdemo2 &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) {</a>
-<a class="sourceLine" id="cb15-224" title="224">  <span class="kw">cat</span>(<span class="st">&quot;x is: &quot;</span>, x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-225" title="225">  vargs &lt;-<span class="st"> </span><span class="kw">list</span>(...);</a>
-<a class="sourceLine" id="cb15-226" title="226">  <span class="kw">cat</span>(<span class="st">&quot;y as named: &quot;</span>, vargs<span class="op">$</span>y, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-227" title="227">  <span class="kw">cat</span>(<span class="st">&quot;y as positional: &quot;</span>, vargs[[<span class="dv">1</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-228" title="228">  <span class="kw">cat</span>(<span class="st">&quot;Then: &quot;</span>, vargs[[<span class="dv">2</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb15-229" title="229">}</a>
-<a class="sourceLine" id="cb15-230" title="230"><span class="kw">dotdemo2</span>(<span class="dt">x =</span> <span class="st">&quot;stuff&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;morestuff&quot;</span>, <span class="dv">23</span>);</a>
-<a class="sourceLine" id="cb15-231" title="231"></a>
-<a class="sourceLine" id="cb15-232" title="232"></a>
-<a class="sourceLine" id="cb15-233" title="233"><span class="co">##############################</span></a>
-<a class="sourceLine" id="cb15-234" title="234"><span class="co">### Operators as functions </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb15-235" title="235"><span class="co">##############################</span></a>
+<a class="sourceLine" id="cb15-215" title="215"><span class="co">########################</span></a>
+<a class="sourceLine" id="cb15-216" title="216"><span class="co">### ... (three dots) </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb15-217" title="217"><span class="co">########################</span></a>
+<a class="sourceLine" id="cb15-218" title="218"></a>
+<a class="sourceLine" id="cb15-219" title="219">dotdemo1 &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) {</a>
+<a class="sourceLine" id="cb15-220" title="220">  <span class="kw">cat</span>(<span class="st">&quot;x is: &quot;</span>, x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-221" title="221">  vargs &lt;-<span class="st"> </span><span class="kw">list</span>(...);</a>
+<a class="sourceLine" id="cb15-222" title="222">  <span class="kw">cat</span>(<span class="st">&quot;Then: &quot;</span>, vargs[[<span class="dv">1</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-223" title="223">}</a>
+<a class="sourceLine" id="cb15-224" title="224"><span class="kw">dotdemo1</span>(<span class="st">&quot;stuff&quot;</span>, <span class="st">&quot;morestuff&quot;</span>);</a>
+<a class="sourceLine" id="cb15-225" title="225"></a>
+<a class="sourceLine" id="cb15-226" title="226"></a>
+<a class="sourceLine" id="cb15-227" title="227">dotdemo2 &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) {</a>
+<a class="sourceLine" id="cb15-228" title="228">  <span class="kw">cat</span>(<span class="st">&quot;x is: &quot;</span>, x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-229" title="229">  vargs &lt;-<span class="st"> </span><span class="kw">list</span>(...);</a>
+<a class="sourceLine" id="cb15-230" title="230">  <span class="kw">cat</span>(<span class="st">&quot;y as named: &quot;</span>, vargs<span class="op">$</span>y, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-231" title="231">  <span class="kw">cat</span>(<span class="st">&quot;y as positional: &quot;</span>, vargs[[<span class="dv">1</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-232" title="232">  <span class="kw">cat</span>(<span class="st">&quot;Then: &quot;</span>, vargs[[<span class="dv">2</span>]], <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb15-233" title="233">}</a>
+<a class="sourceLine" id="cb15-234" title="234"><span class="kw">dotdemo2</span>(<span class="dt">x =</span> <span class="st">&quot;stuff&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;morestuff&quot;</span>, <span class="dv">23</span>);</a>
+<a class="sourceLine" id="cb15-235" title="235"></a>
 <a class="sourceLine" id="cb15-236" title="236"></a>
-<a class="sourceLine" id="cb15-237" title="237">x &lt;-<span class="st"> </span><span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb15-238" title="238">y &lt;-<span class="st"> </span><span class="dv">3</span>;</a>
-<a class="sourceLine" id="cb15-239" title="239"></a>
-<a class="sourceLine" id="cb15-240" title="240">x <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb15-241" title="241"></a>
-<a class="sourceLine" id="cb15-242" title="242"><span class="st">&#39;+&#39;</span>(x,y)</a>
-<a class="sourceLine" id="cb15-243" title="243"><span class="st">&#39;*&#39;</span>(x,y)</a>
-<a class="sourceLine" id="cb15-244" title="244"></a>
-<a class="sourceLine" id="cb15-245" title="245">vecx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.9</span>, <span class="fl">4.1</span>, <span class="fl">3.9</span>, <span class="fl">4.5</span>, <span class="fl">3.7</span>, <span class="fl">45.3</span>, <span class="fl">21.6</span>);</a>
-<a class="sourceLine" id="cb15-246" title="246">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ftsZ&quot;</span>, <span class="st">&quot;sigE&quot;</span>, <span class="st">&quot;bldN&quot;</span>, <span class="st">&quot;whiA&quot;</span>, <span class="st">&quot;whiB&quot;</span>, <span class="st">&quot;rdlA&quot;</span>, <span class="st">&quot;chpA&quot;</span>);</a>
-<a class="sourceLine" id="cb15-247" title="247"><span class="kw">names</span>(vecx) &lt;-<span class="st"> </span>z;</a>
+<a class="sourceLine" id="cb15-237" title="237"><span class="co">##############################</span></a>
+<a class="sourceLine" id="cb15-238" title="238"><span class="co">### Operators as functions </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb15-239" title="239"><span class="co">##############################</span></a>
+<a class="sourceLine" id="cb15-240" title="240"></a>
+<a class="sourceLine" id="cb15-241" title="241">x &lt;-<span class="st"> </span><span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb15-242" title="242">y &lt;-<span class="st"> </span><span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb15-243" title="243"></a>
+<a class="sourceLine" id="cb15-244" title="244">x <span class="op">+</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb15-245" title="245"></a>
+<a class="sourceLine" id="cb15-246" title="246"><span class="st">&#39;+&#39;</span>(x,y)</a>
+<a class="sourceLine" id="cb15-247" title="247"><span class="st">&#39;*&#39;</span>(x,y)</a>
 <a class="sourceLine" id="cb15-248" title="248"></a>
-<a class="sourceLine" id="cb15-249" title="249"><span class="st">&#39;[&#39;</span>(vecx, <span class="dv">4</span>);</a>
-<a class="sourceLine" id="cb15-250" title="250"><span class="st">&#39;[&#39;</span>(vecx, <span class="st">&quot;whiA&quot;</span>);</a></code></pre></div>
+<a class="sourceLine" id="cb15-249" title="249">vecx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.9</span>, <span class="fl">4.1</span>, <span class="fl">3.9</span>, <span class="fl">4.5</span>, <span class="fl">3.7</span>, <span class="fl">45.3</span>, <span class="fl">21.6</span>);</a>
+<a class="sourceLine" id="cb15-250" title="250">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ftsZ&quot;</span>, <span class="st">&quot;sigE&quot;</span>, <span class="st">&quot;bldN&quot;</span>, <span class="st">&quot;whiA&quot;</span>, <span class="st">&quot;whiB&quot;</span>, <span class="st">&quot;rdlA&quot;</span>, <span class="st">&quot;chpA&quot;</span>);</a>
+<a class="sourceLine" id="cb15-251" title="251"><span class="kw">names</span>(vecx) &lt;-<span class="st"> </span>z;</a>
+<a class="sourceLine" id="cb15-252" title="252"></a>
+<a class="sourceLine" id="cb15-253" title="253"><span class="st">&#39;[&#39;</span>(vecx, <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb15-254" title="254"><span class="st">&#39;[&#39;</span>(vecx, <span class="st">&quot;whiA&quot;</span>);</a></code></pre></div>
 <!-- >>> -->
 <!-- <<< scopeenv.r -->
 <h1 id="scope-and-environment">Scope and Environment</h1>
@@ -2638,8 +2642,8 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb37-10" title="10"><span class="co"># Make a matrix</span></a>
 <a class="sourceLine" id="cb37-11" title="11"></a>
 <a class="sourceLine" id="cb37-12" title="12"><span class="kw">set.seed</span>(<span class="dv">20230201</span>); <span class="co"># So that we have the same random numbers.</span></a>
-<a class="sourceLine" id="cb37-13" title="13">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">60</span>, <span class="dt">min =</span> <span class="dv">20</span>, <span class="dt">max =</span> <span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb37-14" title="14"><span class="kw">dim</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb37-13" title="13">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">24</span>, <span class="dt">min =</span> <span class="dv">20</span>, <span class="dt">max =</span> <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb37-14" title="14"><span class="kw">dim</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">6</span>);</a>
 <a class="sourceLine" id="cb37-15" title="15">x</a>
 <a class="sourceLine" id="cb37-16" title="16"></a>
 <a class="sourceLine" id="cb37-17" title="17">d &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(x);</a>
@@ -2671,7 +2675,7 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb37-43" title="43"><span class="co"># You still get one column per application.</span></a>
 <a class="sourceLine" id="cb37-44" title="44"></a>
 <a class="sourceLine" id="cb37-45" title="45"><span class="co"># If each application returns a single value then</span></a>
-<a class="sourceLine" id="cb37-46" title="46"></a>
+<a class="sourceLine" id="cb37-46" title="46"><span class="co"># apply returns a vector.</span></a>
 <a class="sourceLine" id="cb37-47" title="47"><span class="co"># The option simplify is TRUE by default.</span></a>
 <a class="sourceLine" id="cb37-48" title="48"></a>
 <a class="sourceLine" id="cb37-49" title="49"><span class="kw">apply</span>(x, <span class="dv">2</span>, <span class="dt">FUN =</span> apfun, <span class="dt">simplify =</span> T);</a>
@@ -2714,13 +2718,34 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb37-86" title="86"><span class="co"># There are NAs in the microscope column.</span></a>
 <a class="sourceLine" id="cb37-87" title="87"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>
 <a class="sourceLine" id="cb37-88" title="88"></a>
-<a class="sourceLine" id="cb37-89" title="89">x &lt;-<span class="st"> </span>hwt<span class="op">$</span>microscope</a>
-<a class="sourceLine" id="cb37-90" title="90">x[<span class="kw">is.na</span>(x)] &lt;-<span class="st"> &quot;U&quot;</span>;</a>
-<a class="sourceLine" id="cb37-91" title="91">hwt &lt;-<span class="st"> </span>hwt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">microscope =</span> x)</a>
+<a class="sourceLine" id="cb37-89" title="89">mm &lt;-<span class="st"> </span>hwt<span class="op">$</span>microscope</a>
+<a class="sourceLine" id="cb37-90" title="90">mm[<span class="kw">is.na</span>(mm)] &lt;-<span class="st"> &quot;U&quot;</span>;</a>
+<a class="sourceLine" id="cb37-91" title="91">hwt &lt;-<span class="st"> </span>hwt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">microscope =</span> mm)</a>
 <a class="sourceLine" id="cb37-92" title="92"><span class="kw">print</span>(hwt[<span class="dv">49</span><span class="op">:</span><span class="dv">60</span>,], <span class="dt">n =</span> <span class="dv">30</span>)</a>
 <a class="sourceLine" id="cb37-93" title="93"></a>
 <a class="sourceLine" id="cb37-94" title="94"><span class="kw">aggregate</span>(hwt<span class="op">$</span>hw, <span class="dt">by =</span> <span class="kw">list</span>(hwt<span class="op">$</span>microscope, hwt<span class="op">$</span>strain),</a>
-<a class="sourceLine" id="cb37-95" title="95"><span class="dt">FUN =</span> mean);</a></code></pre></div>
+<a class="sourceLine" id="cb37-95" title="95"><span class="dt">FUN =</span> mean);</a>
+<a class="sourceLine" id="cb37-96" title="96"></a>
+<a class="sourceLine" id="cb37-97" title="97"><span class="co">#################################</span></a>
+<a class="sourceLine" id="cb37-98" title="98"><span class="co">### Do the following yourself </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb37-99" title="99"><span class="co">#################################</span></a>
+<a class="sourceLine" id="cb37-100" title="100"></a>
+<a class="sourceLine" id="cb37-101" title="101"><span class="co"># When writing functions you can set the defaults of some</span></a>
+<a class="sourceLine" id="cb37-102" title="102"><span class="co"># options which will be used if no arguments are provided</span></a>
+<a class="sourceLine" id="cb37-103" title="103"><span class="co"># for the options.</span></a>
+<a class="sourceLine" id="cb37-104" title="104"></a>
+<a class="sourceLine" id="cb37-105" title="105"><span class="co"># Write a function named by.n which returns the first</span></a>
+<a class="sourceLine" id="cb37-106" title="106"><span class="co"># argument divided by the second argument. If the second</span></a>
+<a class="sourceLine" id="cb37-107" title="107"><span class="co"># argument is not provided then it defaults to 2.</span></a>
+<a class="sourceLine" id="cb37-108" title="108"></a>
+<a class="sourceLine" id="cb37-109" title="109">by.n &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">n =</span> <span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb37-110" title="110"><span class="co">### write this part </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb37-111" title="111">}</a>
+<a class="sourceLine" id="cb37-112" title="112"></a>
+<a class="sourceLine" id="cb37-113" title="113"><span class="co"># Apply the above function to the columns of the data frame</span></a>
+<a class="sourceLine" id="cb37-114" title="114"><span class="co"># d made above.</span></a>
+<a class="sourceLine" id="cb37-115" title="115"></a>
+<a class="sourceLine" id="cb37-116" title="116"><span class="co"># How will you get one fourth of all values in d?</span></a></code></pre></div>
 <!-- >>> -->
 <!-- <<< attach.r -->
 <h1 id="attach">Attach</h1>

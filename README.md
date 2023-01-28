@@ -556,9 +556,9 @@ unname(x)
 
 # Need arguments to work on.
 
-# May assume default arguments if none are provided.
+# Assume default arguments if none are provided.
 
-# May return something which you may wish to store as a
+# Return a value which you may wish to store as a
 # new object.
 
 # If you are not assigning the returned value to an object
@@ -588,7 +588,11 @@ bmi(65, 1.65);
 
 # Arguments are values or objects a function acts on. The
 # process of getting arguments into functions is called
-# argument passing.
+# argument passing. If you assign in the argument list then
+# the assigned value(s) becomes the default for the
+# argument(s).
+
+# adr.fun <- function(x, y = 2) {   }
 
 # Supplied arguments are matched to formal arguments in a
 # three pass process.
@@ -2857,8 +2861,8 @@ rm(list = ls());
 # Make a matrix
 
 set.seed(20230201); # So that we have the same random numbers.
-x <- runif(60, min = 20, max = 30)
-dim(x) <- c(15, 4);
+x <- runif(24, min = 20, max = 30)
+dim(x) <- c(4, 6);
 x
 
 d <- as.data.frame(x);
@@ -2890,7 +2894,7 @@ apply(d, 2, apfun);
 # You still get one column per application.
 
 # If each application returns a single value then
-
+# apply returns a vector.
 # The option simplify is TRUE by default.
 
 apply(x, 2, FUN = apfun, simplify = T);
@@ -2933,15 +2937,36 @@ FUN = mean);
 # There are NAs in the microscope column.
 print(hwt[49:60,], n = 30)
 
-x <- hwt$microscope
-x[is.na(x)] <- "U";
-hwt <- hwt %>% mutate(microscope = x)
+mm <- hwt$microscope
+mm[is.na(mm)] <- "U";
+hwt <- hwt %>% mutate(microscope = mm)
 print(hwt[49:60,], n = 30)
 
 aggregate(hwt$hw, by = list(hwt$microscope, hwt$strain),
 FUN = mean);
-~~~
 
+#################################
+### Do the following yourself ###
+#################################
+
+# When writing functions you can set the defaults of some
+# options which will be used if no arguments are provided
+# for the options.
+
+# Write a function named by.n which returns the first
+# argument divided by the second argument. If the second
+# argument is not provided then it defaults to 2.
+
+by.n <- function(x, n = 2) {
+### write this part ###
+}
+
+# Apply the above function to the columns of the data frame
+# d made above.
+
+# How will you get one fourth of all values in d?
+
+~~~
 <!-- >>> -->
 
 <!-- <<< attach.r -->
