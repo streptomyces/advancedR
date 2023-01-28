@@ -782,6 +782,8 @@ dotdemo2 <- function(x, ...) {
 }
 dotdemo2(x = "stuff", y = "morestuff", 23);
 
+# help("...") will show you a lot more details if and when
+# you need them.
 
 ##############################
 ### Operators as functions ###
@@ -950,12 +952,23 @@ class(y);
 # str() is useful to display the internal structure of R objects.
 # Especially useful for data frames and more complex objects.
 
-hx <- hist(rnorm(300), plot = F);
-str(hx)
 
-methods(class = class(hx));
+#################################
+### Do the following yourself ###
+#################################
 
-methods(class = "data.frame");
+# When you plot a histogram all the results calculated for
+# making the plot are returned to you as an object.
+
+hx <- hist(rnorm(300, mean = 3, sd = 2));
+
+# 1. What is the class of hx?
+
+# 2. Thinking of hx as a named vector, display the names of
+# the elements of hx.
+
+# 3. One of the names you will see in 2. is counts. Can you
+# display the counts?
 
 ~~~
 
@@ -1068,12 +1081,6 @@ help("plot")
 
 help.search("sequence")
 
-
-### Sometimes there is runnable example code. ###
-
-# example("hist") # Often crashes RStudio!
-
-
 ### There are lots of bundled example data sets ###
 
 data() # lists available data sets.
@@ -1092,6 +1099,7 @@ methods("plot"); # plot is a generic function.
 
 # All methods available in a class.
 methods(class = "histogram");
+methods(class = class(hx));
 methods(class = "data.frame");
 
 # Packages are not the same as classes. Classes are
@@ -1165,11 +1173,11 @@ rm(list = ls());
 # 8. Examine the result of z * u.
 
 
-
 #############################################################
 #############################################################
 # In operations involving two vectors of unequal length, elements of the
 # shorter vector get recycled.
+
 # If the longer vector is not an integer multiple of the shorter vector
 # you get a warning but the operation is valid and successful.
 
@@ -1266,18 +1274,17 @@ paste0(x, y, collapse = " ");
 ### Do the following yourself ###
 #################################
 
+# 1.
+
 mtl <- LETTERS[1:8]
 mtn <- seq(1,12)
 
-# Using rep() and paste0() and the two vectors made
-# above, make a vector of all the addresses on a 96
-# well microtitre plate.
-
-# A1 to A12 then B1 to B12 ... H1 to H12.
+# 2. Using rep() and paste0() and the two vectors made
+# above, make a vector of all the addresses on a 96 well
+# microtitre plate. A1 to A12 then B1 to B12 ... H1 to H12.
 
 # Hint: call to rep() will go inside the call to paste0()
 # and will also use the named argument "each".
-
 
 
 ~~~
@@ -1450,11 +1457,6 @@ attributes(x);
 # Package named readxl provides functions for reading
 # Microsoft Excel files.
 
-# If the package readxl is not installed then you can
-# install it by doing the following.
-
-# install.packages("readxl");
-
 rm(list = ls());
 
 library("readxl");
@@ -1463,7 +1465,7 @@ library("tidyverse");
 # Make sure I tell you about name conflicts and how to deal with
 # them.
 
-# Determine for format of the excel file. .xlsx or .xls
+# Determine the format of the excel file. .xlsx or .xls
 excel_format("data/file.xlsx")
 
 # See names of sheets in the excel file.
