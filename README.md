@@ -1506,10 +1506,9 @@ nht <- read_excel("data/noheader.xlsx", sheet = "hyphal_width",
 ### Reading CSV files ###
 #########################
 
-# In the past I have had problems reading MS Excel files in
-# R. In such cases you can write a csv from from Excel and
-# then use read.csv() or read_csv() to read the csv file
-# into a data frame or tibble.
+# You can write a csv file from Excel and then use
+# read.csv() or read_csv() to read the csv file into a data
+# frame or tibble.
 
 # In MS Excel, after making sure that there is a line of
 # header at the top, export your worksheet of interest
@@ -1562,8 +1561,8 @@ colnames(nht) <- c("hw", "strain", "microscope");
 
 # 3. Try the command class(expt).
 
-# 4. How will you change the column names "control" to "WT"
-# and "treatment" to "dwhiG"?
+# 4. Change the column names "control" to "WT" and
+# "treatment" to "dwhiG".
 
 ~~~
 
@@ -1612,7 +1611,7 @@ getOption("thisMeansNothing");
 ###############
 
 
-# Think of them as categories.
+# Think of them as categorical variables.
 
 rm(list = ls());
 
@@ -1692,8 +1691,14 @@ group_by(hwt, microscope) %>%
 summarise(grmean = mean(hw));
 
 # Via an intermediate object.
-bygr <- group_by(hwt, strain);
-summarise(bygr, grmean = mean(hw));
+bystrain <- group_by(hwt, strain);
+summarise(bystrain, strain.mean = mean(hw));
+
+# Accessing grouping information.
+byscope <- group_by(hwt, microscope);
+group_data(byscope);
+group_indices(byscope);
+
 
 ~~~
 

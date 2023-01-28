@@ -1365,64 +1365,63 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb24-71" title="71"><span class="co">### Reading CSV files </span><span class="al">###</span></a>
 <a class="sourceLine" id="cb24-72" title="72"><span class="co">#########################</span></a>
 <a class="sourceLine" id="cb24-73" title="73"></a>
-<a class="sourceLine" id="cb24-74" title="74"><span class="co"># In the past I have had problems reading MS Excel files in</span></a>
-<a class="sourceLine" id="cb24-75" title="75"><span class="co"># R. In such cases you can write a csv from from Excel and</span></a>
-<a class="sourceLine" id="cb24-76" title="76"><span class="co"># then use read.csv() or read_csv() to read the csv file</span></a>
-<a class="sourceLine" id="cb24-77" title="77"><span class="co"># into a data frame or tibble.</span></a>
-<a class="sourceLine" id="cb24-78" title="78"></a>
-<a class="sourceLine" id="cb24-79" title="79"><span class="co"># In MS Excel, after making sure that there is a line of</span></a>
-<a class="sourceLine" id="cb24-80" title="80"><span class="co"># header at the top, export your worksheet of interest</span></a>
-<a class="sourceLine" id="cb24-81" title="81"><span class="co"># as a csv file.</span></a>
-<a class="sourceLine" id="cb24-82" title="82"></a>
-<a class="sourceLine" id="cb24-83" title="83"><span class="co"># Use read.csv() in R to read the csv file into a data</span></a>
-<a class="sourceLine" id="cb24-84" title="84"><span class="co"># frame. read.csv() assumes the presence of a header.</span></a>
-<a class="sourceLine" id="cb24-85" title="85"></a>
-<a class="sourceLine" id="cb24-86" title="86"><span class="co"># Use read_csv() in R to read the csv file into a tibble.</span></a>
-<a class="sourceLine" id="cb24-87" title="87"><span class="co"># read_csv() also assumes the presence of a header.</span></a>
-<a class="sourceLine" id="cb24-88" title="88"></a>
-<a class="sourceLine" id="cb24-89" title="89"><span class="co"># Some other named arguments to read.csv() which might</span></a>
-<a class="sourceLine" id="cb24-90" title="90"><span class="co"># be useful are stringsAsFactors and row.names. We will</span></a>
-<a class="sourceLine" id="cb24-91" title="91"><span class="co"># come to these later.</span></a>
+<a class="sourceLine" id="cb24-74" title="74"><span class="co"># You can write a csv file from Excel and then use</span></a>
+<a class="sourceLine" id="cb24-75" title="75"><span class="co"># read.csv() or read_csv() to read the csv file into a data</span></a>
+<a class="sourceLine" id="cb24-76" title="76"><span class="co"># frame or tibble.</span></a>
+<a class="sourceLine" id="cb24-77" title="77"></a>
+<a class="sourceLine" id="cb24-78" title="78"><span class="co"># In MS Excel, after making sure that there is a line of</span></a>
+<a class="sourceLine" id="cb24-79" title="79"><span class="co"># header at the top, export your worksheet of interest</span></a>
+<a class="sourceLine" id="cb24-80" title="80"><span class="co"># as a csv file.</span></a>
+<a class="sourceLine" id="cb24-81" title="81"></a>
+<a class="sourceLine" id="cb24-82" title="82"><span class="co"># Use read.csv() in R to read the csv file into a data</span></a>
+<a class="sourceLine" id="cb24-83" title="83"><span class="co"># frame. read.csv() assumes the presence of a header.</span></a>
+<a class="sourceLine" id="cb24-84" title="84"></a>
+<a class="sourceLine" id="cb24-85" title="85"><span class="co"># Use read_csv() in R to read the csv file into a tibble.</span></a>
+<a class="sourceLine" id="cb24-86" title="86"><span class="co"># read_csv() also assumes the presence of a header.</span></a>
+<a class="sourceLine" id="cb24-87" title="87"></a>
+<a class="sourceLine" id="cb24-88" title="88"><span class="co"># Some other named arguments to read.csv() which might</span></a>
+<a class="sourceLine" id="cb24-89" title="89"><span class="co"># be useful are stringsAsFactors and row.names. We will</span></a>
+<a class="sourceLine" id="cb24-90" title="90"><span class="co"># come to these later.</span></a>
+<a class="sourceLine" id="cb24-91" title="91"></a>
 <a class="sourceLine" id="cb24-92" title="92"></a>
-<a class="sourceLine" id="cb24-93" title="93"></a>
-<a class="sourceLine" id="cb24-94" title="94"><span class="co"># data frame</span></a>
-<a class="sourceLine" id="cb24-95" title="95">hwf &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/hw.csv&quot;</span>);</a>
-<a class="sourceLine" id="cb24-96" title="96"><span class="kw">head</span>(hwf);</a>
-<a class="sourceLine" id="cb24-97" title="97"><span class="kw">nrow</span>(hwf);</a>
-<a class="sourceLine" id="cb24-98" title="98"></a>
-<a class="sourceLine" id="cb24-99" title="99"><span class="co"># tibble</span></a>
-<a class="sourceLine" id="cb24-100" title="100">hwt &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/hw.csv&quot;</span>);</a>
-<a class="sourceLine" id="cb24-101" title="101">hwt;</a>
-<a class="sourceLine" id="cb24-102" title="102"></a>
-<a class="sourceLine" id="cb24-103" title="103"><span class="co"># If your csv file or spreadsheet has no column names make</span></a>
-<a class="sourceLine" id="cb24-104" title="104"><span class="co"># sure you use &quot;col_names = FALSE&quot; or &quot;header = FALSE&quot;.</span></a>
-<a class="sourceLine" id="cb24-105" title="105"></a>
-<a class="sourceLine" id="cb24-106" title="106">nhf &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/noheader.csv&quot;</span>);</a>
-<a class="sourceLine" id="cb24-107" title="107"><span class="kw">head</span>(nhf);</a>
-<a class="sourceLine" id="cb24-108" title="108"><span class="kw">nrow</span>(nhf);</a>
-<a class="sourceLine" id="cb24-109" title="109"></a>
-<a class="sourceLine" id="cb24-110" title="110">nht &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/noheader.csv&quot;</span>, <span class="dt">col_names =</span> <span class="ot">FALSE</span>);</a>
-<a class="sourceLine" id="cb24-111" title="111">nht;</a>
-<a class="sourceLine" id="cb24-112" title="112"></a>
-<a class="sourceLine" id="cb24-113" title="113"><span class="kw">colnames</span>(nht) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;hw&quot;</span>, <span class="st">&quot;strain&quot;</span>, <span class="st">&quot;microscope&quot;</span>);</a>
-<a class="sourceLine" id="cb24-114" title="114"></a>
-<a class="sourceLine" id="cb24-115" title="115"><span class="co">#################################</span></a>
-<a class="sourceLine" id="cb24-116" title="116"><span class="co">### Do the following yourself </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb24-117" title="117"><span class="co">#################################</span></a>
-<a class="sourceLine" id="cb24-118" title="118"></a>
-<a class="sourceLine" id="cb24-119" title="119"><span class="co"># The sheet named &quot;expression&quot; in the file data/file.xlsx</span></a>
-<a class="sourceLine" id="cb24-120" title="120"><span class="co"># contains the columns named &quot;gene&quot;, &quot;control&quot; and</span></a>
-<a class="sourceLine" id="cb24-121" title="121"><span class="co"># &quot;treatment&quot;.</span></a>
-<a class="sourceLine" id="cb24-122" title="122"></a>
-<a class="sourceLine" id="cb24-123" title="123"><span class="co"># 1. Read this sheet into a tibble named &quot;expt&quot;;</span></a>
-<a class="sourceLine" id="cb24-124" title="124"></a>
-<a class="sourceLine" id="cb24-125" title="125"><span class="co"># 2. Try the commands colnames(), nrow(), ncol()</span></a>
-<a class="sourceLine" id="cb24-126" title="126"><span class="co"># with expt as the only argument.</span></a>
-<a class="sourceLine" id="cb24-127" title="127"></a>
-<a class="sourceLine" id="cb24-128" title="128"><span class="co"># 3. Try the command class(expt).</span></a>
-<a class="sourceLine" id="cb24-129" title="129"></a>
-<a class="sourceLine" id="cb24-130" title="130"><span class="co"># 4. How will you change the column names &quot;control&quot; to &quot;WT&quot;</span></a>
-<a class="sourceLine" id="cb24-131" title="131"><span class="co"># and &quot;treatment&quot; to &quot;dwhiG&quot;?</span></a></code></pre></div>
+<a class="sourceLine" id="cb24-93" title="93"><span class="co"># data frame</span></a>
+<a class="sourceLine" id="cb24-94" title="94">hwf &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/hw.csv&quot;</span>);</a>
+<a class="sourceLine" id="cb24-95" title="95"><span class="kw">head</span>(hwf);</a>
+<a class="sourceLine" id="cb24-96" title="96"><span class="kw">nrow</span>(hwf);</a>
+<a class="sourceLine" id="cb24-97" title="97"></a>
+<a class="sourceLine" id="cb24-98" title="98"><span class="co"># tibble</span></a>
+<a class="sourceLine" id="cb24-99" title="99">hwt &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/hw.csv&quot;</span>);</a>
+<a class="sourceLine" id="cb24-100" title="100">hwt;</a>
+<a class="sourceLine" id="cb24-101" title="101"></a>
+<a class="sourceLine" id="cb24-102" title="102"><span class="co"># If your csv file or spreadsheet has no column names make</span></a>
+<a class="sourceLine" id="cb24-103" title="103"><span class="co"># sure you use &quot;col_names = FALSE&quot; or &quot;header = FALSE&quot;.</span></a>
+<a class="sourceLine" id="cb24-104" title="104"></a>
+<a class="sourceLine" id="cb24-105" title="105">nhf &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/noheader.csv&quot;</span>);</a>
+<a class="sourceLine" id="cb24-106" title="106"><span class="kw">head</span>(nhf);</a>
+<a class="sourceLine" id="cb24-107" title="107"><span class="kw">nrow</span>(nhf);</a>
+<a class="sourceLine" id="cb24-108" title="108"></a>
+<a class="sourceLine" id="cb24-109" title="109">nht &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/noheader.csv&quot;</span>, <span class="dt">col_names =</span> <span class="ot">FALSE</span>);</a>
+<a class="sourceLine" id="cb24-110" title="110">nht;</a>
+<a class="sourceLine" id="cb24-111" title="111"></a>
+<a class="sourceLine" id="cb24-112" title="112"><span class="kw">colnames</span>(nht) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;hw&quot;</span>, <span class="st">&quot;strain&quot;</span>, <span class="st">&quot;microscope&quot;</span>);</a>
+<a class="sourceLine" id="cb24-113" title="113"></a>
+<a class="sourceLine" id="cb24-114" title="114"><span class="co">#################################</span></a>
+<a class="sourceLine" id="cb24-115" title="115"><span class="co">### Do the following yourself </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb24-116" title="116"><span class="co">#################################</span></a>
+<a class="sourceLine" id="cb24-117" title="117"></a>
+<a class="sourceLine" id="cb24-118" title="118"><span class="co"># The sheet named &quot;expression&quot; in the file data/file.xlsx</span></a>
+<a class="sourceLine" id="cb24-119" title="119"><span class="co"># contains the columns named &quot;gene&quot;, &quot;control&quot; and</span></a>
+<a class="sourceLine" id="cb24-120" title="120"><span class="co"># &quot;treatment&quot;.</span></a>
+<a class="sourceLine" id="cb24-121" title="121"></a>
+<a class="sourceLine" id="cb24-122" title="122"><span class="co"># 1. Read this sheet into a tibble named &quot;expt&quot;;</span></a>
+<a class="sourceLine" id="cb24-123" title="123"></a>
+<a class="sourceLine" id="cb24-124" title="124"><span class="co"># 2. Try the commands colnames(), nrow(), ncol()</span></a>
+<a class="sourceLine" id="cb24-125" title="125"><span class="co"># with expt as the only argument.</span></a>
+<a class="sourceLine" id="cb24-126" title="126"></a>
+<a class="sourceLine" id="cb24-127" title="127"><span class="co"># 3. Try the command class(expt).</span></a>
+<a class="sourceLine" id="cb24-128" title="128"></a>
+<a class="sourceLine" id="cb24-129" title="129"><span class="co"># 4. Change the column names &quot;control&quot; to &quot;WT&quot; and</span></a>
+<a class="sourceLine" id="cb24-130" title="130"><span class="co"># &quot;treatment&quot; to &quot;dwhiG&quot;.</span></a></code></pre></div>
 <!-- >>> -->
 <!-- <<< options.r -->
 <h1 id="options">Options</h1>
@@ -1459,7 +1458,7 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb26-4" title="4"><span class="co">###############</span></a>
 <a class="sourceLine" id="cb26-5" title="5"></a>
 <a class="sourceLine" id="cb26-6" title="6"></a>
-<a class="sourceLine" id="cb26-7" title="7"><span class="co"># Think of them as categories.</span></a>
+<a class="sourceLine" id="cb26-7" title="7"><span class="co"># Think of them as categorical variables.</span></a>
 <a class="sourceLine" id="cb26-8" title="8"></a>
 <a class="sourceLine" id="cb26-9" title="9"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>());</a>
 <a class="sourceLine" id="cb26-10" title="10"></a>
@@ -1539,8 +1538,14 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb26-84" title="84"><span class="kw">summarise</span>(<span class="dt">grmean =</span> <span class="kw">mean</span>(hw));</a>
 <a class="sourceLine" id="cb26-85" title="85"></a>
 <a class="sourceLine" id="cb26-86" title="86"><span class="co"># Via an intermediate object.</span></a>
-<a class="sourceLine" id="cb26-87" title="87">bygr &lt;-<span class="st"> </span><span class="kw">group_by</span>(hwt, strain);</a>
-<a class="sourceLine" id="cb26-88" title="88"><span class="kw">summarise</span>(bygr, <span class="dt">grmean =</span> <span class="kw">mean</span>(hw));</a></code></pre></div>
+<a class="sourceLine" id="cb26-87" title="87">bystrain &lt;-<span class="st"> </span><span class="kw">group_by</span>(hwt, strain);</a>
+<a class="sourceLine" id="cb26-88" title="88"><span class="kw">summarise</span>(bystrain, <span class="dt">strain.mean =</span> <span class="kw">mean</span>(hw));</a>
+<a class="sourceLine" id="cb26-89" title="89"></a>
+<a class="sourceLine" id="cb26-90" title="90"><span class="co"># Accessing grouping information.</span></a>
+<a class="sourceLine" id="cb26-91" title="91">byscope &lt;-<span class="st"> </span><span class="kw">group_by</span>(hwt, microscope);</a>
+<a class="sourceLine" id="cb26-92" title="92"><span class="kw">group_data</span>(byscope);</a>
+<a class="sourceLine" id="cb26-93" title="93"><span class="kw">group_indices</span>(byscope);</a>
+<a class="sourceLine" id="cb26-94" title="94"></a></code></pre></div>
 <!-- >>> -->
 <!-- <<< models.r -->
 <h1 id="statistical-models">Statistical Models</h1>
