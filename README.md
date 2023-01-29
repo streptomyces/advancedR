@@ -4069,20 +4069,6 @@ display(blues);
 
 # 5. Display both the original image and the modified image.
 
-mallards <- readImage("data/mallards.jpg");
-reds <- channel(mallards, "red");
-greens <- channel(mallards, "green");
-blues <- channel(mallards, "blue");
-
-blues <- blues + 0.12;
-
-mallards2 <- rgbImage(reds, greens, blues);
-
-par(mfrow = c(1,2));
-display(mallards);
-display(mallards2);
-
-dev.off();
 ~~~
 
 <!-- >>> -->
@@ -4090,14 +4076,9 @@ dev.off();
 <!-- <<< close.md -->
 # Closing comments
 
-* R is not the most convenient environment for all kinds
-  of data processing.
-
-* Some things might be easier to do in a general purpose
-  programming language such as Perl or Python.
-
-* You can find plenty of help and support for Python and
-  Perl around the NRP.
+* A general purpose programming language such as Perl or
+  Python is very useful for tidying up data before reading
+  into R.
 
 * Ability to read documentation quickly is more important
   than you think. Not just in R.

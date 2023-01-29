@@ -3795,29 +3795,12 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb46-76" title="76"><span class="co"># 4. Combine the three channels to get a color image using</span></a>
 <a class="sourceLine" id="cb46-77" title="77"><span class="co"># the function rgbImage();</span></a>
 <a class="sourceLine" id="cb46-78" title="78"></a>
-<a class="sourceLine" id="cb46-79" title="79"><span class="co"># 5. Display both the original image and the modified image.</span></a>
-<a class="sourceLine" id="cb46-80" title="80"></a>
-<a class="sourceLine" id="cb46-81" title="81">mallards &lt;-<span class="st"> </span><span class="kw">readImage</span>(<span class="st">&quot;data/mallards.jpg&quot;</span>);</a>
-<a class="sourceLine" id="cb46-82" title="82">reds &lt;-<span class="st"> </span><span class="kw">channel</span>(mallards, <span class="st">&quot;red&quot;</span>);</a>
-<a class="sourceLine" id="cb46-83" title="83">greens &lt;-<span class="st"> </span><span class="kw">channel</span>(mallards, <span class="st">&quot;green&quot;</span>);</a>
-<a class="sourceLine" id="cb46-84" title="84">blues &lt;-<span class="st"> </span><span class="kw">channel</span>(mallards, <span class="st">&quot;blue&quot;</span>);</a>
-<a class="sourceLine" id="cb46-85" title="85"></a>
-<a class="sourceLine" id="cb46-86" title="86">blues &lt;-<span class="st"> </span>blues <span class="op">+</span><span class="st"> </span><span class="fl">0.12</span>;</a>
-<a class="sourceLine" id="cb46-87" title="87"></a>
-<a class="sourceLine" id="cb46-88" title="88">mallards2 &lt;-<span class="st"> </span><span class="kw">rgbImage</span>(reds, greens, blues);</a>
-<a class="sourceLine" id="cb46-89" title="89"></a>
-<a class="sourceLine" id="cb46-90" title="90"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>));</a>
-<a class="sourceLine" id="cb46-91" title="91"><span class="kw">display</span>(mallards);</a>
-<a class="sourceLine" id="cb46-92" title="92"><span class="kw">display</span>(mallards2);</a>
-<a class="sourceLine" id="cb46-93" title="93"></a>
-<a class="sourceLine" id="cb46-94" title="94"><span class="kw">dev.off</span>();</a></code></pre></div>
+<a class="sourceLine" id="cb46-79" title="79"><span class="co"># 5. Display both the original image and the modified image.</span></a></code></pre></div>
 <!-- >>> -->
 <!-- <<< close.md -->
 <h1 id="closing-comments">Closing comments</h1>
 <ul>
-<li><p>R is not the most convenient environment for all kinds of data processing.</p></li>
-<li><p>Some things might be easier to do in a general purpose programming language such as Perl or Python.</p></li>
-<li><p>You can find plenty of help and support for Python and Perl around the NRP.</p></li>
+<li><p>A general purpose programming language such as Perl or Python is very useful for tidying up data before reading into R.</p></li>
 <li><p>Ability to read documentation quickly is more important than you think. Not just in R.</p></li>
 <li><p><a href="https://cran.r-project.org/manuals.html">R manuals webpage</a></p></li>
 <li><p><a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf">PDF of the Introduction to R book</a></p></li>
