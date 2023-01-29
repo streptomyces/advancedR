@@ -73,7 +73,7 @@ Course                       1600  to   1730
 
 * Start RStudio.
 
-## Getting the scripts and data we will be using
+## Getting the scripts and data we will be using (on day 1 only)
 
 In Rstudio, use the drop down menu to do
 
@@ -105,6 +105,14 @@ with me so I can explain each step.
     setwd("adr")
     
     list.files()
+
+## On day 2 (should not be needed, but just in case)
+
+    setwd("u:/")
+    setwd("Rtrain")
+    setwd("adr")
+    list.files()
+
 
 ### Four panes
 
@@ -565,8 +573,8 @@ unname(x)
 # then the returned value may be printed on the console.
 # invisible()
 
-# Some functions are used primarily for their
-# side-effects rather than their return value.
+# Some functions are used primarily for their side-effects
+# rather than their return value.
 
 # User defined functions.
 
@@ -1274,7 +1282,7 @@ paste0(x, y, collapse = " ");
 ### Do the following yourself ###
 #################################
 
-# 1.
+# 1. Make two vectors as shown below.
 
 mtl <- LETTERS[1:8]
 mtn <- seq(1,12)
@@ -1859,9 +1867,9 @@ identical(x,y);
 all.equal(x,y);
 
 
-# Divide x by 39.473 then multiply the result by 39.473
-z <- x / 39.473
-x <- z * 39.473
+# Divide x by pi then multiply the result by pi
+z <- x / pi
+x <- z * pi
 
 ### identical() and all.equal()
 x == y;
@@ -1896,9 +1904,9 @@ abs(x - y)
 ### Do the following yourself ###
 #################################
 
-# 1. Store the value of 0.5 - 0.3 into m
+# 1. Store the value of 0.5 - 0.3 as m
 
-# 2. Store the value of 0.3 - 0.1 into n
+# 2. Store the value of 0.3 - 0.1 as n
 
 # 3. Use == to test the equality of m and n.
 
@@ -1908,9 +1916,6 @@ abs(x - y)
 
 # 6. What is the output of isTRUE(all.equal(m,n))?
 
-# 7. What is the magnitude of the difference between
-# m and n?
-
 # Refer to the documentation of all.equal() to find out
 # the default value of the tolerance argument.
 
@@ -1919,9 +1924,6 @@ abs(x - y)
 
 # Use isTRUE(all.equal()), not ==, when comparing floating
 # point numbers.
-
-# mean(abs(x-y))/mean(abs(x))
-
 
 ~~~
 
@@ -2008,11 +2010,13 @@ hwt;
 # calls to seq().
 
 # 2. Use the vector ronum, made above to get a subset data
-# frame from hwf consisting of only row numbers in ronum
+# frame from hwf consisting of only row numbers in ronum.
 
 # 3. From hwf, extract the strain associated with the
-# hyphal width in row number 58 and store it in a vector
+# hyphal width in row number 58 and store it as a vector
 # named strain58. Check the class and mode of strain58.
+
+# Convert strain58 to a character vector.
 
 
 ### Tidyverse style ###
@@ -2259,8 +2263,6 @@ attributes(s);
 # 7. Store all the dates falling on Wednesday to wed.
 # 8. Examine wed.
 
-
-
 ~~~
 
 <!-- >>> -->
@@ -2379,6 +2381,7 @@ head(nf)
 # following.
 
 saveRDS(data, file = "data.rds");
+# We will need the "data.rds" file later.
 
 ###################
 ### dplyr style ###
@@ -2441,9 +2444,10 @@ saveRDS(tib, file = "tib.rds");
 
 rm(list = ls());
 
-set.seed(20230201); # So that we have the same random numbers.
-x <- as.integer(runif(10, 1, 50) * 7)
-x
+set.seed(4); # So that we have the same random numbers.
+x <- ceiling(runif(10, 30, 300))
+x <- as.integer(x);
+length(unique(x));
 sx <- sort(x)
 sx
 
@@ -2528,7 +2532,6 @@ stib
 
 stib <- arrange(tib, desc(abs(logFC)));
 stib
-
 
 
 ~~~
@@ -2960,18 +2963,14 @@ FUN = mean);
 # options which will be used if no arguments are provided
 # for the options.
 
-# Write a function named by.n which returns the first
+# 1. Write a function named by.n which returns the first
 # argument divided by the second argument. If the second
 # argument is not provided then it defaults to 2.
 
-by.n <- function(x, n = 2) {
-### write this part ###
-}
+# 2. Apply the above function to the columns of the data
+# frame d made above.
 
-# Apply the above function to the columns of the data frame
-# d made above.
-
-# How will you get one fourth of all values in d?
+# 3. How will you get one fourth of all values in d?
 
 ~~~
 <!-- >>> -->
@@ -3208,6 +3207,8 @@ byFC;
 
 unsorted_lfc <- topTags(et, sort.by = "none", n = nrow(d));
 saveRDS(unsorted_lfc$table, "unsorted_lfc.rds")
+# We will read the file "unsorted_lfc.rds" later to make a
+# volcano plot.
 
 byPV <- topTags(et, n = nrow(d), sort.by = "PValue");
 write.csv(byPV, file = "../wt_hfq_DE.csv", row.names = F);
@@ -3571,9 +3572,7 @@ ht <- runif(19, min = 5, max = 20)
 barplot(ht, col = blured.ramp(19))
 
 
-
 # colorRampPalette(c(rgb(0,0,1,1), rgb(1,0,0,1)), alpha = TRUE)(19)
-
 
 
 ~~~
@@ -3933,6 +3932,7 @@ ggplot(sldf, aes(x = medium, y = log2(spore.len),
 
 # 4. Try geom_violin() instead of geom_boxplot().
 
+#################################
 
 crpfun <- colorRampPalette(
   c("red", "yellow", "brown", "violet", "blue", "green"),
@@ -3947,7 +3947,7 @@ ggplot(sldf, aes(x = medium, y = log2(spore.len),
 
 
 # Do we have enough data? Plotting counts.
-# geom_bar() counts.
+# geom_bar() does the counting for us.
 
 ggplot(sldf, aes(x = medium)) +
   geom_bar(colour = "darkblue", fill = "darkblue") +
@@ -4082,6 +4082,11 @@ display(blues);
 
 * Ability to read documentation quickly is more important
   than you think. Not just in R.
+
+* Write and use functions a lot. In addition to making
+  repetitive tasks easier, they provide safety against
+  inadvertent variable values because they have their own
+  scope.
 
 * [R manuals webpage](https://cran.r-project.org/manuals.html)
 
