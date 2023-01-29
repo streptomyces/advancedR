@@ -3722,36 +3722,36 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb46-3" title="3"><span class="co">### EBImage </span><span class="al">###</span></a>
 <a class="sourceLine" id="cb46-4" title="4"><span class="co">###############</span></a>
 <a class="sourceLine" id="cb46-5" title="5"></a>
-<a class="sourceLine" id="cb46-6" title="6"><span class="kw">library</span>(<span class="st">&quot;EBImage&quot;</span>);</a>
-<a class="sourceLine" id="cb46-7" title="7"></a>
-<a class="sourceLine" id="cb46-8" title="8"><span class="kw">options</span>(<span class="dt">EBImage.display =</span> <span class="st">&quot;raster&quot;</span>);</a>
-<a class="sourceLine" id="cb46-9" title="9"></a>
-<a class="sourceLine" id="cb46-10" title="10">cfinch &lt;-<span class="st"> </span><span class="kw">readImage</span>(<span class="st">&quot;data/goldfinch.jpg&quot;</span>);</a>
-<a class="sourceLine" id="cb46-11" title="11">gfinch &lt;-<span class="st"> </span><span class="kw">readImage</span>(<span class="st">&quot;data/grayfinch.jpg&quot;</span>);</a>
+<a class="sourceLine" id="cb46-6" title="6"><span class="co"># The package EBImage can handle png, jpeg and tiff file</span></a>
+<a class="sourceLine" id="cb46-7" title="7"><span class="co"># formats. Once an image is read in, it allows access to</span></a>
+<a class="sourceLine" id="cb46-8" title="8"><span class="co"># individual pixels and also the manipulation of the entire</span></a>
+<a class="sourceLine" id="cb46-9" title="9"><span class="co"># image using a matrix / array like interface.</span></a>
+<a class="sourceLine" id="cb46-10" title="10"></a>
+<a class="sourceLine" id="cb46-11" title="11"><span class="kw">library</span>(<span class="st">&quot;EBImage&quot;</span>);</a>
 <a class="sourceLine" id="cb46-12" title="12"></a>
-<a class="sourceLine" id="cb46-13" title="13"><span class="co">### Brightness</span></a>
-<a class="sourceLine" id="cb46-14" title="14"></a>
-<a class="sourceLine" id="cb46-15" title="15">brighter &lt;-<span class="st"> </span>gfinch <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>;</a>
-<a class="sourceLine" id="cb46-16" title="16">darker &lt;-<span class="st"> </span>gfinch <span class="op">-</span><span class="st"> </span><span class="fl">0.1</span>;</a>
-<a class="sourceLine" id="cb46-17" title="17"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>));</a>
-<a class="sourceLine" id="cb46-18" title="18"><span class="kw">display</span>(gfinch);</a>
-<a class="sourceLine" id="cb46-19" title="19"><span class="kw">display</span>(brighter);</a>
-<a class="sourceLine" id="cb46-20" title="20"><span class="kw">display</span>(darker);</a>
-<a class="sourceLine" id="cb46-21" title="21"></a>
-<a class="sourceLine" id="cb46-22" title="22">dark1 &lt;-<span class="st"> </span>cfinch <span class="op">-</span><span class="st"> </span><span class="fl">0.1</span>;</a>
-<a class="sourceLine" id="cb46-23" title="23">dark2 &lt;-<span class="st"> </span>cfinch <span class="op">-</span><span class="st"> </span><span class="fl">0.2</span>;</a>
-<a class="sourceLine" id="cb46-24" title="24"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>));</a>
-<a class="sourceLine" id="cb46-25" title="25"><span class="kw">display</span>(cfinch);</a>
-<a class="sourceLine" id="cb46-26" title="26"><span class="kw">display</span>(dark1);</a>
-<a class="sourceLine" id="cb46-27" title="27"><span class="kw">display</span>(dark2);</a>
-<a class="sourceLine" id="cb46-28" title="28"></a>
-<a class="sourceLine" id="cb46-29" title="29"><span class="co">### Image object to file</span></a>
-<a class="sourceLine" id="cb46-30" title="30"></a>
-<a class="sourceLine" id="cb46-31" title="31"><span class="kw">writeImage</span>(dark2, <span class="st">&quot;darkfinch.jpg&quot;</span>, <span class="st">&quot;jpeg&quot;</span>, <span class="dt">quality =</span> <span class="dv">70</span>) </a>
-<a class="sourceLine" id="cb46-32" title="32"></a>
-<a class="sourceLine" id="cb46-33" title="33"><span class="co">### Cropping</span></a>
-<a class="sourceLine" id="cb46-34" title="34"></a>
-<a class="sourceLine" id="cb46-35" title="35">headfinch &lt;-<span class="st"> </span>dark1[<span class="dv">100</span><span class="op">:</span><span class="dv">500</span>, <span class="dv">10</span><span class="op">:</span><span class="dv">180</span>,]</a>
+<a class="sourceLine" id="cb46-13" title="13"><span class="kw">options</span>(<span class="dt">EBImage.display =</span> <span class="st">&quot;raster&quot;</span>);</a>
+<a class="sourceLine" id="cb46-14" title="14"><span class="co"># The other option is &quot;browser&quot;.</span></a>
+<a class="sourceLine" id="cb46-15" title="15"></a>
+<a class="sourceLine" id="cb46-16" title="16">finch &lt;-<span class="st"> </span><span class="kw">readImage</span>(<span class="st">&quot;data/goldfinch.jpg&quot;</span>);</a>
+<a class="sourceLine" id="cb46-17" title="17">finch</a>
+<a class="sourceLine" id="cb46-18" title="18"></a>
+<a class="sourceLine" id="cb46-19" title="19"><span class="co">### Brightness</span></a>
+<a class="sourceLine" id="cb46-20" title="20"></a>
+<a class="sourceLine" id="cb46-21" title="21">dark1 &lt;-<span class="st"> </span>finch <span class="op">-</span><span class="st"> </span><span class="fl">0.1</span>;</a>
+<a class="sourceLine" id="cb46-22" title="22">dark2 &lt;-<span class="st"> </span>finch <span class="op">-</span><span class="st"> </span><span class="fl">0.2</span>;</a>
+<a class="sourceLine" id="cb46-23" title="23"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>));</a>
+<a class="sourceLine" id="cb46-24" title="24"><span class="kw">display</span>(finch);</a>
+<a class="sourceLine" id="cb46-25" title="25"><span class="kw">display</span>(dark1);</a>
+<a class="sourceLine" id="cb46-26" title="26"><span class="kw">display</span>(dark2);</a>
+<a class="sourceLine" id="cb46-27" title="27"></a>
+<a class="sourceLine" id="cb46-28" title="28"><span class="co">### Image object to file</span></a>
+<a class="sourceLine" id="cb46-29" title="29"></a>
+<a class="sourceLine" id="cb46-30" title="30"><span class="kw">writeImage</span>(dark1, <span class="st">&quot;../darkfinch.jpg&quot;</span>, <span class="st">&quot;jpeg&quot;</span>, <span class="dt">quality =</span> <span class="dv">70</span>) </a>
+<a class="sourceLine" id="cb46-31" title="31"></a>
+<a class="sourceLine" id="cb46-32" title="32"><span class="co">### Cropping</span></a>
+<a class="sourceLine" id="cb46-33" title="33"></a>
+<a class="sourceLine" id="cb46-34" title="34">headfinch &lt;-<span class="st"> </span>dark1[<span class="dv">100</span><span class="op">:</span><span class="dv">500</span>, <span class="dv">10</span><span class="op">:</span><span class="dv">180</span>,]</a>
+<a class="sourceLine" id="cb46-35" title="35"><span class="kw">display</span>(headfinch);</a>
 <a class="sourceLine" id="cb46-36" title="36"></a>
 <a class="sourceLine" id="cb46-37" title="37"><span class="co">### Adding text to image</span></a>
 <a class="sourceLine" id="cb46-38" title="38"></a>
@@ -3764,35 +3764,53 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb46-45" title="45"></a>
 <a class="sourceLine" id="cb46-46" title="46"><span class="co">### Display to file</span></a>
 <a class="sourceLine" id="cb46-47" title="47"></a>
-<a class="sourceLine" id="cb46-48" title="48"><span class="kw">dev.print</span>(jpeg, <span class="dt">filename =</span> <span class="st">&quot;annofinch.jpg&quot;</span>, <span class="dt">width =</span> <span class="kw">dim</span>(dark1)[<span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb46-48" title="48"><span class="kw">dev.print</span>(jpeg, <span class="dt">filename =</span> <span class="st">&quot;../annofinch.jpg&quot;</span>, <span class="dt">width =</span> <span class="kw">dim</span>(dark1)[<span class="dv">1</span>],</a>
 <a class="sourceLine" id="cb46-49" title="49"><span class="dt">height =</span> <span class="kw">dim</span>(dark1)[<span class="dv">2</span>], <span class="dt">quality =</span> <span class="dv">70</span>);</a>
 <a class="sourceLine" id="cb46-50" title="50"></a>
 <a class="sourceLine" id="cb46-51" title="51"><span class="co">### Separating channels</span></a>
 <a class="sourceLine" id="cb46-52" title="52"></a>
-<a class="sourceLine" id="cb46-53" title="53">reds &lt;-<span class="st"> </span><span class="kw">channel</span>(cfinch, <span class="st">&quot;red&quot;</span>);</a>
-<a class="sourceLine" id="cb46-54" title="54">greens &lt;-<span class="st"> </span><span class="kw">channel</span>(cfinch, <span class="st">&quot;green&quot;</span>);</a>
-<a class="sourceLine" id="cb46-55" title="55">blues &lt;-<span class="st"> </span><span class="kw">channel</span>(cfinch, <span class="st">&quot;blue&quot;</span>);</a>
+<a class="sourceLine" id="cb46-53" title="53">reds &lt;-<span class="st"> </span><span class="kw">channel</span>(finch, <span class="st">&quot;red&quot;</span>);</a>
+<a class="sourceLine" id="cb46-54" title="54">greens &lt;-<span class="st"> </span><span class="kw">channel</span>(finch, <span class="st">&quot;green&quot;</span>);</a>
+<a class="sourceLine" id="cb46-55" title="55">blues &lt;-<span class="st"> </span><span class="kw">channel</span>(finch, <span class="st">&quot;blue&quot;</span>);</a>
 <a class="sourceLine" id="cb46-56" title="56"></a>
 <a class="sourceLine" id="cb46-57" title="57"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>));</a>
 <a class="sourceLine" id="cb46-58" title="58"><span class="kw">display</span>(reds);</a>
 <a class="sourceLine" id="cb46-59" title="59"><span class="kw">display</span>(greens);</a>
 <a class="sourceLine" id="cb46-60" title="60"><span class="kw">display</span>(blues);</a>
 <a class="sourceLine" id="cb46-61" title="61"></a>
-<a class="sourceLine" id="cb46-62" title="62"><span class="co">### Combining channels</span></a>
-<a class="sourceLine" id="cb46-63" title="63"></a>
-<a class="sourceLine" id="cb46-64" title="64">blue.lo &lt;-<span class="st"> </span>blues <span class="op">-</span><span class="st"> </span><span class="fl">0.12</span></a>
-<a class="sourceLine" id="cb46-65" title="65">loblue &lt;-<span class="st"> </span><span class="kw">rgbImage</span>(reds, greens, blue.lo);</a>
-<a class="sourceLine" id="cb46-66" title="66"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>));</a>
-<a class="sourceLine" id="cb46-67" title="67"><span class="kw">display</span>(cfinch)</a>
-<a class="sourceLine" id="cb46-68" title="68"><span class="kw">display</span>(loblue);</a>
+<a class="sourceLine" id="cb46-62" title="62"><span class="co">#################################</span></a>
+<a class="sourceLine" id="cb46-63" title="63"><span class="co">### Do the following yourself </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb46-64" title="64"><span class="co">#################################</span></a>
+<a class="sourceLine" id="cb46-65" title="65"></a>
+<a class="sourceLine" id="cb46-66" title="66"><span class="co"># The function rgbImage takes the three channels as</span></a>
+<a class="sourceLine" id="cb46-67" title="67"><span class="co"># the first three arguments and combines them to produce a</span></a>
+<a class="sourceLine" id="cb46-68" title="68"><span class="co"># colour image.</span></a>
 <a class="sourceLine" id="cb46-69" title="69"></a>
-<a class="sourceLine" id="cb46-70" title="70"><span class="co"># Order of channels is important!</span></a>
-<a class="sourceLine" id="cb46-71" title="71">ch.shuf &lt;-<span class="st"> </span><span class="kw">rgbImage</span>(greens, blues, reds);</a>
-<a class="sourceLine" id="cb46-72" title="72"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>));</a>
-<a class="sourceLine" id="cb46-73" title="73"><span class="kw">display</span>(cfinch)</a>
-<a class="sourceLine" id="cb46-74" title="74"><span class="kw">display</span>(ch.shuf);</a>
+<a class="sourceLine" id="cb46-70" title="70"><span class="co"># 1. Read the image &quot;data/mallards.jpg&quot;.</span></a>
+<a class="sourceLine" id="cb46-71" title="71"></a>
+<a class="sourceLine" id="cb46-72" title="72"><span class="co"># 2. Separate the three channels.</span></a>
+<a class="sourceLine" id="cb46-73" title="73"></a>
+<a class="sourceLine" id="cb46-74" title="74"><span class="co"># 3. Add 0.12 to the blue channel.</span></a>
 <a class="sourceLine" id="cb46-75" title="75"></a>
-<a class="sourceLine" id="cb46-76" title="76"><span class="kw">dev.off</span>();</a></code></pre></div>
+<a class="sourceLine" id="cb46-76" title="76"><span class="co"># 4. Combine the three channels to get a color image using</span></a>
+<a class="sourceLine" id="cb46-77" title="77"><span class="co"># the function rgbImage();</span></a>
+<a class="sourceLine" id="cb46-78" title="78"></a>
+<a class="sourceLine" id="cb46-79" title="79"><span class="co"># 5. Display both the original image and the modified image.</span></a>
+<a class="sourceLine" id="cb46-80" title="80"></a>
+<a class="sourceLine" id="cb46-81" title="81">mallards &lt;-<span class="st"> </span><span class="kw">readImage</span>(<span class="st">&quot;data/mallards.jpg&quot;</span>);</a>
+<a class="sourceLine" id="cb46-82" title="82">reds &lt;-<span class="st"> </span><span class="kw">channel</span>(mallards, <span class="st">&quot;red&quot;</span>);</a>
+<a class="sourceLine" id="cb46-83" title="83">greens &lt;-<span class="st"> </span><span class="kw">channel</span>(mallards, <span class="st">&quot;green&quot;</span>);</a>
+<a class="sourceLine" id="cb46-84" title="84">blues &lt;-<span class="st"> </span><span class="kw">channel</span>(mallards, <span class="st">&quot;blue&quot;</span>);</a>
+<a class="sourceLine" id="cb46-85" title="85"></a>
+<a class="sourceLine" id="cb46-86" title="86">blues &lt;-<span class="st"> </span>blues <span class="op">+</span><span class="st"> </span><span class="fl">0.12</span>;</a>
+<a class="sourceLine" id="cb46-87" title="87"></a>
+<a class="sourceLine" id="cb46-88" title="88">mallards2 &lt;-<span class="st"> </span><span class="kw">rgbImage</span>(reds, greens, blues);</a>
+<a class="sourceLine" id="cb46-89" title="89"></a>
+<a class="sourceLine" id="cb46-90" title="90"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>));</a>
+<a class="sourceLine" id="cb46-91" title="91"><span class="kw">display</span>(mallards);</a>
+<a class="sourceLine" id="cb46-92" title="92"><span class="kw">display</span>(mallards2);</a>
+<a class="sourceLine" id="cb46-93" title="93"></a>
+<a class="sourceLine" id="cb46-94" title="94"><span class="kw">dev.off</span>();</a></code></pre></div>
 <!-- >>> -->
 <!-- <<< close.md -->
 <h1 id="closing-comments">Closing comments</h1>

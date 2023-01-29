@@ -3994,36 +3994,36 @@ ggplot(cdf, aes(x = strain, y = count)) +
 ### EBImage ###
 ###############
 
+# The package EBImage can handle png, jpeg and tiff file
+# formats. Once an image is read in, it allows access to
+# individual pixels and also the manipulation of the entire
+# image using a matrix / array like interface.
+
 library("EBImage");
 
 options(EBImage.display = "raster");
+# The other option is "browser".
 
-cfinch <- readImage("data/goldfinch.jpg");
-gfinch <- readImage("data/grayfinch.jpg");
+finch <- readImage("data/goldfinch.jpg");
+finch
 
 ### Brightness
 
-brighter <- gfinch + 0.1;
-darker <- gfinch - 0.1;
+dark1 <- finch - 0.1;
+dark2 <- finch - 0.2;
 par(mfrow = c(2,2));
-display(gfinch);
-display(brighter);
-display(darker);
-
-dark1 <- cfinch - 0.1;
-dark2 <- cfinch - 0.2;
-par(mfrow = c(2,2));
-display(cfinch);
+display(finch);
 display(dark1);
 display(dark2);
 
 ### Image object to file
 
-writeImage(dark2, "darkfinch.jpg", "jpeg", quality = 70) 
+writeImage(dark1, "../darkfinch.jpg", "jpeg", quality = 70) 
 
 ### Cropping
 
 headfinch <- dark1[100:500, 10:180,]
+display(headfinch);
 
 ### Adding text to image
 
@@ -4036,33 +4036,51 @@ cex = 1.5);
 
 ### Display to file
 
-dev.print(jpeg, filename = "annofinch.jpg", width = dim(dark1)[1],
+dev.print(jpeg, filename = "../annofinch.jpg", width = dim(dark1)[1],
 height = dim(dark1)[2], quality = 70);
 
 ### Separating channels
 
-reds <- channel(cfinch, "red");
-greens <- channel(cfinch, "green");
-blues <- channel(cfinch, "blue");
+reds <- channel(finch, "red");
+greens <- channel(finch, "green");
+blues <- channel(finch, "blue");
 
 par(mfrow = c(3,1));
 display(reds);
 display(greens);
 display(blues);
 
-### Combining channels
+#################################
+### Do the following yourself ###
+#################################
 
-blue.lo <- blues - 0.12
-loblue <- rgbImage(reds, greens, blue.lo);
-par(mfrow = c(2,1));
-display(cfinch)
-display(loblue);
+# The function rgbImage takes the three channels as
+# the first three arguments and combines them to produce a
+# colour image.
 
-# Order of channels is important!
-ch.shuf <- rgbImage(greens, blues, reds);
-par(mfrow = c(2,1));
-display(cfinch)
-display(ch.shuf);
+# 1. Read the image "data/mallards.jpg".
+
+# 2. Separate the three channels.
+
+# 3. Add 0.12 to the blue channel.
+
+# 4. Combine the three channels to get a color image using
+# the function rgbImage();
+
+# 5. Display both the original image and the modified image.
+
+mallards <- readImage("data/mallards.jpg");
+reds <- channel(mallards, "red");
+greens <- channel(mallards, "green");
+blues <- channel(mallards, "blue");
+
+blues <- blues + 0.12;
+
+mallards2 <- rgbImage(reds, greens, blues);
+
+par(mfrow = c(1,2));
+display(mallards);
+display(mallards2);
 
 dev.off();
 ~~~
