@@ -4095,6 +4095,8 @@ display(blues);
 
 * [Tidyverse (dplyr, tibbles, ggplot and more) documentation](https://www.tidyverse.org/)
 
+* [ggplot2 book is freely available online](https://ggplot2-book.org/index.html)
+
 * [RNA-Seq data analysis using edgeR](https://f1000research.com/articles/5-1438)
 
 <!-- >>> -->
