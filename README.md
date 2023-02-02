@@ -62,7 +62,7 @@ Course                       1600  to   1730
 
 [Preparations](rstudio.html)
 
-[.](readme.html)
+[All scripts as one web page.](readme.html)
 
 <!-- >>> -->
 
