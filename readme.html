@@ -1551,12 +1551,12 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb27-93" title="93"><span class="kw">group_indices</span>(byscope);</a>
 <a class="sourceLine" id="cb27-94" title="94"></a></code></pre></div>
 <!-- >>> -->
-<!-- <<< models.r -->
+<!-- <<< models.r (skipped) -->
 <h1 id="statistical-models">Statistical Models</h1>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"></a>
-<a class="sourceLine" id="cb28-2" title="2"><span class="co">###############################</span></a>
-<a class="sourceLine" id="cb28-3" title="3"><span class="co">### Statistical Models in R </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb28-4" title="4"><span class="co">###############################</span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="co">#########################################</span></a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="co">### Statistical Models in R (skipped) </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb28-4" title="4"><span class="co">#########################################</span></a>
 <a class="sourceLine" id="cb28-5" title="5"></a>
 <a class="sourceLine" id="cb28-6" title="6"><span class="co"># Normal</span></a>
 <a class="sourceLine" id="cb28-7" title="7"><span class="co"># rnorm(): random generation function</span></a>
@@ -1707,54 +1707,56 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb29-67" title="67"><span class="kw">identical</span>(x,y);</a>
 <a class="sourceLine" id="cb29-68" title="68"><span class="kw">all.equal</span>(x,y);</a>
 <a class="sourceLine" id="cb29-69" title="69"></a>
-<a class="sourceLine" id="cb29-70" title="70"><span class="co"># all.equal() never returns FALSE. It either returns TRUE or a string.</span></a>
+<a class="sourceLine" id="cb29-70" title="70"><span class="co">###### End of Day 1 ######</span></a>
 <a class="sourceLine" id="cb29-71" title="71"></a>
-<a class="sourceLine" id="cb29-72" title="72">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">5</span>, <span class="dt">sd =</span> <span class="fl">0.0001</span>);</a>
-<a class="sourceLine" id="cb29-73" title="73">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="fl">5.0001</span>, <span class="dt">sd =</span> <span class="fl">0.0001</span>);</a>
-<a class="sourceLine" id="cb29-74" title="74"></a>
-<a class="sourceLine" id="cb29-75" title="75"><span class="co"># Below returns a string or TRUE</span></a>
-<a class="sourceLine" id="cb29-76" title="76"><span class="kw">all.equal</span>(x,y);</a>
-<a class="sourceLine" id="cb29-77" title="77"><span class="kw">all.equal</span>(x,y, <span class="dt">tolerance =</span> <span class="fl">1e-4</span>);</a>
-<a class="sourceLine" id="cb29-78" title="78"></a>
-<a class="sourceLine" id="cb29-79" title="79"></a>
-<a class="sourceLine" id="cb29-80" title="80"><span class="co"># Below return FALSE or TRUE</span></a>
-<a class="sourceLine" id="cb29-81" title="81"><span class="kw">isTRUE</span>(<span class="kw">all.equal</span>(x,y));</a>
-<a class="sourceLine" id="cb29-82" title="82"><span class="kw">isTRUE</span>(<span class="kw">all.equal</span>(x,y, <span class="dt">tolerance =</span> <span class="fl">1e-4</span>))</a>
-<a class="sourceLine" id="cb29-83" title="83"></a>
-<a class="sourceLine" id="cb29-84" title="84"></a>
-<a class="sourceLine" id="cb29-85" title="85"><span class="co"># It might be best to decide how much difference you are</span></a>
-<a class="sourceLine" id="cb29-86" title="86"><span class="co"># willing to ignore and then do something like below.</span></a>
-<a class="sourceLine" id="cb29-87" title="87"></a>
-<a class="sourceLine" id="cb29-88" title="88"><span class="kw">any</span>(<span class="kw">abs</span>(x<span class="op">-</span>y) <span class="op">&gt;</span><span class="st"> </span><span class="fl">1e-3</span>)</a>
-<a class="sourceLine" id="cb29-89" title="89"><span class="kw">any</span>(<span class="kw">abs</span>(x<span class="op">-</span>y) <span class="op">&gt;</span><span class="st"> </span><span class="fl">1e-4</span>)</a>
-<a class="sourceLine" id="cb29-90" title="90">x</a>
-<a class="sourceLine" id="cb29-91" title="91">y</a>
-<a class="sourceLine" id="cb29-92" title="92"><span class="kw">abs</span>(x <span class="op">-</span><span class="st"> </span>y)</a>
-<a class="sourceLine" id="cb29-93" title="93"></a>
-<a class="sourceLine" id="cb29-94" title="94"><span class="co">#################################</span></a>
-<a class="sourceLine" id="cb29-95" title="95"><span class="co">### Do the following yourself </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb29-72" title="72"><span class="co"># all.equal() never returns FALSE. It either returns TRUE or a string.</span></a>
+<a class="sourceLine" id="cb29-73" title="73"></a>
+<a class="sourceLine" id="cb29-74" title="74">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">5</span>, <span class="dt">sd =</span> <span class="fl">0.0001</span>);</a>
+<a class="sourceLine" id="cb29-75" title="75">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="fl">5.0001</span>, <span class="dt">sd =</span> <span class="fl">0.0001</span>);</a>
+<a class="sourceLine" id="cb29-76" title="76"></a>
+<a class="sourceLine" id="cb29-77" title="77"><span class="co"># Below returns a string or TRUE</span></a>
+<a class="sourceLine" id="cb29-78" title="78"><span class="kw">all.equal</span>(x,y);</a>
+<a class="sourceLine" id="cb29-79" title="79"><span class="kw">all.equal</span>(x,y, <span class="dt">tolerance =</span> <span class="fl">1e-4</span>);</a>
+<a class="sourceLine" id="cb29-80" title="80"></a>
+<a class="sourceLine" id="cb29-81" title="81"></a>
+<a class="sourceLine" id="cb29-82" title="82"><span class="co"># Below return FALSE or TRUE</span></a>
+<a class="sourceLine" id="cb29-83" title="83"><span class="kw">isTRUE</span>(<span class="kw">all.equal</span>(x,y));</a>
+<a class="sourceLine" id="cb29-84" title="84"><span class="kw">isTRUE</span>(<span class="kw">all.equal</span>(x,y, <span class="dt">tolerance =</span> <span class="fl">1e-4</span>))</a>
+<a class="sourceLine" id="cb29-85" title="85"></a>
+<a class="sourceLine" id="cb29-86" title="86"></a>
+<a class="sourceLine" id="cb29-87" title="87"><span class="co"># It might be best to decide how much difference you are</span></a>
+<a class="sourceLine" id="cb29-88" title="88"><span class="co"># willing to ignore and then do something like below.</span></a>
+<a class="sourceLine" id="cb29-89" title="89"></a>
+<a class="sourceLine" id="cb29-90" title="90"><span class="kw">any</span>(<span class="kw">abs</span>(x<span class="op">-</span>y) <span class="op">&gt;</span><span class="st"> </span><span class="fl">1e-3</span>)</a>
+<a class="sourceLine" id="cb29-91" title="91"><span class="kw">any</span>(<span class="kw">abs</span>(x<span class="op">-</span>y) <span class="op">&gt;</span><span class="st"> </span><span class="fl">1e-4</span>)</a>
+<a class="sourceLine" id="cb29-92" title="92">x</a>
+<a class="sourceLine" id="cb29-93" title="93">y</a>
+<a class="sourceLine" id="cb29-94" title="94"><span class="kw">abs</span>(x <span class="op">-</span><span class="st"> </span>y)</a>
+<a class="sourceLine" id="cb29-95" title="95"></a>
 <a class="sourceLine" id="cb29-96" title="96"><span class="co">#################################</span></a>
-<a class="sourceLine" id="cb29-97" title="97"></a>
-<a class="sourceLine" id="cb29-98" title="98"><span class="co"># 1. Store the value of 0.5 - 0.3 as m</span></a>
+<a class="sourceLine" id="cb29-97" title="97"><span class="co">### Do the following yourself </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb29-98" title="98"><span class="co">#################################</span></a>
 <a class="sourceLine" id="cb29-99" title="99"></a>
-<a class="sourceLine" id="cb29-100" title="100"><span class="co"># 2. Store the value of 0.3 - 0.1 as n</span></a>
+<a class="sourceLine" id="cb29-100" title="100"><span class="co"># 1. Store the value of 0.5 - 0.3 as m</span></a>
 <a class="sourceLine" id="cb29-101" title="101"></a>
-<a class="sourceLine" id="cb29-102" title="102"><span class="co"># 3. Use == to test the equality of m and n.</span></a>
+<a class="sourceLine" id="cb29-102" title="102"><span class="co"># 2. Store the value of 0.3 - 0.1 as n</span></a>
 <a class="sourceLine" id="cb29-103" title="103"></a>
-<a class="sourceLine" id="cb29-104" title="104"><span class="co"># 4. Use identical() to test the equality of m and n.</span></a>
+<a class="sourceLine" id="cb29-104" title="104"><span class="co"># 3. Use == to test the equality of m and n.</span></a>
 <a class="sourceLine" id="cb29-105" title="105"></a>
-<a class="sourceLine" id="cb29-106" title="106"><span class="co"># 5. Use all.equal() to test the equality of m and n.</span></a>
+<a class="sourceLine" id="cb29-106" title="106"><span class="co"># 4. Use identical() to test the equality of m and n.</span></a>
 <a class="sourceLine" id="cb29-107" title="107"></a>
-<a class="sourceLine" id="cb29-108" title="108"><span class="co"># 6. What is the output of isTRUE(all.equal(m,n))?</span></a>
+<a class="sourceLine" id="cb29-108" title="108"><span class="co"># 5. Use all.equal() to test the equality of m and n.</span></a>
 <a class="sourceLine" id="cb29-109" title="109"></a>
-<a class="sourceLine" id="cb29-110" title="110"><span class="co"># Refer to the documentation of all.equal() to find out</span></a>
-<a class="sourceLine" id="cb29-111" title="111"><span class="co"># the default value of the tolerance argument.</span></a>
-<a class="sourceLine" id="cb29-112" title="112"></a>
-<a class="sourceLine" id="cb29-113" title="113"><span class="co">#############################################################</span></a>
-<a class="sourceLine" id="cb29-114" title="114"><span class="co">#############################################################</span></a>
-<a class="sourceLine" id="cb29-115" title="115"></a>
-<a class="sourceLine" id="cb29-116" title="116"><span class="co"># Use isTRUE(all.equal()), not ==, when comparing floating</span></a>
-<a class="sourceLine" id="cb29-117" title="117"><span class="co"># point numbers.</span></a></code></pre></div>
+<a class="sourceLine" id="cb29-110" title="110"><span class="co"># 6. What is the output of isTRUE(all.equal(m,n))?</span></a>
+<a class="sourceLine" id="cb29-111" title="111"></a>
+<a class="sourceLine" id="cb29-112" title="112"><span class="co"># Refer to the documentation of all.equal() to find out</span></a>
+<a class="sourceLine" id="cb29-113" title="113"><span class="co"># the default value of the tolerance argument.</span></a>
+<a class="sourceLine" id="cb29-114" title="114"></a>
+<a class="sourceLine" id="cb29-115" title="115"><span class="co">#############################################################</span></a>
+<a class="sourceLine" id="cb29-116" title="116"><span class="co">#############################################################</span></a>
+<a class="sourceLine" id="cb29-117" title="117"></a>
+<a class="sourceLine" id="cb29-118" title="118"><span class="co"># Use isTRUE(all.equal()), not ==, when comparing floating</span></a>
+<a class="sourceLine" id="cb29-119" title="119"><span class="co"># point numbers.</span></a></code></pre></div>
 <!-- >>> -->
 <!-- <<< subsetting.r -->
 <h1 id="subsetting">Subsetting</h1>
@@ -2153,78 +2155,77 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb34-18" title="18"><span class="co">### Do the following yourself </span><span class="al">###</span></a>
 <a class="sourceLine" id="cb34-19" title="19"><span class="co">#################################</span></a>
 <a class="sourceLine" id="cb34-20" title="20"></a>
-<a class="sourceLine" id="cb34-21" title="21"><span class="co"># 1. Instead of getting a new data frame as above, you</span></a>
-<a class="sourceLine" id="cb34-22" title="22"><span class="co"># can assign a new column to your original data frame</span></a>
-<a class="sourceLine" id="cb34-23" title="23"><span class="co"># (named &quot;data&quot; in this case). This is done by assigning</span></a>
-<a class="sourceLine" id="cb34-24" title="24"><span class="co"># a vector to a new column name. Delete data then read</span></a>
-<a class="sourceLine" id="cb34-25" title="25"><span class="co"># the file into the data again. Now add a column named</span></a>
-<a class="sourceLine" id="cb34-26" title="26"><span class="co"># logFC to data by directly assigning to data$logFC.</span></a>
+<a class="sourceLine" id="cb34-21" title="21"><span class="co"># 1. Instead of getting a new data frame as above, you can</span></a>
+<a class="sourceLine" id="cb34-22" title="22"><span class="co"># assign a new column to your original data frame (named</span></a>
+<a class="sourceLine" id="cb34-23" title="23"><span class="co"># &quot;data&quot; in this case). This is done by assigning a vector</span></a>
+<a class="sourceLine" id="cb34-24" title="24"><span class="co"># to a new column name. Now add a column named logFC to data</span></a>
+<a class="sourceLine" id="cb34-25" title="25"><span class="co"># by directly assigning to data$logFC.</span></a>
+<a class="sourceLine" id="cb34-26" title="26"></a>
 <a class="sourceLine" id="cb34-27" title="27"></a>
-<a class="sourceLine" id="cb34-28" title="28"></a>
-<a class="sourceLine" id="cb34-29" title="29"><span class="co"># 2. Confirm that &quot;logFC&quot; column has been added to data.</span></a>
+<a class="sourceLine" id="cb34-28" title="28"><span class="co"># 2. Confirm that &quot;logFC&quot; column has been added to data.</span></a>
+<a class="sourceLine" id="cb34-29" title="29"></a>
 <a class="sourceLine" id="cb34-30" title="30"></a>
-<a class="sourceLine" id="cb34-31" title="31"></a>
-<a class="sourceLine" id="cb34-32" title="32"><span class="co"># 3. The products of all the genes in &quot;data&quot; are written</span></a>
-<a class="sourceLine" id="cb34-33" title="33"><span class="co"># in the file &quot;products.csv&quot;.</span></a>
+<a class="sourceLine" id="cb34-31" title="31"><span class="co"># 3. The products of all the genes in &quot;data&quot; are written</span></a>
+<a class="sourceLine" id="cb34-32" title="32"><span class="co"># in the file &quot;products.csv&quot;.</span></a>
+<a class="sourceLine" id="cb34-33" title="33"></a>
 <a class="sourceLine" id="cb34-34" title="34"></a>
-<a class="sourceLine" id="cb34-35" title="35"></a>
-<a class="sourceLine" id="cb34-36" title="36"><span class="co"># 4. Read the file &quot;data/products.csv&quot; into a data frame</span></a>
-<a class="sourceLine" id="cb34-37" title="37"><span class="co"># named temp. Use the named arguments row.names = 1,</span></a>
-<a class="sourceLine" id="cb34-38" title="38"><span class="co"># stringsAsFactors = FALSE.</span></a>
+<a class="sourceLine" id="cb34-35" title="35"><span class="co"># 4. Read the file &quot;data/products.csv&quot; into a data frame</span></a>
+<a class="sourceLine" id="cb34-36" title="36"><span class="co"># named temp. Use the named arguments row.names = 1,</span></a>
+<a class="sourceLine" id="cb34-37" title="37"><span class="co"># stringsAsFactors = FALSE.</span></a>
+<a class="sourceLine" id="cb34-38" title="38"></a>
 <a class="sourceLine" id="cb34-39" title="39"></a>
-<a class="sourceLine" id="cb34-40" title="40"></a>
-<a class="sourceLine" id="cb34-41" title="41"><span class="co"># 5. Add the product column from temp to data but keep</span></a>
-<a class="sourceLine" id="cb34-42" title="42"><span class="co"># in mind that the order of genes in temp is not the</span></a>
-<a class="sourceLine" id="cb34-43" title="43"><span class="co"># same as in data. Hint: Use rownames(data) to subset</span></a>
-<a class="sourceLine" id="cb34-44" title="44"><span class="co"># temp.</span></a>
-<a class="sourceLine" id="cb34-45" title="45"></a>
-<a class="sourceLine" id="cb34-46" title="46"><span class="co"># 6. After making sure that &quot;data&quot; is as required run the</span></a>
-<a class="sourceLine" id="cb34-47" title="47"><span class="co"># following.</span></a>
-<a class="sourceLine" id="cb34-48" title="48"></a>
-<a class="sourceLine" id="cb34-49" title="49"><span class="kw">saveRDS</span>(data, <span class="dt">file =</span> <span class="st">&quot;data.rds&quot;</span>);</a>
-<a class="sourceLine" id="cb34-50" title="50"><span class="co"># We will need the &quot;data.rds&quot; file later.</span></a>
-<a class="sourceLine" id="cb34-51" title="51"></a>
-<a class="sourceLine" id="cb34-52" title="52"><span class="co">###################</span></a>
-<a class="sourceLine" id="cb34-53" title="53"><span class="co">### dplyr style </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb34-54" title="54"><span class="co">###################</span></a>
-<a class="sourceLine" id="cb34-55" title="55"></a>
-<a class="sourceLine" id="cb34-56" title="56">tib &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/expression.csv&quot;</span>, <span class="dt">col_names =</span> <span class="ot">TRUE</span>);</a>
-<a class="sourceLine" id="cb34-57" title="57"></a>
-<a class="sourceLine" id="cb34-58" title="58">tib1 &lt;-<span class="st"> </span><span class="kw">mutate</span>(tib, <span class="dt">logFC =</span> treatment <span class="op">-</span><span class="st"> </span>control);</a>
-<a class="sourceLine" id="cb34-59" title="59">tib1</a>
-<a class="sourceLine" id="cb34-60" title="60"></a>
-<a class="sourceLine" id="cb34-61" title="61"><span class="co"># Or, we could simply overwrite tib.</span></a>
-<a class="sourceLine" id="cb34-62" title="62"></a>
-<a class="sourceLine" id="cb34-63" title="63">tib &lt;-<span class="st"> </span><span class="kw">mutate</span>(tib, <span class="dt">logFC =</span> treatment <span class="op">-</span><span class="st"> </span>control);</a>
-<a class="sourceLine" id="cb34-64" title="64">tib</a>
-<a class="sourceLine" id="cb34-65" title="65"></a>
-<a class="sourceLine" id="cb34-66" title="66"><span class="co"># dplyr joins #</span></a>
-<a class="sourceLine" id="cb34-67" title="67"></a>
-<a class="sourceLine" id="cb34-68" title="68">temptib &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/products.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb34-69" title="69">temptib</a>
-<a class="sourceLine" id="cb34-70" title="70"><span class="kw">left_join</span>(tib, temptib, <span class="dt">by =</span> <span class="st">&quot;gene&quot;</span>)</a>
-<a class="sourceLine" id="cb34-71" title="71"></a>
-<a class="sourceLine" id="cb34-72" title="72"><span class="co"># Unwanted column in temptib</span></a>
-<a class="sourceLine" id="cb34-73" title="73"></a>
-<a class="sourceLine" id="cb34-74" title="74">temptib &lt;-<span class="st"> </span><span class="kw">mutate</span>(temptib, <span class="dt">unwanted =</span> <span class="kw">rep</span>(<span class="st">&quot;unwanted&quot;</span>,</a>
-<a class="sourceLine" id="cb34-75" title="75">                  <span class="kw">nrow</span>(temptib)));</a>
-<a class="sourceLine" id="cb34-76" title="76">temptib</a>
-<a class="sourceLine" id="cb34-77" title="77"><span class="kw">left_join</span>(tib, temptib, <span class="dt">by =</span> <span class="st">&quot;gene&quot;</span>)</a>
-<a class="sourceLine" id="cb34-78" title="78"><span class="kw">left_join</span>(tib, <span class="kw">select</span>(temptib, gene, product),</a>
-<a class="sourceLine" id="cb34-79" title="79">                  <span class="dt">by =</span> <span class="st">&quot;gene&quot;</span>)</a>
-<a class="sourceLine" id="cb34-80" title="80"></a>
-<a class="sourceLine" id="cb34-81" title="81"><span class="co">### Piping </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb34-82" title="82"><span class="co"># Useful for discarding intermediate objects.</span></a>
-<a class="sourceLine" id="cb34-83" title="83"><span class="co"># Easier to apply on several objects.</span></a>
-<a class="sourceLine" id="cb34-84" title="84"></a>
-<a class="sourceLine" id="cb34-85" title="85"><span class="kw">select</span>(tib, gene, logFC) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb34-86" title="86"><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">select</span>(temptib, gene, product), <span class="dt">by =</span> <span class="st">&quot;gene&quot;</span>)</a>
-<a class="sourceLine" id="cb34-87" title="87"></a>
-<a class="sourceLine" id="cb34-88" title="88">tib &lt;-<span class="st"> </span>tib <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(<span class="kw">select</span>(temptib, gene, product),</a>
-<a class="sourceLine" id="cb34-89" title="89">                         <span class="dt">by =</span> <span class="st">&quot;gene&quot;</span>)</a>
-<a class="sourceLine" id="cb34-90" title="90">tib;</a>
-<a class="sourceLine" id="cb34-91" title="91"></a>
-<a class="sourceLine" id="cb34-92" title="92"><span class="kw">saveRDS</span>(tib, <span class="dt">file =</span> <span class="st">&quot;tib.rds&quot;</span>);</a></code></pre></div>
+<a class="sourceLine" id="cb34-40" title="40"><span class="co"># 5. Add the product column from temp to data but keep</span></a>
+<a class="sourceLine" id="cb34-41" title="41"><span class="co"># in mind that the order of genes in temp is not the</span></a>
+<a class="sourceLine" id="cb34-42" title="42"><span class="co"># same as in data. Hint: Use rownames(data) to subset</span></a>
+<a class="sourceLine" id="cb34-43" title="43"><span class="co"># temp.</span></a>
+<a class="sourceLine" id="cb34-44" title="44"></a>
+<a class="sourceLine" id="cb34-45" title="45"><span class="co"># 6. After making sure that &quot;data&quot; is as required run the</span></a>
+<a class="sourceLine" id="cb34-46" title="46"><span class="co"># following.</span></a>
+<a class="sourceLine" id="cb34-47" title="47"></a>
+<a class="sourceLine" id="cb34-48" title="48"><span class="kw">saveRDS</span>(data, <span class="dt">file =</span> <span class="st">&quot;data.rds&quot;</span>);</a>
+<a class="sourceLine" id="cb34-49" title="49"><span class="co"># We will need the &quot;data.rds&quot; file later.</span></a>
+<a class="sourceLine" id="cb34-50" title="50"></a>
+<a class="sourceLine" id="cb34-51" title="51"><span class="co">###################</span></a>
+<a class="sourceLine" id="cb34-52" title="52"><span class="co">### dplyr style </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb34-53" title="53"><span class="co">###################</span></a>
+<a class="sourceLine" id="cb34-54" title="54"></a>
+<a class="sourceLine" id="cb34-55" title="55">tib &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/expression.csv&quot;</span>, <span class="dt">col_names =</span> <span class="ot">TRUE</span>);</a>
+<a class="sourceLine" id="cb34-56" title="56"></a>
+<a class="sourceLine" id="cb34-57" title="57">tib1 &lt;-<span class="st"> </span><span class="kw">mutate</span>(tib, <span class="dt">logFC =</span> treatment <span class="op">-</span><span class="st"> </span>control);</a>
+<a class="sourceLine" id="cb34-58" title="58">tib1</a>
+<a class="sourceLine" id="cb34-59" title="59"></a>
+<a class="sourceLine" id="cb34-60" title="60"><span class="co"># Or, we could simply overwrite tib.</span></a>
+<a class="sourceLine" id="cb34-61" title="61"></a>
+<a class="sourceLine" id="cb34-62" title="62">tib &lt;-<span class="st"> </span><span class="kw">mutate</span>(tib, <span class="dt">logFC =</span> treatment <span class="op">-</span><span class="st"> </span>control);</a>
+<a class="sourceLine" id="cb34-63" title="63">tib</a>
+<a class="sourceLine" id="cb34-64" title="64"></a>
+<a class="sourceLine" id="cb34-65" title="65"><span class="co"># dplyr joins #</span></a>
+<a class="sourceLine" id="cb34-66" title="66"></a>
+<a class="sourceLine" id="cb34-67" title="67">temptib &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/products.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb34-68" title="68">temptib</a>
+<a class="sourceLine" id="cb34-69" title="69"><span class="kw">left_join</span>(tib, temptib, <span class="dt">by =</span> <span class="st">&quot;gene&quot;</span>)</a>
+<a class="sourceLine" id="cb34-70" title="70"></a>
+<a class="sourceLine" id="cb34-71" title="71"><span class="co"># Unwanted column in temptib</span></a>
+<a class="sourceLine" id="cb34-72" title="72"></a>
+<a class="sourceLine" id="cb34-73" title="73">temptib &lt;-<span class="st"> </span><span class="kw">mutate</span>(temptib, <span class="dt">unwanted =</span> <span class="kw">rep</span>(<span class="st">&quot;unwanted&quot;</span>,</a>
+<a class="sourceLine" id="cb34-74" title="74">                  <span class="kw">nrow</span>(temptib)));</a>
+<a class="sourceLine" id="cb34-75" title="75">temptib</a>
+<a class="sourceLine" id="cb34-76" title="76"><span class="kw">left_join</span>(tib, temptib, <span class="dt">by =</span> <span class="st">&quot;gene&quot;</span>)</a>
+<a class="sourceLine" id="cb34-77" title="77"><span class="kw">left_join</span>(tib, <span class="kw">select</span>(temptib, gene, product),</a>
+<a class="sourceLine" id="cb34-78" title="78">                  <span class="dt">by =</span> <span class="st">&quot;gene&quot;</span>)</a>
+<a class="sourceLine" id="cb34-79" title="79"></a>
+<a class="sourceLine" id="cb34-80" title="80"><span class="co">### Piping </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb34-81" title="81"><span class="co"># Useful for discarding intermediate objects.</span></a>
+<a class="sourceLine" id="cb34-82" title="82"><span class="co"># Easier to apply on several objects.</span></a>
+<a class="sourceLine" id="cb34-83" title="83"></a>
+<a class="sourceLine" id="cb34-84" title="84"><span class="kw">select</span>(tib, gene, logFC) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-85" title="85"><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">select</span>(temptib, gene, product), <span class="dt">by =</span> <span class="st">&quot;gene&quot;</span>)</a>
+<a class="sourceLine" id="cb34-86" title="86"></a>
+<a class="sourceLine" id="cb34-87" title="87">tib &lt;-<span class="st"> </span>tib <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(<span class="kw">select</span>(temptib, gene, product),</a>
+<a class="sourceLine" id="cb34-88" title="88">                         <span class="dt">by =</span> <span class="st">&quot;gene&quot;</span>)</a>
+<a class="sourceLine" id="cb34-89" title="89">tib;</a>
+<a class="sourceLine" id="cb34-90" title="90"></a>
+<a class="sourceLine" id="cb34-91" title="91"><span class="kw">saveRDS</span>(tib, <span class="dt">file =</span> <span class="st">&quot;tib.rds&quot;</span>);</a></code></pre></div>
 <!-- >>> -->
 <!-- <<< sorting.r -->
 <h1 id="sorting">Sorting</h1>
@@ -3133,12 +3134,12 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb41-64" title="64"></a>
 <a class="sourceLine" id="cb41-65" title="65"></a></code></pre></div>
 <!-- >>> -->
-<!-- <<< graphics.r -->
+<!-- <<< graphics.r (skipped) -->
 <h1 id="base-graphics">Base graphics</h1>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"></a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="co">#####################</span></a>
-<a class="sourceLine" id="cb42-3" title="3"><span class="co">### Base graphics </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb42-4" title="4"><span class="co">#####################</span></a>
+<a class="sourceLine" id="cb42-2" title="2"><span class="co">###############################</span></a>
+<a class="sourceLine" id="cb42-3" title="3"><span class="co">### Base graphics (skipped) </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb42-4" title="4"><span class="co">###############################</span></a>
 <a class="sourceLine" id="cb42-5" title="5"></a>
 <a class="sourceLine" id="cb42-6" title="6"><span class="co"># Several commands, plot(), boxplot(), points(), lines(),</span></a>
 <a class="sourceLine" id="cb42-7" title="7"><span class="co"># abline() and several others.</span></a>
@@ -3546,12 +3547,12 @@ median(xl2);</code></pre>
 <a class="sourceLine" id="cb45-225" title="225"><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="op">-</span><span class="kw">log10</span>(<span class="fl">0.05</span>), <span class="dt">color =</span> <span class="st">&quot;#00dd00&quot;</span>)</a>
 <a class="sourceLine" id="cb45-226" title="226"></a></code></pre></div>
 <!-- >>> -->
-<!-- <<< sporelens.r -->
+<!-- <<< sporelens.r (skipped) -->
 <h1 id="spore-lengths">Spore lengths</h1>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"></a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="co">#####################</span></a>
-<a class="sourceLine" id="cb46-3" title="3"><span class="co">### Spore Lengths </span><span class="al">###</span></a>
-<a class="sourceLine" id="cb46-4" title="4"><span class="co">#####################</span></a>
+<a class="sourceLine" id="cb46-2" title="2"><span class="co">###############################</span></a>
+<a class="sourceLine" id="cb46-3" title="3"><span class="co">### Spore Lengths (skipped) </span><span class="al">###</span></a>
+<a class="sourceLine" id="cb46-4" title="4"><span class="co">###############################</span></a>
 <a class="sourceLine" id="cb46-5" title="5"></a>
 <a class="sourceLine" id="cb46-6" title="6"><span class="co"># Spore lengths were measured in 5 mutants (L, S, T, U,</span></a>
 <a class="sourceLine" id="cb46-7" title="7"><span class="co"># V) and the WT of a species of Streptomyces grown in 2</span></a>

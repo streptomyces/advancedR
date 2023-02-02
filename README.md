@@ -1712,14 +1712,14 @@ group_indices(byscope);
 
 <!-- >>> -->
 
-<!-- <<< models.r -->
+<!-- <<< models.r (skipped) -->
 # Statistical Models
 
 ~~~ {.r}
 
-###############################
-### Statistical Models in R ###
-###############################
+#########################################
+### Statistical Models in R (skipped) ###
+#########################################
 
 # Normal
 # rnorm(): random generation function
@@ -1875,6 +1875,8 @@ x <- z * pi
 x == y;
 identical(x,y);
 all.equal(x,y);
+
+###### End of Day 1 ######
 
 # all.equal() never returns FALSE. It either returns TRUE or a string.
 
@@ -2352,12 +2354,11 @@ head(nf)
 ### Do the following yourself ###
 #################################
 
-# 1. Instead of getting a new data frame as above, you
-# can assign a new column to your original data frame
-# (named "data" in this case). This is done by assigning
-# a vector to a new column name. Delete data then read
-# the file into the data again. Now add a column named
-# logFC to data by directly assigning to data$logFC.
+# 1. Instead of getting a new data frame as above, you can
+# assign a new column to your original data frame (named
+# "data" in this case). This is done by assigning a vector
+# to a new column name. Now add a column named logFC to data
+# by directly assigning to data$logFC.
 
 
 # 2. Confirm that "logFC" column has been added to data.
@@ -3377,14 +3378,14 @@ log2lin
 
 <!-- >>> -->
 
-<!-- <<< graphics.r -->
+<!-- <<< graphics.r (skipped) -->
 # Base graphics
 
 ~~~ {.r}
 
-#####################
-### Base graphics ###
-#####################
+###############################
+### Base graphics (skipped) ###
+###############################
 
 # Several commands, plot(), boxplot(), points(), lines(),
 # abline() and several others.
@@ -3814,14 +3815,14 @@ geom_hline(yintercept = -log10(0.05), color = "#00dd00")
 
 <!-- >>> -->
 
-<!-- <<< sporelens.r -->
+<!-- <<< sporelens.r (skipped) -->
 # Spore lengths
 
 ~~~ {.r}
 
-#####################
-### Spore Lengths ###
-#####################
+###############################
+### Spore Lengths (skipped) ###
+###############################
 
 # Spore lengths were measured in 5 mutants (L, S, T, U,
 # V) and the WT of a species of Streptomyces grown in 2
